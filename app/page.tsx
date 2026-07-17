@@ -59,7 +59,7 @@ export default function Home() {
                 <ArticleCard {...articles[2]} />
               </Grid>
             </Grid>
-            <Stack alignItems="flex-end" sx={{ mt: 3.5 }}>
+            <Stack sx={{ alignItems: "flex-end", mt: 3.5 }}>
               <Button href="/articles" sx={{ color: "primary.main", fontSize: "0.62rem" }}>
                 Mais artigos…
               </Button>

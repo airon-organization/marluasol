@@ -13,9 +13,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigationItems = [
-  { label: "Yin Yoga", href: "/articles/o_que_e_yin_yoga" },
-  { label: "Loja online", href: "#loja" },
-  { label: "Quem sou eu", href: "#sobre" },
+  { label: "Yin Yoga", href: "/yin-yoga" },
+  { label: "Loja online", href: "/loja" },
+  { label: "Quem sou eu", href: "/quem-sou-eu" },
 ];
 
 export default function Header() {

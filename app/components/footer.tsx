@@ -13,8 +13,8 @@ export default function Footer() {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, minHeight: 96, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2, flexWrap: "wrap", py: 2 }}>
         <Stack direction="row" spacing={1}>
           {[
-            ["Loja", "#loja"],
-            ["Contatos", "#contatos"],
+            ["Loja", "/loja"],
+            ["Contatos", "/contatos"],
           ].map(([label, href]) => (
             <Button component={Link} href={href} key={label} size="small" sx={{ bgcolor: "common.white", color: "primary.dark", fontSize: "0.58rem", px: 1.3 }}>
               {label}
