@@ -4,7 +4,6 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import {
   Box,
   Button,
-  Container,
   IconButton,
   Stack,
   useMediaQuery,
@@ -31,22 +30,35 @@ export default function Header() {
         src="/home/header1.png"
         style={{ objectFit: "cover" }}
       />
-      <Container
-        maxWidth="lg"
+      <Box
         sx={{
           position: "relative",
           zIndex: 1,
+          width: "100%",
           minHeight: { xs: 88, sm: 112 },
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: 2,
+          px: { xs: 2, sm: 3, md: 4 },
         }}
       >
-        <Link aria-label="Página inicial MarLuaSol" href="/">
-          <Box sx={{ position: "relative", width: { xs: 116, sm: 164 }, height: { xs: 70, sm: 92 } }}>
-            <Image alt="MarLuaSol" fill priority sizes="164px" src="/logo.png" style={{ objectFit: "contain" }} />
-          </Box>
+        <Link aria-label="Página inicial MarLuaSol" href="/" style={{ textDecoration: "none", outline: "none" }}>
+          <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} sx={{ alignItems: "center" }}>
+            <Box sx={{ position: "relative", width: { xs: 70, sm: 92 }, height: { xs: 70, sm: 92 }, flexShrink: 0 }}>
+              <Image alt="" fill priority sizes="(max-width: 600px) 70px, 92px" src="/logo.png" style={{ objectFit: "contain" }} />
+            </Box>
+            <Box sx={{ position: "relative", width: { xs: 122, sm: 180 }, aspectRatio: "502 / 275", flexShrink: 0 }}>
+              <Image
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 600px) 122px, 180px"
+                src="/marluasol-sem-borda.png"
+                style={{ objectFit: "contain", transform: "translateY(21%) scale(1.1)" }}
+              />
+            </Box>
+          </Stack>
         </Link>
 
         {isCompact ? (
@@ -79,7 +91,7 @@ export default function Header() {
             ))}
           </Stack>
         )}
-      </Container>
+      </Box>
     </Box>
   );
 }

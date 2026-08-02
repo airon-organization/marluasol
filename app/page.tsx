@@ -1,8 +1,8 @@
-import { Box, Button, Container, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import ArticleCard, { type ArticleCardProps } from "./components/article-card";
 import Footer from "./components/footer";
 import Header from "./components/header";
-import PromoHero from "./components/promo-hero";
+import HomeCarousel from "./components/home-carousel";
 
 const articles: ArticleCardProps[] = [
   {
@@ -34,16 +34,13 @@ export default function Home() {
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <main>
         <Header />
-        <Container disableGutters maxWidth="lg" sx={{ bgcolor: "background.paper" }}>
-          <Box component="section" sx={{ px: { xs: 2, sm: 4 }, py: { xs: 2.5, sm: 3 } }}>
-            <Typography align="center" color="primary.main" component="h1" variant="h1" sx={{ fontSize: { xs: "1.35rem", sm: "1.8rem" }, textTransform: "uppercase" }}>
-              Perfumaria natural — a perfumação que sobe aos deuses
-            </Typography>
-            <Typography align="center" color="primary.main" component="p" sx={{ mt: 0.25, fontSize: { xs: "0.8rem", sm: "1.03rem" }, fontWeight: 900, lineHeight: 1.1, textTransform: "uppercase" }}>
-              Os aromas naturais como guias do nosso desenvolvimento emocional e bem-estar
+        <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+          <Box component="section" sx={{ py: { xs: 2.5, sm: 3 } }}>
+            <Typography align="left" component="h1" variant="h1" sx={{ fontSize: { xs: "1.35rem", sm: "1.8rem" }, ml: { xs: "1rem", sm: "2rem" }, textTransform: "uppercase", color: "#880D86" }}>
+              A SUA LOJA DE PERFUMARIA NATURAL E BEM ESTAR
             </Typography>
           </Box>
-          <PromoHero />
+          <HomeCarousel />
           <Box component="section" sx={{ px: { xs: 2, sm: 4 }, py: { xs: 4, sm: 5 } }}>
             <Typography component="h2" variant="h2" sx={{ fontSize: { xs: "1.45rem", sm: "1.75rem" }, textTransform: "uppercase" }}>
               Artigos
@@ -65,7 +62,7 @@ export default function Home() {
               </Button>
             </Stack>
           </Box>
-        </Container>
+        </Box>
       </main>
       <Footer />
     </Box>
