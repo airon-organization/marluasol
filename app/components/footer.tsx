@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Box component="footer" sx={{ position: "relative", overflow: "hidden", mt: { xs: 6, md: 8 } }}>
+    <Box component="footer" sx={{ position: "relative", overflow: "hidden" }}>
       <Image alt="" fill sizes="100vw" src="/home/header1.png" style={{ objectFit: "cover" }} />
       <Box sx={{ position: "relative", zIndex: 1, width: "100%", minHeight: 96, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2, flexWrap: "wrap", px: { xs: 2, sm: 3, md: 4 }, py: 2 }}>
         <Stack direction="row" spacing={1}>
