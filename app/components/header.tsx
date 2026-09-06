@@ -46,16 +46,16 @@ export default function Header() {
         <Link aria-label="Página inicial MarLuaSol" href="/" style={{ textDecoration: "none", outline: "none" }}>
           <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} sx={{ alignItems: "center" }}>
             <Box sx={{ position: "relative", width: { xs: 70, sm: 92 }, height: { xs: 70, sm: 92 }, flexShrink: 0 }}>
-              <Image alt="" fill priority sizes="(max-width: 600px) 70px, 92px" src="/logo.png" style={{ objectFit: "contain" }} />
+              <Image alt="" fill priority sizes="(max-width: 600px) 70px, 92px" src="/MARLUASOL LOGO.png" style={{ objectFit: "contain", transform: "translateY(-4%)" }} />
             </Box>
-            <Box sx={{ position: "relative", width: { xs: 122, sm: 180 }, aspectRatio: "502 / 275", flexShrink: 0 }}>
+            <Box sx={{ position: "relative", width: { xs: 150, sm: 240 }, aspectRatio: "331 / 80", flexShrink: 0 }}>
               <Image
                 alt=""
                 fill
                 priority
-                sizes="(max-width: 600px) 122px, 180px"
-                src="/marluasol-sem-borda.png"
-                style={{ objectFit: "contain", transform: "translateY(21%) scale(1.1)" }}
+                sizes="(max-width: 600px) 150px, 240px"
+                src="/MARLUASOL SEM FUNDO SEM YIN YOGA 5.png"
+                style={{ objectFit: "contain", transform: "translateY(7.5%)" }}
               />
             </Box>
           </Stack>

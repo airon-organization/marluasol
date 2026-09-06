@@ -1,13 +1,16 @@
-import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
 const paragraphs = [
-  "Desde muito jovem me identifico profundamente com a filosofia do yoga e com a natureza. As plantas são minhas guias no meu processo de autoconhecimento e entendimento da realidade e conhecê-las como seres vivos complexos e ativos tem sido uma jornada de humildade e reverência. Juntamente com o Yoga como estilo de vida, minha mente tem sido aos poucos transformada e assim nasceu o desejo de servir aos seres vivos com meu trabalho e conhecimento.",
-  "Sou praticante de yoga há 9 anos e realizei minha formação em Yin Yoga com a professora Marina Boni, referência no Brasil, de quem também fui aluna. Atualmente, sigo em constante aprimoramento, estudando com professoras experientes e participando de cursos e conferências com professores nacionais e internacionais, com foco nos métodos Yin Yoga e Ashtanga Yoga. Além disso, me dedico a estudos de filosofia, meditação, mantras, deusas, fitoterapia e perfumaria botânica.",
-  "A perfumaria natural e as tinturas de plantas fazem sentido na minha vida, e por muito tempo foi uma jornada pessoal e quase secreta. Porque uma engenheira de controle e automação faria perfume? Foi um conflito. Mas não preciso escolher, sou várias. Fui aluna da Doutora Palmira Margarida na escola de Perfumaria Ancestral, e com o tempo, nasceu o desejo de criar e compartilhar, não apenas aulas de yoga mas também a alquimia das plantas. Por isso faço perfumes naturais e exclusivos com foco em promover o bem-estar por meio dos aromas naturais com perfumes artesanais criados por mim com amor e devoção. É muito estudo, sempre!",
-  "Venha me conhecer, seja por interesse em Yin Yoga ou por perfumaria natural ou em ambos! A natureza não é algo externo, faz parte de nós. A comunhão do nosso mundo interior com as plantas é urgente e é o que temos de mais próximo da verdadeira MAGIA.",
+  "Desde muito jovem me identifico profundamente com a natureza e com a filosofia do Yoga. As plantas são minhas guias no meu processo de autoconhecimento: me inspiram como seres vivos complexos e me ajudam a buscar uma vida com mais equilíbrio.",
+  "Minha paixão pelos aromas naturais e a compreensão de que eles atuam de maneira sinérgica com nossos corpos despertaram em mim o desejo de compartilhar esse conhecimento com quem também sente o chamado para uma vida mais natural, harmoniosa com a natureza e consigo.",
+  "A perfumaria natural e a aromaterapia fizeram sentido na minha vida muito antes de se tornarem algo que eu pudesse imaginar compartilhar com outras pessoas. Durante muito tempo, foi uma jornada pessoal e quase secreta.",
+  "Porque uma engenheira de controle e automação faria perfumes?",
+  "Por algum tempo, isso foi um conflito para mim. Mas estudar me trouxe segurança — e, principalmente, a vontade de permitir que outras pessoas também conhecessem essa arte.\nFui aluna da Doutora Palmira Margarida, na Escola de Perfumaria Ancestral, e, com o tempo, fui me envolvendo cada vez mais com a alquimia das plantas. Hoje crio perfumes naturais e pequenos lotes exclusivos, feitos com matérias-primas de origem vegetal e pensados para proporcionar experiências por meio dos aromas naturais.",
+  "A natureza não é algo externo a nós. Nós fazemos parte dela.\nE talvez seja justamente essa comunhão entre nosso mundo interior e o mundo das plantas o que temos de mais próximo da verdadeira MAGIA.",
 ];
 
 export default function QuemSouEuPage() {
@@ -20,12 +23,12 @@ export default function QuemSouEuPage() {
             <Typography component="h1" variant="h1" sx={{ fontSize: { xs: "2rem", sm: "2.5rem" }, color: "#111", textTransform: "uppercase" }}>
               Mariane Vidal
             </Typography>
-            <Typography sx={{ mt: 1.5, mb: 3, color: "primary.main", fontSize: { xs: "0.78rem", sm: "0.86rem" }, fontWeight: 900, textTransform: "uppercase" }}>
-              Professora de Yin Yoga e perfumista natural
+            <Typography sx={{ mt: 1.5, mb: 3, color: "#111", fontSize: { xs: "0.78rem", sm: "0.86rem" }, fontWeight: 900, textTransform: "uppercase" }}>
+              Perfumista natural e professora de Yin Yoga
             </Typography>
             <Stack spacing={2.5}>
               {paragraphs.map((paragraph) => (
-                <Typography key={paragraph} sx={{ color: "primary.dark", fontSize: { xs: "0.95rem", md: "1rem" }, lineHeight: 1.55 }}>
+                <Typography key={paragraph} sx={{ color: "#111", fontSize: { xs: "0.95rem", md: "1rem" }, lineHeight: 1.55, whiteSpace: "pre-line" }}>
                   {paragraph}
                 </Typography>
               ))}
@@ -34,34 +37,26 @@ export default function QuemSouEuPage() {
 
           <Grid size={{ xs: 12, md: 6 }}>
             <Box sx={{ position: "relative", width: "100%", maxWidth: 520, mx: "auto", aspectRatio: "1113 / 1414", overflow: "hidden", borderRadius: 1 }}>
-              <Image alt="Mariane Vidal em momento de meditação" fill priority sizes="(max-width: 900px) 100vw, 42vw" src="/quem-sou-eu/quem-sou-eu.png" style={{ objectFit: "cover" }} />
+              <Image alt="Mariane Vidal em momento de meditação" fill priority sizes="(max-width: 900px) 100vw, 42vw" src="/quem-sou-eu/PERFIL 1.png" style={{ objectFit: "cover" }} />
             </Box>
 
             <Box component="section" sx={{ maxWidth: 620, mx: "auto", mt: { xs: 5, md: 6 } }}>
               <Typography align="center" component="h2" sx={{ mb: 3, color: "#111", fontSize: "1.5rem", fontWeight: 800 }}>
                 Fale comigo
               </Typography>
-              <Stack
-                component="form"
-                spacing={2}
-                sx={{
-                  "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
-                  "& .MuiOutlinedInput-root": {
-                    bgcolor: "#d7b7ef",
-                    "& fieldset": { borderColor: "#c79be8" },
-                    "&:hover fieldset": { borderColor: "primary.light" },
-                    "&.Mui-focused fieldset": { borderColor: "primary.main", borderWidth: 2 },
-                  },
-                }}
-              >
-                <Grid container spacing={2}>
-                  <Grid size={{ xs: 12, sm: 6 }}><TextField fullWidth label="Nome" /></Grid>
-                  <Grid size={{ xs: 12, sm: 6 }}><TextField fullWidth label="Sobrenome" /></Grid>
-                </Grid>
-                <TextField fullWidth label="Endereço de e-mail" type="email" />
-                <TextField fullWidth label="Sua mensagem" minRows={5} multiline />
-                <Button type="button" variant="contained" sx={{ bgcolor: "#111", color: "common.white", py: 1.35, "&:hover": { bgcolor: "primary.dark" } }}>
-                  Enviar
+              <Stack spacing={2} sx={{ alignItems: "center" }}>
+                <Typography align="center" sx={{ lineHeight: 1.6 }}>
+                  Fale comigo pelo WhatsApp para saber mais sobre Yin Yoga, perfumaria natural e atendimentos.
+                </Typography>
+                <Button
+                  href="https://wa.me/554891645940?text=Ol%C3%A1%2C%20Mariane%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  startIcon={<WhatsAppIcon />}
+                  sx={{ maxWidth: "100%", textAlign: "center", py: 1.35 }}
+                >
+                  Conversar pelo WhatsApp
                 </Button>
               </Stack>
             </Box>

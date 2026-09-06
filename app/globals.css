@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  font-size: 137.5%;
+}
+
 html,
 body {
   margin: 0;

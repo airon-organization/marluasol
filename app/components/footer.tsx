@@ -1,6 +1,5 @@
 "use client";
 
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Box, Button, Stack } from "@mui/material";
 import Image from "next/image";
@@ -20,22 +19,21 @@ export default function Footer() {
               {label}
             </Button>
           ))}
-          <Button aria-label="Facebook" href="#facebook" sx={{ minWidth: 34, color: "common.white" }}><FacebookRoundedIcon fontSize="small" /></Button>
-          <Button aria-label="Instagram" href="#instagram" sx={{ minWidth: 34, color: "common.white" }}><InstagramIcon fontSize="small" /></Button>
+          <Button aria-label="Instagram de marianeluasol" href="https://www.instagram.com/marianeluasol/" target="_blank" rel="noopener noreferrer" sx={{ minWidth: 34, color: "common.white" }}><InstagramIcon fontSize="small" /></Button>
         </Stack>
         <Link aria-label="Página inicial MarLuaSol" href="/" style={{ textDecoration: "none", outline: "none" }}>
           <Stack direction="row" spacing={0.75} sx={{ alignItems: "center" }}>
-            <Box sx={{ position: "relative", width: 72, height: 72, flexShrink: 0 }}>
-              <Image alt="" fill sizes="72px" src="/logo.png" style={{ objectFit: "contain" }} />
-            </Box>
-            <Box sx={{ position: "relative", width: { xs: 126, sm: 156 }, aspectRatio: "502 / 275", flexShrink: 0 }}>
+            <Box sx={{ position: "relative", width: { xs: 170, sm: 220 }, aspectRatio: "331 / 80", flexShrink: 0 }}>
               <Image
                 alt=""
                 fill
-                sizes="(max-width: 600px) 126px, 156px"
-                src="/marluasol-sem-borda.png"
-                style={{ objectFit: "contain", transform: "translateY(21%) scale(1.1)" }}
+                sizes="(max-width: 600px) 170px, 220px"
+                src="/MARLUASOL SEM FUNDO SEM YIN YOGA 5.png"
+                style={{ objectFit: "contain", transform: "translateY(7.5%)" }}
               />
+            </Box>
+            <Box sx={{ position: "relative", width: 72, height: 72, flexShrink: 0 }}>
+              <Image alt="" fill sizes="72px" src="/MARLUASOL LOGO.png" style={{ objectFit: "contain", transform: "translateY(-4%)" }} />
             </Box>
           </Stack>
         </Link>

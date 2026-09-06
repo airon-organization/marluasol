@@ -16,12 +16,12 @@ const articles: ArticleCardProps[] = [
     title: "Mulheres e plantas — as melhores amigas históricas",
     excerpt: "A ciência diz que as mulheres têm o dobro de receptores olfativos que os homens, o que isso quer dizer?",
     href: "/articles/mulheres_e_plantas",
-    image: "/articles/mulheres_e_plantas/IMG_20160715_124006_HDR 1.png",
+    image: "/articles/mulheres_e_plantas/QUADROSEMTE 1.png",
     imageAlt: "Plantas e paisagem natural",
   },
   {
     title: "Perfumaria ancestral e o ritual dos aromas",
-    excerpt: "A perfumaria não é trivial, é ancestralidade. Por meio dos aromas nos conectamos com memórias, emoções e fragmentos da nossa própria realidade.",
+    excerpt: "A perfumaria não é trivial, é ancestralidade! Por meio dos aromas nos conectamos com memórias, emoções e fragmentos da nossa própria realidade que se comunicam conosco por meio do simbolismo e dos aromas das nossas deusas guias: as plantas. Conheça nesse artigo a História da Perfumaria e o que significa.",
     href: "/articles/perfumaria_ancestral",
     image: "/articles/perfumaria_ancestral/DEUSAISIS 1.png",
     imageAlt: "Deusa Ísis em arte egípcia",
@@ -37,8 +37,7 @@ export default function Home() {
         <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
           <Box component="section" sx={{ py: { xs: 2.5, sm: 3 } }}>
             <Typography align="left" component="h1" variant="h1" sx={{ fontSize: { xs: "1.35rem", sm: "1.8rem" }, ml: { xs: "1rem", sm: "2rem" }, textTransform: "uppercase", color: "#880D86" }}>
-              A SUA LOJA DE PERFUMARIA NATURAL E BEM ESTAR
-            </Typography>
+              VIVA A SUA NATUREZA! MARLUASOL - BEM ESTAR E PERFUMES NATURAIS</Typography>
           </Box>
           <HomeCarousel />
           <Box component="section" sx={{ px: { xs: 2, sm: 4 }, py: { xs: 4, sm: 5 } }}>
