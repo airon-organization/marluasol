@@ -5,14 +5,14 @@ import InnerPage from "../components/inner-page";
 const articles: ArticleCardProps[] = [
   {
     title: "O que é Yin Yoga",
-    excerpt: "Uma introdução à prática, seus fundamentos e o convite à quietude.",
+    excerpt: "Uma introdução à prática, seus fundamentos e o convite à quietude. Saiba mais aqui.",
     href: "/articles/o_que_e_yin_yoga",
     image: "/articles/o_que_e_yin_yoga/IMG-20251001-WA0015 1.png",
     imageAlt: "Prática de Yin Yoga",
   },
   {
-    title: "Mulheres e plantas — as melhores amigas históricas",
-    excerpt: "Um olhar para a relação ancestral entre mulheres, aromas e saberes botânicos.",
+    title: "MULHERES E PLANTAS - DESCUBRA O QUE AS PLANTAS PODEM FAZER POR VOCÊ",
+    excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas.",
     href: "/articles/mulheres_e_plantas",
     image: "/articles/mulheres_e_plantas/IMG_20160715_124006_HDR 1.png",
     imageAlt: "Plantas em uma paisagem natural",

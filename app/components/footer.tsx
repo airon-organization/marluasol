@@ -23,17 +23,18 @@ export default function Footer() {
         </Stack>
         <Link aria-label="Página inicial MarLuaSol" href="/" style={{ textDecoration: "none", outline: "none" }}>
           <Stack direction="row" spacing={0.75} sx={{ alignItems: "center" }}>
-            <Box sx={{ position: "relative", width: { xs: 170, sm: 220 }, aspectRatio: "331 / 80", flexShrink: 0 }}>
+            <Box sx={{ position: "relative", width: { xs: 170, sm: 220 }, aspectRatio: "403 / 68", overflow: "hidden", flexShrink: 0 }}>
               <Image
                 alt=""
-                fill
+                width={502}
+                height={275}
                 sizes="(max-width: 600px) 170px, 220px"
-                src="/MARLUASOL SEM FUNDO SEM YIN YOGA 5.png"
-                style={{ objectFit: "contain", transform: "translateY(7.5%)" }}
+                src="/MARLUASOL MARCA.png"
+                style={{ position: "absolute", width: "124.57%", height: "404.42%", maxWidth: "none", left: "-10.92%", top: "-73.53%" }}
               />
             </Box>
-            <Box sx={{ position: "relative", width: 72, height: 72, flexShrink: 0 }}>
-              <Image alt="" fill sizes="72px" src="/MARLUASOL LOGO.png" style={{ objectFit: "contain", transform: "translateY(-4%)" }} />
+            <Box sx={{ position: "relative", width: 72, height: 72, overflow: "hidden", flexShrink: 0 }}>
+              <Image alt="" width={215} height={156} sizes="72px" src="/MALUASOL LOGO.png" style={{ position: "absolute", width: "154.68%", height: "112.23%", maxWidth: "none", left: "-3.6%", top: "-8.63%" }} />
             </Box>
           </Stack>
         </Link>

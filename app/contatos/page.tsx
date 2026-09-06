@@ -10,7 +10,7 @@ export default function ContatosPage() {
           Toque no botão abaixo para iniciar uma conversa.
         </Typography>
         <Button
-          href="https://wa.me/554891645940?text=Ol%C3%A1%2C%20Mariane%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seu%20trabalho."
+          href="https://wa.me/554891645940?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20um%20perfume."
           target="_blank"
           rel="noopener noreferrer"
           variant="contained"

@@ -45,17 +45,18 @@ export default function Header() {
       >
         <Link aria-label="Página inicial MarLuaSol" href="/" style={{ textDecoration: "none", outline: "none" }}>
           <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} sx={{ alignItems: "center" }}>
-            <Box sx={{ position: "relative", width: { xs: 70, sm: 92 }, height: { xs: 70, sm: 92 }, flexShrink: 0 }}>
-              <Image alt="" fill priority sizes="(max-width: 600px) 70px, 92px" src="/MARLUASOL LOGO.png" style={{ objectFit: "contain", transform: "translateY(-4%)" }} />
+            <Box sx={{ position: "relative", width: { xs: 70, sm: 92 }, height: { xs: 70, sm: 92 }, overflow: "hidden", flexShrink: 0 }}>
+              <Image alt="" width={215} height={156} priority sizes="(max-width: 600px) 70px, 92px" src="/MALUASOL LOGO.png" style={{ position: "absolute", width: "154.68%", height: "112.23%", maxWidth: "none", left: "-3.6%", top: "-8.63%" }} />
             </Box>
-            <Box sx={{ position: "relative", width: { xs: 150, sm: 240 }, aspectRatio: "331 / 80", flexShrink: 0 }}>
+            <Box sx={{ position: "relative", width: { xs: 150, sm: 240 }, aspectRatio: "403 / 68", overflow: "hidden", flexShrink: 0 }}>
               <Image
                 alt=""
-                fill
+                width={502}
+                height={275}
                 priority
                 sizes="(max-width: 600px) 150px, 240px"
-                src="/MARLUASOL SEM FUNDO SEM YIN YOGA 5.png"
-                style={{ objectFit: "contain", transform: "translateY(7.5%)" }}
+                src="/MARLUASOL MARCA.png"
+                style={{ position: "absolute", width: "124.57%", height: "404.42%", maxWidth: "none", left: "-10.92%", top: "-73.53%" }}
               />
             </Box>
           </Stack>

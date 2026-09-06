@@ -7,14 +7,14 @@ import HomeCarousel from "./components/home-carousel";
 const articles: ArticleCardProps[] = [
   {
     title: "O que é Yin Yoga",
-    excerpt: "Inspirado na medicina chinesa e na cultura yogue, essa prática trabalha o tecido conjuntivo e nos ensina sobre quietude e relaxamento.",
+    excerpt: "Inspirado na medicina chinesa e na cultura yogue, essa prática trabalha o tecido conjuntivo e nos ensina sobre quietude e relaxamento. Saiba mais aqui.",
     href: "/articles/o_que_e_yin_yoga",
     image: "/articles/o_que_e_yin_yoga/IMG-20251001-WA0015 1.png",
     imageAlt: "Prática de Yin Yoga",
   },
   {
-    title: "Mulheres e plantas — as melhores amigas históricas",
-    excerpt: "A ciência diz que as mulheres têm o dobro de receptores olfativos que os homens, o que isso quer dizer?",
+    title: "MULHERES E PLANTAS - DESCUBRA O QUE AS PLANTAS PODEM FAZER POR VOCÊ",
+    excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas.",
     href: "/articles/mulheres_e_plantas",
     image: "/articles/mulheres_e_plantas/QUADROSEMTE 1.png",
     imageAlt: "Plantas e paisagem natural",
