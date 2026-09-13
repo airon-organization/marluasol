@@ -13,7 +13,7 @@ export default function LojaPage() {
         <OlfactoryQuiz />
 
         <Container maxWidth="lg" sx={{ bgcolor: "background.paper", px: { xs: 2.5, sm: 6 }, py: { xs: 5, sm: 7 } }}>
-          <Box component="section">
+          <Box component="section" id="produtos" sx={{ scrollMarginTop: 24 }}>
             <Typography sx={{ color: "primary.main", fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>
               Loja online
             </Typography>
