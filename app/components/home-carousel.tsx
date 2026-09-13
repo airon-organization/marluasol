@@ -4,19 +4,20 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { Box, IconButton, Stack } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/home/carrosel/CARROSEL 1.png",
+    src: "/home/carrosel/carrosel01.png",
     alt: "A perfumação natural que cuida de você",
   },
   {
-    src: "/home/carrosel/CARROSEL 2.png",
+    src: "/home/carrosel/carrosel02.png",
     alt: "Frascos de perfumes naturais entre plantas aromáticas",
   },
   {
-    src: "/home/carrosel/CARROSEL 3.png",
+    src: "/home/carrosel/carrosel03.png",
     alt: "Perfumes naturais MarLuaSol — aromas que despertam sua essência",
   },
 ];
@@ -70,18 +71,26 @@ export default function HomeCarousel() {
             position: "absolute",
             inset: 0,
             opacity: index === activeSlide ? 1 : 0,
+            pointerEvents: index === activeSlide ? "auto" : "none",
             transition: "opacity 600ms ease",
             "@media (prefers-reduced-motion: reduce)": { transition: "none" },
           }}
         >
-          <Image
-            alt={slide.alt}
-            fill
-            priority={index === 0}
-            sizes="100vw"
-            src={slide.src}
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
+          <Link
+            aria-label={`Abrir a loja: ${slide.alt}`}
+            href="/loja"
+            tabIndex={index === activeSlide ? 0 : -1}
+            style={{ position: "absolute", inset: 0, display: "block" }}
+          >
+            <Image
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              src={slide.src}
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+          </Link>
         </Box>
       ))}
 

@@ -6,22 +6,22 @@ import HomeCarousel from "./components/home-carousel";
 
 const articles: ArticleCardProps[] = [
   {
-    title: "O que é Yin Yoga",
-    excerpt: "Inspirado na medicina chinesa e na cultura yogue, essa prática trabalha o tecido conjuntivo e nos ensina sobre quietude e relaxamento. Saiba mais aqui.",
-    href: "/articles/o_que_e_yin_yoga",
-    image: "/articles/o_que_e_yin_yoga/IMG-20251001-WA0015 1.png",
-    imageAlt: "Prática de Yin Yoga",
-  },
-  {
-    title: "MULHERES E PLANTAS - DESCUBRA O QUE AS PLANTAS PODEM FAZER POR VOCÊ",
-    excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas.",
+    title: "MULHERES E PLANTAS - AMIGAS ANCESTRAIS",
+    excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas...",
     href: "/articles/mulheres_e_plantas",
     image: "/articles/mulheres_e_plantas/QUADROSEMTE 1.png",
     imageAlt: "Plantas e paisagem natural",
   },
   {
+    title: "QUEM SÃO AS DEUSAS E O QUE ELAS TEM A VER COM OS AROMAS DAS PLANTAS",
+    excerpt: "Cleópatra compreendia o poder dos aromas e usava ao seu favor. Nos perfumes, as plantas tornam-se linguagem — e cada aroma desperta em nós uma força, uma memória, uma deusa.",
+    href: "/articles/quem_sao_as_deusas",
+    image: "/articles/quem_sao_as_deusas/01.png",
+    imageAlt: "Plantas e paisagem natural",
+  },
+  {
     title: "Perfumaria ancestral e o ritual dos aromas",
-    excerpt: "A perfumaria não é trivial, é ancestralidade! Por meio dos aromas nos conectamos com memórias, emoções e fragmentos da nossa própria realidade que se comunicam conosco por meio do simbolismo e dos aromas das nossas deusas guias: as plantas. Conheça nesse artigo a História da Perfumaria e o que significa.",
+    excerpt: "Por meio dos aromas nos conectamos com memórias, emoções e fragmentos da nossa própria realidade que se comunicam conosco por meio do simbolismo e dos aromas das nossas deusas guias: as plantas. Conheça nesse artigo a História da Perfumaria e o que significa.",
     href: "/articles/perfumaria_ancestral",
     image: "/articles/perfumaria_ancestral/DEUSAISIS 1.png",
     imageAlt: "Deusa Ísis em arte egípcia",
@@ -34,11 +34,7 @@ export default function Home() {
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <main>
         <Header />
-        <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-          <Box component="section" sx={{ py: { xs: 2.5, sm: 3 } }}>
-            <Typography align="left" component="h1" variant="h1" sx={{ fontSize: { xs: "1.35rem", sm: "1.8rem" }, ml: { xs: "1rem", sm: "2rem" }, textTransform: "uppercase", color: "#880D86" }}>
-              VIVA A SUA NATUREZA! MARLUASOL - BEM ESTAR E PERFUMES NATURAIS</Typography>
-          </Box>
+        <Box sx={{ width: "100%", bgcolor: "background.paper" }} style={{ paddingTop: "5px" }}>
           <HomeCarousel />
           <Box component="section" sx={{ px: { xs: 2, sm: 4 }, py: { xs: 4, sm: 5 } }}>
             <Typography component="h2" variant="h2" sx={{ fontSize: { xs: "1.45rem", sm: "1.75rem" }, textTransform: "uppercase" }}>
@@ -51,9 +47,11 @@ export default function Home() {
                   {articles.slice(0, 2).map((article) => <ArticleCard {...article} key={article.href} />)}
                 </Stack>
               </Grid>
-              <Grid size={{ xs: 12, md: 7 }}>
-                <ArticleCard {...articles[2]} />
-              </Grid>
+              {articles[articles.length - 1] && (
+                <Grid size={{ xs: 12, md: 7 }}>
+                  <ArticleCard {...articles[articles.length - 1]} />
+                </Grid>
+              )}
             </Grid>
             <Stack sx={{ alignItems: "flex-end", mt: 3.5 }}>
               <Button href="/articles" sx={{ color: "primary.main", fontSize: "0.62rem" }}>
@@ -62,8 +60,8 @@ export default function Home() {
             </Stack>
           </Box>
         </Box>
-      </main>
+      </main >
       <Footer />
-    </Box>
+    </Box >
   );
 }
