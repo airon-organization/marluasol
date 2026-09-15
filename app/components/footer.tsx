@@ -36,7 +36,7 @@ export default function Footer() {
             size="small"
             sx={{
               minWidth: { xs: 132, sm: 158 },
-              bgcolor: "secondary.main",
+              bgcolor: "#E0AA18",
               color: "primary.dark",
               borderRadius: 1.25,
               px: { xs: 1.5, sm: 2 },
@@ -60,7 +60,7 @@ export default function Footer() {
             sx={{
               minWidth: { xs: 132, sm: 176 },
               justifyContent: "space-between",
-              bgcolor: "#a66bea",
+              bgcolor: "#E0AA18",
               color: "primary.dark",
               borderRadius: 1.25,
               px: { xs: 1.5, sm: 2 },
@@ -68,7 +68,7 @@ export default function Footer() {
               fontSize: { xs: "0.55rem", sm: "0.6rem" },
               fontWeight: 500,
               boxShadow: "0 5px 16px rgba(0,0,0,0.22)",
-              "&:hover": { bgcolor: "#b98af0" },
+              "&:hover": { bgcolor: "secondary.light" },
             }}
           >
             Redes sociais

@@ -77,7 +77,7 @@ export default function Header() {
               size="small"
               sx={{
                 minWidth: { xs: 132, sm: 158 },
-                bgcolor: "secondary.main",
+                bgcolor: "#E0AA18",
                 color: "primary.dark",
                 borderRadius: 1.25,
                 px: { xs: 1.5, sm: 2 },
