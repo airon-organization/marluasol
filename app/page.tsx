@@ -17,7 +17,7 @@ const articles: ArticleCardProps[] = [
     excerpt: "Cleópatra compreendia o poder dos aromas e usava ao seu favor. Nos perfumes, as plantas tornam-se linguagem — e cada aroma desperta em nós uma força, uma memória, uma deusa.",
     href: "/articles/quem_sao_as_deusas",
     image: "/articles/quem_sao_as_deusas/01.png",
-    imageAlt: "Plantas e paisagem natural",
+    imageAlt: "",
   },
   {
     title: "Perfumaria ancestral e o ritual dos aromas",
@@ -34,7 +34,7 @@ export default function Home() {
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <main>
         <Header />
-        <Box sx={{ width: "100%", bgcolor: "background.paper" }} style={{ paddingTop: "5px" }}>
+        <Box sx={{ width: "100%", bgcolor: "background.paper" }} >
           <HomeCarousel />
           <Box component="section" sx={{ px: { xs: 2, sm: 4 }, py: { xs: 4, sm: 5 } }}>
             <Typography component="h2" variant="h2" sx={{ fontSize: { xs: "1.45rem", sm: "1.75rem" }, textTransform: "uppercase" }}>

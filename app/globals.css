@@ -13,3 +13,100 @@ body {
 body {
   background: #ecebea;
 }
+
+.cosmic-flight {
+  --shooting-star-peak: 0.48;
+  --shooting-star-tail: 0.28;
+  isolation: isolate;
+  background: #26071f;
+}
+
+.cosmic-flight__starfield {
+  z-index: 0;
+  display: block;
+  animation: cosmic-starfield-breathe 18s ease-in-out infinite alternate;
+  filter: saturate(0.8) contrast(1.05) brightness(0.68);
+  will-change: transform;
+}
+
+.cosmic-flight--footer .cosmic-flight__starfield {
+  animation-direction: alternate-reverse;
+}
+
+.cosmic-flight::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(ellipse at center, rgba(26, 3, 22, 0.46), transparent 58%),
+    linear-gradient(90deg, rgba(45, 6, 38, 0.32), rgba(69, 6, 68, 0.08) 50%, rgba(35, 5, 30, 0.34));
+  pointer-events: none;
+}
+
+.cosmic-flight__shooting-star {
+  position: absolute;
+  z-index: 1;
+  inset: -18% -20%;
+  opacity: 0;
+  background: linear-gradient(102deg, transparent 42%, rgba(255, 248, 224, 0.82) 49.5%, transparent 51%) 0 52% / 30% 1px no-repeat;
+  animation: cosmic-shooting-star 14s linear infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.cosmic-flight--footer .cosmic-flight__shooting-star {
+  animation-direction: reverse;
+}
+
+@keyframes cosmic-starfield-breathe {
+  0% {
+    transform: scale(1.015) translate3d(-0.25%, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.04) translate3d(0.25%, 0, 0);
+  }
+}
+
+@keyframes cosmic-shooting-star {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40%, 0, 0) scale(1.08);
+  }
+
+  22% {
+    opacity: var(--shooting-star-peak);
+  }
+
+  72% {
+    opacity: var(--shooting-star-tail);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(68%, 0, 0) scale(1.12);
+  }
+}
+
+@media (max-width: 600px) {
+  .cosmic-flight {
+    --shooting-star-peak: 0.28;
+    --shooting-star-tail: 0.16;
+  }
+
+  .cosmic-flight__starfield {
+    animation-duration: 24s;
+  }
+
+  .cosmic-flight__shooting-star {
+    animation-duration: 20s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-flight__starfield,
+  .cosmic-flight__shooting-star {
+    animation: none;
+  }
+}

@@ -11,19 +11,21 @@ const navigationItems = [
 
 export default function Header() {
   return (
-    <Box component="header" sx={{ position: "relative", overflow: "hidden" }}>
+    <Box className="cosmic-flight" component="header" sx={{ position: "relative", overflow: "hidden" }}>
       <Image
         alt=""
+        className="cosmic-flight__starfield"
         fill
         priority
         sizes="100vw"
-        src="/home/header1.png"
-        style={{ objectFit: "cover" }}
+        src="/home/cosmic-flight-brand-v2.webp"
+        style={{ objectFit: "cover", objectPosition: "center" }}
       />
+      <Box aria-hidden="true" className="cosmic-flight__shooting-star" />
       <Box
         sx={{
           position: "relative",
-          zIndex: 1,
+          zIndex: 2,
           minHeight: { xs: 88, sm: 112 },
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
