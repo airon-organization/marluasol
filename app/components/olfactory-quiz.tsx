@@ -46,33 +46,6 @@ type IngredientOption = {
   scores: Scores;
 };
 
-const personalities: ChoiceOption[] = [
-  {
-    id: "livre",
-    label: "Sou uma pessoa tranquila, alegre e leve. Gosto de liberdade!",
-    description: "Porém, tenho momentos de ansiedade e impulsividade. Quero alcançar mais foco e disciplina na minha vida.",
-    scores: { citrico: 4, amadeirado: 1 },
-  },
-  {
-    id: "criativa",
-    label: "Sou intuitiva e tenho muita criatividade.",
-    description: "Busco ser uma pessoa melhor, porém sofro com a opinião das pessoas sobre mim. Quero alcançar o meu potencial e também ajudar outras pessoas.",
-    scores: { floral: 4, citrico: 1 },
-  },
-  {
-    id: "intensa",
-    label: "Sou intensa! Dizem que tenho presença, carisma e muito potencial.",
-    description: "Mesmo assim, sinto que nunca estou pronta e tenho dificuldade em saber o que fazer da minha vida. Quero potencializar meu magnetismo pessoal e parar com a autossabotagem.",
-    scores: { oriental: 4, floral: 1 },
-  },
-  {
-    id: "conselheira",
-    label: "Sou ótima conselheira e tenho muita coragem e disposição para ajudar.",
-    description: "Sou introspectiva, mas gosto de me conectar profundamente com as pessoas. Sou teimosa e um pouco rígida às vezes, mas quero desenvolver a minha sabedoria.",
-    scores: { amadeirado: 4, oriental: 1 },
-  },
-];
-
 const landscapes: ChoiceOption[] = [
   {
     id: "pomar",
@@ -222,7 +195,6 @@ const profiles: Record<OlfactoryFamily, { name: string; adjective: string; godde
 
 const intensityLabels = ["", "Sutil", "Presente", "Envolvente", "Marcante"];
 const questionTitles = [
-  "Qual dessas descrições combina mais com você?",
   "Qual paisagem mais desperta os seus sentidos?",
   "Como você deseja se sentir ao usar um perfume?",
   "Quais ingredientes mais atraem você?",
@@ -259,12 +231,11 @@ export default function OlfactoryQuiz() {
   };
 
   const isCurrentStepComplete =
-    (currentStep === 0 && Boolean(answers.personality)) ||
-    (currentStep === 1 && Boolean(answers.landscape)) ||
-    (currentStep === 2 && Boolean(answers.feeling)) ||
-    (currentStep === 3 && selectedIngredients.length >= 2) ||
-    currentStep === 4 ||
-    (currentStep === 5 && Boolean(answers.occasion));
+    (currentStep === 0 && Boolean(answers.landscape)) ||
+    (currentStep === 1 && Boolean(answers.feeling)) ||
+    (currentStep === 2 && selectedIngredients.length >= 2) ||
+    currentStep === 3 ||
+    (currentStep === 4 && Boolean(answers.occasion));
 
   const addScores = (score: Scores, total: Record<OlfactoryFamily, number>) => {
     Object.entries(score).forEach(([family, points]) => {
@@ -274,12 +245,11 @@ export default function OlfactoryQuiz() {
 
   const calculateResult = () => {
     const scores: Record<OlfactoryFamily, number> = { citrico: 0, floral: 0, amadeirado: 0, oriental: 0 };
-    const selectedPersonality = personalities.find((option) => option.id === answers.personality);
     const selectedLandscape = landscapes.find((option) => option.id === answers.landscape);
     const selectedFeeling = feelings.find((option) => option.id === answers.feeling);
     const selectedOccasion = occasions.find((option) => option.id === answers.occasion);
 
-    [selectedPersonality, selectedLandscape, selectedFeeling, selectedOccasion].forEach((option) => {
+    [selectedLandscape, selectedFeeling, selectedOccasion].forEach((option) => {
       if (option) addScores(option.scores, scores);
     });
     selectedIngredients.forEach((id) => {
@@ -365,22 +335,19 @@ export default function OlfactoryQuiz() {
           <Typography component="h2" sx={{ mb: 1, color: "primary.dark", fontSize: { xs: "1.2rem", sm: "1.5rem" }, fontWeight: 900 }}>
             {currentStep + 1}. {questionTitles[currentStep]}
           </Typography>
-          {currentStep === 3 && (
+          {currentStep === 2 && (
             <Typography sx={{ mb: 2.5, color: "text.secondary", fontSize: "0.72rem" }}>
               Escolha de duas a três notas. ({selectedIngredients.length}/3 selecionadas)
             </Typography>
           )}
 
           {currentStep === 0 && (
-            <ChoiceGrid options={personalities} selected={answers.personality} onSelect={(id) => selectAnswer("personality", id)} variant="text" />
-          )}
-          {currentStep === 1 && (
             <ChoiceGrid options={landscapes} selected={answers.landscape} onSelect={(id) => selectAnswer("landscape", id)} variant="image" />
           )}
-          {currentStep === 2 && (
+          {currentStep === 1 && (
             <ChoiceGrid options={feelings} selected={answers.feeling} onSelect={(id) => selectAnswer("feeling", id)} variant="mood" />
           )}
-          {currentStep === 3 && (
+          {currentStep === 2 && (
             <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(2, minmax(0, 1fr))", sm: "repeat(4, minmax(0, 1fr))" }, gap: 1.25 }}>
               {ingredients.map((ingredient) => {
                 const selected = selectedIngredients.includes(ingredient.id);
@@ -416,7 +383,7 @@ export default function OlfactoryQuiz() {
               })}
             </Box>
           )}
-          {currentStep === 4 && (
+          {currentStep === 3 && (
             <Box sx={{ maxWidth: 820, mt: { xs: 4, sm: 6 }, mx: "auto", p: { xs: 2.5, sm: 5 }, borderRadius: 3, bgcolor: "#f2eaf2", textAlign: "center" }}>
               <Box sx={{ width: 88, height: 88, mx: "auto", display: "grid", placeItems: "center", borderRadius: "50%", color: "common.white", bgcolor: "primary.main", boxShadow: "0 12px 32px rgba(100,16,95,0.25)" }}>
                 <SpaRoundedIcon sx={{ fontSize: 42 }} />
@@ -439,7 +406,7 @@ export default function OlfactoryQuiz() {
               />
             </Box>
           )}
-          {currentStep === 5 && (
+          {currentStep === 4 && (
             <ChoiceGrid options={occasions} selected={answers.occasion} onSelect={(id) => selectAnswer("occasion", id)} variant="icon" />
           )}
 
@@ -518,7 +485,7 @@ export default function OlfactoryQuiz() {
   );
 }
 
-function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceOption[]; selected?: string; onSelect: (id: string) => void; variant: "image" | "mood" | "icon" | "text" }) {
+function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceOption[]; selected?: string; onSelect: (id: string) => void; variant: "image" | "mood" | "icon" }) {
   return (
     <Box component="fieldset" sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))", lg: "repeat(4, minmax(0, 1fr))" }, gap: 1.5, m: 0, p: 0, border: 0 }}>
       <Typography component="legend" sx={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>Escolha uma opção</Typography>
@@ -531,7 +498,7 @@ function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceO
             sx={{
               display: "block",
               overflow: "hidden",
-              minHeight: variant === "image" ? 0 : variant === "text" ? 230 : 210,
+              minHeight: variant === "image" ? 0 : 210,
               border: "2px solid",
               borderColor: isSelected ? "primary.main" : "rgba(34,34,34,0.14)",
               borderRadius: 2,
@@ -554,7 +521,7 @@ function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceO
             {variant === "icon" && (
               <Box sx={{ pt: 3, pl: 2, color: "primary.main", "& svg": { fontSize: 46 } }}>{option.icon}</Box>
             )}
-            <Box sx={{ display: "flex", alignItems: "flex-start", gap: 0.75, minHeight: variant === "image" ? 105 : variant === "text" ? 230 : 95, p: variant === "text" ? 2.25 : 1.5 }}>
+            <Box sx={{ display: "flex", alignItems: "flex-start", gap: 0.75, minHeight: variant === "image" ? 105 : 95, p: 1.5 }}>
               <Radio checked={isSelected} name="quiz-choice" onChange={() => onSelect(option.id)} size="small" value={option.id} sx={{ p: 0.25, color: "primary.light", "&.Mui-checked": { color: "primary.main" } }} />
               <Box>
                 <Typography sx={{ fontSize: "0.76rem", fontWeight: 900, lineHeight: 1.3 }}>{option.label}</Typography>
