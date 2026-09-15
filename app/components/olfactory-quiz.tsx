@@ -8,6 +8,7 @@ import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
 import ReplayRoundedIcon from "@mui/icons-material/ReplayRounded";
 import SelfImprovementRoundedIcon from "@mui/icons-material/SelfImprovementRounded";
+import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
 import SpaRoundedIcon from "@mui/icons-material/SpaRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import WorkOutlineRoundedIcon from "@mui/icons-material/WorkOutlineRounded";
@@ -44,6 +45,33 @@ type IngredientOption = {
   color: string;
   scores: Scores;
 };
+
+const personalities: ChoiceOption[] = [
+  {
+    id: "livre",
+    label: "Sou uma pessoa tranquila, alegre e leve. Gosto de liberdade!",
+    description: "Porém, tenho momentos de ansiedade e impulsividade. Quero alcançar mais foco e disciplina na minha vida.",
+    scores: { citrico: 4, amadeirado: 1 },
+  },
+  {
+    id: "criativa",
+    label: "Sou intuitiva e tenho muita criatividade.",
+    description: "Busco ser uma pessoa melhor, porém sofro com a opinião das pessoas sobre mim. Quero alcançar o meu potencial e também ajudar outras pessoas.",
+    scores: { floral: 4, citrico: 1 },
+  },
+  {
+    id: "intensa",
+    label: "Sou intensa! Dizem que tenho presença, carisma e muito potencial.",
+    description: "Mesmo assim, sinto que nunca estou pronta e tenho dificuldade em saber o que fazer da minha vida. Quero potencializar meu magnetismo pessoal e parar com a autossabotagem.",
+    scores: { oriental: 4, floral: 1 },
+  },
+  {
+    id: "conselheira",
+    label: "Sou ótima conselheira e tenho muita coragem e disposição para ajudar.",
+    description: "Sou introspectiva, mas gosto de me conectar profundamente com as pessoas. Sou teimosa e um pouco rígida às vezes, mas quero desenvolver a minha sabedoria.",
+    scores: { amadeirado: 4, oriental: 1 },
+  },
+];
 
 const landscapes: ChoiceOption[] = [
   {
@@ -113,13 +141,13 @@ const feelings: ChoiceOption[] = [
 
 const ingredients: IngredientOption[] = [
   { id: "bergamota", label: "Bergamota", detail: "Viva e luminosa", color: "#d7d94c", scores: { citrico: 3, floral: 1 } },
-  { id: "laranja", label: "Laranja-doce", detail: "Alegre e suculenta", color: "#ec9b35", scores: { citrico: 3, oriental: 1 } },
+  { id: "capim-limao", label: "Capim-limão", detail: "Fresco e leve", color: "#a9b952", scores: { citrico: 3, amadeirado: 1 } },
   { id: "rosa", label: "Rosa", detail: "Aveludada e afetiva", color: "#d9839d", scores: { floral: 3, oriental: 1 } },
   { id: "lavanda", label: "Lavanda", detail: "Calma e aromática", color: "#9d8ac4", scores: { floral: 2, citrico: 1, amadeirado: 1 } },
   { id: "cedro", label: "Cedro", detail: "Seco e elegante", color: "#9a6746", scores: { amadeirado: 3, oriental: 1 } },
-  { id: "vetiver", label: "Vetiver", detail: "Terroso e verde", color: "#71845c", scores: { amadeirado: 3, citrico: 1 } },
-  { id: "baunilha", label: "Baunilha", detail: "Cremosa e acolhedora", color: "#d6b271", scores: { oriental: 3, floral: 1 } },
-  { id: "cardamomo", label: "Cardamomo", detail: "Quente e vibrante", color: "#8c9560", scores: { oriental: 2, amadeirado: 1, citrico: 1 } },
+  { id: "vetiver", label: "Vetiver", detail: "Terroso e profundo", color: "#71845c", scores: { amadeirado: 3, citrico: 1 } },
+  { id: "baunilha", label: "Baunilha", detail: "Amorosa e acolhedora", color: "#d6b271", scores: { oriental: 3, floral: 1 } },
+  { id: "canela", label: "Canela", detail: "Quente e vibrante", color: "#a66542", scores: { oriental: 3, amadeirado: 1 } },
 ];
 
 const occasions: ChoiceOption[] = [
@@ -153,24 +181,30 @@ const occasions: ChoiceOption[] = [
   },
 ];
 
-const profiles: Record<OlfactoryFamily, { name: string; adjective: string; description: string; notes: string; image: string }> = {
+const profiles: Record<OlfactoryFamily, { name: string; adjective: string; goddess: string; perfumes: string[]; description: string; notes: string; image: string }> = {
   citrico: {
-    name: "Cítrico",
+    name: "Fresca",
     adjective: "luminosas",
+    goddess: "Lakshmi",
+    perfumes: ["Lakshmi", "Mar"],
     description: "Frescor, movimento e alegria conduzem a sua assinatura olfativa.",
-    notes: "bergamota, laranja-doce, limão-siciliano e petitgrain",
+    notes: "bergamota, capim-limão, limão-siciliano e petitgrain",
     image: "/quiz/citrico.png",
   },
   floral: {
-    name: "Floral",
+    name: "Floral doce",
     adjective: "delicadas",
+    goddess: "Afrodite",
+    perfumes: ["Afrodite", "Maçã", "Rosa Vermelha"],
     description: "Sensibilidade, harmonia e acolhimento aparecem no centro das suas escolhas.",
     notes: "rosa, jasmim, lavanda, gerânio e flores brancas",
     image: "/quiz/floral.png",
   },
   amadeirado: {
-    name: "Amadeirado",
+    name: "Terrosa amadeirada",
     adjective: "profundas",
+    goddess: "Pachamama",
+    perfumes: ["Pachamama", "Lua"],
     description: "Equilíbrio, confiança e conexão com a terra definem o seu caminho.",
     notes: "cedro, sândalo, vetiver, patchouli e raízes aromáticas",
     image: "/quiz/amadeirado.png",
@@ -178,14 +212,17 @@ const profiles: Record<OlfactoryFamily, { name: string; adjective: string; descr
   oriental: {
     name: "Oriental",
     adjective: "envolventes",
+    goddess: "Hécate",
+    perfumes: ["Hécate", "Sol", "Rosa Vermelha"],
     description: "Calor, expressividade e mistério tornam a sua presença memorável.",
-    notes: "âmbar, benjoim, baunilha, canela, cardamomo e resinas naturais",
+    notes: "âmbar, benjoim, baunilha, canela e resinas naturais",
     image: "/quiz/oriental.png",
   },
 };
 
 const intensityLabels = ["", "Sutil", "Presente", "Envolvente", "Marcante"];
 const questionTitles = [
+  "Qual dessas descrições combina mais com você?",
   "Qual paisagem mais desperta os seus sentidos?",
   "Como você deseja se sentir ao usar um perfume?",
   "Quais ingredientes mais atraem você?",
@@ -198,7 +235,6 @@ type QuizResult = {
   secondary: OlfactoryFamily;
   primaryPercentage: number;
   secondaryPercentage: number;
-  isHybrid: boolean;
 };
 
 export default function OlfactoryQuiz() {
@@ -223,11 +259,12 @@ export default function OlfactoryQuiz() {
   };
 
   const isCurrentStepComplete =
-    (currentStep === 0 && Boolean(answers.landscape)) ||
-    (currentStep === 1 && Boolean(answers.feeling)) ||
-    (currentStep === 2 && selectedIngredients.length >= 2) ||
-    currentStep === 3 ||
-    (currentStep === 4 && Boolean(answers.occasion));
+    (currentStep === 0 && Boolean(answers.personality)) ||
+    (currentStep === 1 && Boolean(answers.landscape)) ||
+    (currentStep === 2 && Boolean(answers.feeling)) ||
+    (currentStep === 3 && selectedIngredients.length >= 2) ||
+    currentStep === 4 ||
+    (currentStep === 5 && Boolean(answers.occasion));
 
   const addScores = (score: Scores, total: Record<OlfactoryFamily, number>) => {
     Object.entries(score).forEach(([family, points]) => {
@@ -237,11 +274,12 @@ export default function OlfactoryQuiz() {
 
   const calculateResult = () => {
     const scores: Record<OlfactoryFamily, number> = { citrico: 0, floral: 0, amadeirado: 0, oriental: 0 };
+    const selectedPersonality = personalities.find((option) => option.id === answers.personality);
     const selectedLandscape = landscapes.find((option) => option.id === answers.landscape);
     const selectedFeeling = feelings.find((option) => option.id === answers.feeling);
     const selectedOccasion = occasions.find((option) => option.id === answers.occasion);
 
-    [selectedLandscape, selectedFeeling, selectedOccasion].forEach((option) => {
+    [selectedPersonality, selectedLandscape, selectedFeeling, selectedOccasion].forEach((option) => {
       if (option) addScores(option.scores, scores);
     });
     selectedIngredients.forEach((id) => {
@@ -257,7 +295,6 @@ export default function OlfactoryQuiz() {
       secondary: ranking[1][0],
       primaryPercentage: Math.round((ranking[0][1] / total) * 100),
       secondaryPercentage: Math.round((ranking[1][1] / total) * 100),
-      isHybrid: ranking[0][1] === ranking[1][1],
     });
     window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 0);
   };
@@ -286,9 +323,7 @@ export default function OlfactoryQuiz() {
   const primaryProfile = result ? profiles[result.primary] : null;
   const secondaryProfile = result ? profiles[result.secondary] : null;
   const resultName = result && primaryProfile && secondaryProfile
-    ? result.isHybrid
-      ? `${primaryProfile.name} + ${secondaryProfile.name}`
-      : `${primaryProfile.name} com nuances ${secondaryProfile.adjective}`
+    ? `${primaryProfile.name} com nuances ${secondaryProfile.adjective}`
     : "";
   const whatsappMessage = resultName
     ? encodeURIComponent(`Olá! Fiz o questionário olfativo e meu perfil é ${resultName}, com intensidade ${intensityLabels[intensity].toLowerCase()}. Gostaria de conhecer um perfume para mim.`)
@@ -307,7 +342,7 @@ export default function OlfactoryQuiz() {
           Qual é o seu perfil olfativo?
         </Typography>
         <Typography sx={{ mt: 1.5, maxWidth: 720, color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
-          Uma experiência sensorial para encontrar os aromas naturais que combinam com a sua essência.
+          Suas preferências por aromas e sua conexão com arquétipos revelam muito sobre o seu momento atual. Descubra sua família olfativa, a deusa que se conecta com você e os perfumes naturais que podem acompanhar o seu propósito.
         </Typography>
         <Box sx={{ mt: 3, maxWidth: 560 }}>
           <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
@@ -330,19 +365,22 @@ export default function OlfactoryQuiz() {
           <Typography component="h2" sx={{ mb: 1, color: "primary.dark", fontSize: { xs: "1.2rem", sm: "1.5rem" }, fontWeight: 900 }}>
             {currentStep + 1}. {questionTitles[currentStep]}
           </Typography>
-          {currentStep === 2 && (
+          {currentStep === 3 && (
             <Typography sx={{ mb: 2.5, color: "text.secondary", fontSize: "0.72rem" }}>
               Escolha de duas a três notas. ({selectedIngredients.length}/3 selecionadas)
             </Typography>
           )}
 
           {currentStep === 0 && (
-            <ChoiceGrid options={landscapes} selected={answers.landscape} onSelect={(id) => selectAnswer("landscape", id)} variant="image" />
+            <ChoiceGrid options={personalities} selected={answers.personality} onSelect={(id) => selectAnswer("personality", id)} variant="text" />
           )}
           {currentStep === 1 && (
-            <ChoiceGrid options={feelings} selected={answers.feeling} onSelect={(id) => selectAnswer("feeling", id)} variant="mood" />
+            <ChoiceGrid options={landscapes} selected={answers.landscape} onSelect={(id) => selectAnswer("landscape", id)} variant="image" />
           )}
           {currentStep === 2 && (
+            <ChoiceGrid options={feelings} selected={answers.feeling} onSelect={(id) => selectAnswer("feeling", id)} variant="mood" />
+          )}
+          {currentStep === 3 && (
             <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(2, minmax(0, 1fr))", sm: "repeat(4, minmax(0, 1fr))" }, gap: 1.25 }}>
               {ingredients.map((ingredient) => {
                 const selected = selectedIngredients.includes(ingredient.id);
@@ -378,7 +416,7 @@ export default function OlfactoryQuiz() {
               })}
             </Box>
           )}
-          {currentStep === 3 && (
+          {currentStep === 4 && (
             <Box sx={{ maxWidth: 820, mt: { xs: 4, sm: 6 }, mx: "auto", p: { xs: 2.5, sm: 5 }, borderRadius: 3, bgcolor: "#f2eaf2", textAlign: "center" }}>
               <Box sx={{ width: 88, height: 88, mx: "auto", display: "grid", placeItems: "center", borderRadius: "50%", color: "common.white", bgcolor: "primary.main", boxShadow: "0 12px 32px rgba(100,16,95,0.25)" }}>
                 <SpaRoundedIcon sx={{ fontSize: 42 }} />
@@ -401,7 +439,7 @@ export default function OlfactoryQuiz() {
               />
             </Box>
           )}
-          {currentStep === 4 && (
+          {currentStep === 5 && (
             <ChoiceGrid options={occasions} selected={answers.occasion} onSelect={(id) => selectAnswer("occasion", id)} variant="icon" />
           )}
 
@@ -425,6 +463,9 @@ export default function OlfactoryQuiz() {
           <Box sx={{ px: { xs: 2.5, sm: 6 }, py: { xs: 4, sm: 6 } }}>
             <Typography sx={{ color: "primary.main", fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>Seu resultado</Typography>
             <Typography component="h2" variant="h2" sx={{ mt: 1, color: "primary.dark", fontSize: { xs: "1.65rem", sm: "2.15rem" } }}>{resultName}</Typography>
+            <Typography sx={{ mt: 1, color: "primary.main", fontSize: { xs: "1rem", sm: "1.15rem" }, fontWeight: 900 }}>
+              Família olfativa {primaryProfile.name} · Deusa {primaryProfile.goddess}
+            </Typography>
             <Typography sx={{ mt: 1.5, maxWidth: 720, lineHeight: 1.7 }}>
               {primaryProfile.description} Seu lado secundário acrescenta nuances {secondaryProfile.adjective} e mais complexidade à composição.
             </Typography>
@@ -441,6 +482,28 @@ export default function OlfactoryQuiz() {
               </Typography>
             </Box>
 
+            <Box sx={{ mt: 3 }}>
+              <Typography sx={{ fontSize: "0.72rem", fontWeight: 900 }}>Perfumes indicados para você</Typography>
+              <Stack direction="row" spacing={1} sx={{ mt: 1.25, flexWrap: "wrap", gap: 1 }}>
+                {primaryProfile.perfumes.map((perfume) => {
+                  const productMessage = encodeURIComponent(`Olá! Fiz o questionário olfativo, meu resultado foi família ${primaryProfile.name} e gostaria de conhecer o perfume ${perfume}.`);
+                  return (
+                    <Button
+                      href={`https://wa.me/554891645940?text=${productMessage}`}
+                      key={perfume}
+                      rel="noopener noreferrer"
+                      startIcon={<ShoppingBagRoundedIcon />}
+                      target="_blank"
+                      variant="outlined"
+                      sx={{ bgcolor: "rgba(255,255,255,0.45)" }}
+                    >
+                      {perfume}
+                    </Button>
+                  );
+                })}
+              </Stack>
+            </Box>
+
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mt: 3, alignItems: { xs: "stretch", sm: "center" }, flexWrap: "wrap" }}>
               <Button href="#produtos" variant="contained" sx={{ py: 1.2 }}>Ver produtos para mim</Button>
               <Button href={`https://wa.me/554891645940?text=${whatsappMessage}`} rel="noopener noreferrer" startIcon={<WhatsAppIcon />} target="_blank" variant="outlined" sx={{ py: 1.1 }}>
@@ -455,7 +518,7 @@ export default function OlfactoryQuiz() {
   );
 }
 
-function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceOption[]; selected?: string; onSelect: (id: string) => void; variant: "image" | "mood" | "icon" }) {
+function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceOption[]; selected?: string; onSelect: (id: string) => void; variant: "image" | "mood" | "icon" | "text" }) {
   return (
     <Box component="fieldset" sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))", lg: "repeat(4, minmax(0, 1fr))" }, gap: 1.5, m: 0, p: 0, border: 0 }}>
       <Typography component="legend" sx={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>Escolha uma opção</Typography>
@@ -468,7 +531,7 @@ function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceO
             sx={{
               display: "block",
               overflow: "hidden",
-              minHeight: variant === "image" ? 0 : 210,
+              minHeight: variant === "image" ? 0 : variant === "text" ? 230 : 210,
               border: "2px solid",
               borderColor: isSelected ? "primary.main" : "rgba(34,34,34,0.14)",
               borderRadius: 2,
@@ -491,7 +554,7 @@ function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceO
             {variant === "icon" && (
               <Box sx={{ pt: 3, pl: 2, color: "primary.main", "& svg": { fontSize: 46 } }}>{option.icon}</Box>
             )}
-            <Box sx={{ display: "flex", alignItems: "flex-start", gap: 0.75, minHeight: variant === "image" ? 105 : 95, p: 1.5 }}>
+            <Box sx={{ display: "flex", alignItems: "flex-start", gap: 0.75, minHeight: variant === "image" ? 105 : variant === "text" ? 230 : 95, p: variant === "text" ? 2.25 : 1.5 }}>
               <Radio checked={isSelected} name="quiz-choice" onChange={() => onSelect(option.id)} size="small" value={option.id} sx={{ p: 0.25, color: "primary.light", "&.Mui-checked": { color: "primary.main" } }} />
               <Box>
                 <Typography sx={{ fontSize: "0.76rem", fontWeight: 900, lineHeight: 1.3 }}>{option.label}</Typography>
