@@ -202,6 +202,24 @@ const questionTitles = [
   "Em qual momento o perfume é mais importante?",
 ];
 
+const quizBenefits = [
+  {
+    icon: <CheckRoundedIcon />,
+    label: "5 perguntas",
+    description: "Um caminho simples pelas suas preferências",
+  },
+  {
+    icon: <AutoAwesomeRoundedIcon />,
+    label: "Cerca de 2 minutos",
+    description: "Uma pausa breve para perceber seus sentidos",
+  },
+  {
+    icon: <SpaRoundedIcon />,
+    label: "Resultado personalizado",
+    description: "Família olfativa, deusa e perfumes indicados",
+  },
+];
+
 type QuizResult = {
   primary: OlfactoryFamily;
   secondary: OlfactoryFamily;
@@ -275,7 +293,6 @@ export default function OlfactoryQuiz() {
 
     if (currentStep < questionTitles.length - 1) {
       setCurrentStep((step) => step + 1);
-      window.setTimeout(() => quizRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
       return;
     }
     calculateResult();
@@ -301,32 +318,112 @@ export default function OlfactoryQuiz() {
 
   return (
     <Box component="section" ref={quizRef} sx={{ overflow: "hidden", bgcolor: "#fffdf8", scrollMarginTop: 16 }}>
-      <Box sx={{ bgcolor: "primary.dark", color: "common.white", px: { xs: 2.5, sm: 6, lg: 10 }, py: { xs: 4, sm: 5 } }}>
-        <Stack direction="row" spacing={1.25} sx={{ alignItems: "center", color: "secondary.light" }}>
-          <SpaRoundedIcon />
-          <Typography sx={{ fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-            Descubra seu aroma
-          </Typography>
-        </Stack>
-        <Typography component="h1" variant="h1" sx={{ mt: 1.5, maxWidth: 720, fontSize: { xs: "1.85rem", sm: "2.65rem" } }}>
-          Qual é o seu perfil olfativo?
-        </Typography>
-        <Typography sx={{ mt: 1.5, maxWidth: 720, color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
-          Suas preferências por aromas e sua conexão com arquétipos revelam muito sobre o seu momento atual. Descubra sua família olfativa, a deusa que se conecta com você e os perfumes naturais que podem acompanhar o seu propósito.
-        </Typography>
-        <Box sx={{ mt: 3, maxWidth: 560 }}>
-          <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
-            <Typography sx={{ fontSize: "0.68rem" }}>Seu caminho olfativo</Typography>
-            <Typography sx={{ fontSize: "0.68rem", fontWeight: 800 }}>
-              {result ? "Concluído" : `Pergunta ${currentStep + 1} de ${questionTitles.length}`}
+      <Box
+        sx={{
+          bgcolor: "primary.dark",
+          color: "common.white",
+          px: { xs: 2.5, sm: 6, lg: 10 },
+          py: { xs: 4, sm: 5 },
+          background:
+            "radial-gradient(circle at 88% 8%, rgba(224,170,24,0.16), transparent 27%), radial-gradient(circle at 62% 110%, rgba(138,57,133,0.38), transparent 42%), linear-gradient(118deg, #350333 0%, #4b0748 52%, #64105f 100%)",
+        }}
+      >
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "minmax(0, 1.45fr) minmax(300px, 0.72fr)" },
+            alignItems: "center",
+            gap: { xs: 4, md: 6, lg: 10 },
+          }}
+        >
+          <Box>
+            <Stack direction="row" spacing={1.25} sx={{ alignItems: "center", color: "secondary.light" }}>
+              <SpaRoundedIcon />
+              <Typography sx={{ fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                Descubra seu aroma
+              </Typography>
+            </Stack>
+            <Typography component="h1" variant="h1" sx={{ mt: 1.5, maxWidth: 760, fontSize: { xs: "1.85rem", sm: "2.65rem" } }}>
+              Qual é o seu perfil olfativo?
             </Typography>
-          </Stack>
-          <LinearProgress
-            aria-label={`${result ? questionTitles.length : currentStep + 1} de ${questionTitles.length} etapas`}
-            value={result ? 100 : ((currentStep + 1) / questionTitles.length) * 100}
-            variant="determinate"
-            sx={{ height: 7, borderRadius: 4, bgcolor: "rgba(255,255,255,0.18)", "& .MuiLinearProgress-bar": { bgcolor: "secondary.main" } }}
-          />
+            <Typography sx={{ mt: 1.5, maxWidth: 760, color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
+              Suas preferências por aromas e sua conexão com arquétipos revelam muito sobre o seu momento atual. Descubra sua família olfativa, a deusa que se conecta com você e os perfumes naturais que podem acompanhar o seu propósito.
+            </Typography>
+            <Box sx={{ mt: 3, maxWidth: 620 }}>
+              <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
+                <Typography sx={{ fontSize: "0.68rem" }}>Seu caminho olfativo</Typography>
+                <Typography sx={{ fontSize: "0.68rem", fontWeight: 800 }}>
+                  {result ? "Concluído" : `Pergunta ${currentStep + 1} de ${questionTitles.length}`}
+                </Typography>
+              </Stack>
+              <LinearProgress
+                aria-label={`${result ? questionTitles.length : currentStep + 1} de ${questionTitles.length} etapas`}
+                value={result ? 100 : ((currentStep + 1) / questionTitles.length) * 100}
+                variant="determinate"
+                sx={{ height: 7, borderRadius: 4, bgcolor: "rgba(255,255,255,0.18)", "& .MuiLinearProgress-bar": { bgcolor: "secondary.main" } }}
+              />
+            </Box>
+          </Box>
+
+          <Box
+            aria-label="Como funciona o teste olfativo"
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              p: { xs: 2.25, sm: 2.75 },
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: 2.5,
+              bgcolor: "rgba(255,255,255,0.07)",
+              boxShadow: "0 18px 48px rgba(22,2,22,0.22)",
+              backdropFilter: "blur(5px)",
+              "&::before": {
+                position: "absolute",
+                width: 150,
+                height: 150,
+                top: -75,
+                right: -55,
+                borderRadius: "50%",
+                background: "rgba(224,170,24,0.12)",
+                content: '""',
+              },
+            }}
+          >
+            <Typography sx={{ mb: 2, color: "secondary.light", fontSize: "0.65rem", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              Seu ritual olfativo
+            </Typography>
+            <Stack
+              divider={<Box sx={{ height: "1px", bgcolor: "rgba(255,255,255,0.11)" }} />}
+              spacing={1.6}
+            >
+              {quizBenefits.map((benefit) => (
+                <Stack direction="row" spacing={1.5} key={benefit.label} sx={{ alignItems: "center" }}>
+                  <Box
+                    sx={{
+                      width: 42,
+                      height: 42,
+                      flexShrink: 0,
+                      display: "grid",
+                      placeItems: "center",
+                      borderRadius: "50%",
+                      color: "primary.dark",
+                      bgcolor: "secondary.main",
+                      "& svg": { fontSize: 21 },
+                    }}
+                  >
+                    {benefit.icon}
+                  </Box>
+                  <Box>
+                    <Typography sx={{ fontSize: "0.72rem", fontWeight: 900, lineHeight: 1.3 }}>
+                      {benefit.label}
+                    </Typography>
+                    <Typography sx={{ mt: 0.25, color: "rgba(255,255,255,0.68)", fontSize: "0.61rem", lineHeight: 1.45 }}>
+                      {benefit.description}
+                    </Typography>
+                  </Box>
+                </Stack>
+              ))}
+            </Stack>
+          </Box>
         </Box>
       </Box>
 
