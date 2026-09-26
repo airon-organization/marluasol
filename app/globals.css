@@ -24,7 +24,7 @@ body {
 .cosmic-flight__starfield {
   z-index: 0;
   display: block;
-  animation: cosmic-starfield-breathe 18s ease-in-out infinite alternate;
+  animation: cosmic-starfield-breathe 16s ease-in-out infinite alternate;
   filter: saturate(0.8) contrast(1.05) brightness(0.68);
   will-change: transform;
 }
@@ -61,11 +61,11 @@ body {
 
 @keyframes cosmic-starfield-breathe {
   0% {
-    transform: scale(1.015) translate3d(-0.25%, 0, 0);
+    transform: scale(1.02) translate3d(-0.6%, 0.18%, 0);
   }
 
   100% {
-    transform: scale(1.04) translate3d(0.25%, 0, 0);
+    transform: scale(1.06) translate3d(0.6%, -0.18%, 0);
   }
 }
 
@@ -96,7 +96,7 @@ body {
   }
 
   .cosmic-flight__starfield {
-    animation-duration: 24s;
+    animation-duration: 22s;
   }
 
   .cosmic-flight__shooting-star {
