@@ -1,6 +1,7 @@
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Button, Stack, Typography } from "@mui/material";
 import InnerPage from "../components/inner-page";
+import { buildWhatsAppLink } from "../lib/contact";
 
 export default function ContatosPage() {
   return (
@@ -10,7 +11,7 @@ export default function ContatosPage() {
           Toque no botão abaixo para iniciar uma conversa.
         </Typography>
         <Button
-          href="https://wa.me/554891645940?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20um%20perfume."
+          href={buildWhatsAppLink("Ola! Tenho interesse em conhecer os perfumes e atendimentos da MarLuaSol.")}
           target="_blank"
           rel="noopener noreferrer"
           variant="contained"

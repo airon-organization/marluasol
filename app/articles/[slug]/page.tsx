@@ -180,8 +180,9 @@ const articles: Record<string, Article> = {
       {
         title: "Uma história em construção",
         paragraphs: [
-          "A perfumaria não é trivial: ela acompanha ritos, encontros e formas de expressão desde tempos ancestrais.",
-          "Este artigo está estruturado como esboço editorial e pronto para receber o conteúdo completo, referências e chamadas relacionadas.",
+          "A perfumaria ancestral atravessa templos, casas e rituais de cuidado. Mais do que perfumar, ela organizava o tempo, marcava passagens e ajudava a cultivar presença.",
+          "Ao combinar resinas, flores, cascas e ervas, diferentes culturas transformaram aromas em linguagem simbólica: uma forma de expressar memória, proteção, celebração e pertencimento.",
+          "Na MarLuaSol, esse legado inspira criações botânicas que respeitam o ritmo da pele e convidam a um gesto simples: respirar com intenção antes de seguir o dia.",
         ],
       },
     ],

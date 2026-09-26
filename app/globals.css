@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 html {
-  font-size: 137.5%;
+  font-size: 100%;
 }
 
 html,
@@ -12,6 +12,25 @@ body {
 
 body {
   background: #ecebea;
+  color: #222;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  background: #ffffff;
+  color: #111111;
+  font-weight: 700;
+}
+
+.skip-link:focus-visible {
+  left: 0.75rem;
+  top: 0.75rem;
+  outline: 2px solid #64105f;
 }
 
 .cosmic-flight {
@@ -105,6 +124,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .cosmic-flight__starfield,
   .cosmic-flight__shooting-star {
     animation: none;

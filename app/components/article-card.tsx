@@ -37,10 +37,10 @@ export default function ArticleCard({
             />
           </CardContent>
           <CardContent sx={{ p: 0, pr: isVertical ? 0 : 0.5, alignSelf: "center" }}>
-            <Typography component="h3" sx={{ fontSize: "0.78rem", fontWeight: 900, lineHeight: 1.22, textTransform: "uppercase" }}>
+            <Typography component="h3" sx={{ fontSize: "1rem", fontWeight: 900, lineHeight: 1.3, textTransform: "uppercase" }}>
               {title}
             </Typography>
-            <Typography color="text.secondary" sx={{ mt: 1, fontSize: "0.74rem", lineHeight: 1.5 }}>
+            <Typography color="text.secondary" sx={{ mt: 1, fontSize: "0.95rem", lineHeight: 1.6 }}>
               {excerpt}
             </Typography>
           </CardContent>

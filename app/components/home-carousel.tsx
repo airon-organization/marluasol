@@ -5,7 +5,7 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { FocusEvent, useEffect, useState } from "react";
 
 const slides = [
   {
@@ -60,13 +60,24 @@ export default function HomeCarousel() {
     setActiveSlide((current) => (current + 1) % slides.length);
   };
 
+  const handleFocusWithin = () => {
+    setIsPaused(true);
+  };
+
+  const handleBlurWithin = (event: FocusEvent<HTMLElement>) => {
+    const nextFocused = event.relatedTarget as Node | null;
+    if (!nextFocused || !event.currentTarget.contains(nextFocused)) {
+      setIsPaused(false);
+    }
+  };
+
   return (
     <Box
       aria-label="Destaques da MarLuaSol"
       aria-roledescription="carrossel"
       component="section"
-      onBlur={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
+      onBlurCapture={handleBlurWithin}
+      onFocusCapture={handleFocusWithin}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       sx={{
@@ -172,18 +183,30 @@ export default function HomeCarousel() {
         {slides.map((slide, index) => (
           <Box
             aria-label={`Mostrar imagem ${index + 1}`}
+            aria-current={index === activeSlide}
             aria-pressed={index === activeSlide}
             component="button"
             key={slide.src}
             onClick={() => setActiveSlide(index)}
             sx={{
-              width: 10,
-              height: 10,
+              width: 36,
+              height: 36,
               p: 0,
-              border: "1px solid rgba(255,255,255,0.9)",
+              border: "none",
               borderRadius: "50%",
-              bgcolor: index === activeSlide ? "common.white" : "transparent",
+              bgcolor: "transparent",
               cursor: "pointer",
+              display: "grid",
+              placeItems: "center",
+              "&::before": {
+                content: '""',
+                width: 10,
+                height: 10,
+                border: "1px solid rgba(255,255,255,0.9)",
+                borderRadius: "50%",
+                backgroundColor: index === activeSlide ? "#fff" : "transparent",
+              },
+              "&:focus-visible": { outline: "2px solid #fff", outlineOffset: 2 },
             }}
           />
         ))}
@@ -303,9 +326,12 @@ function navigationButtonStyles(side: "left" | "right") {
     top: "50%",
     [side]: { xs: 8, sm: 16 },
     transform: "translateY(-50%)",
+    width: { xs: 40, sm: 46 },
+    height: { xs: 40, sm: 46 },
     color: "common.white",
     bgcolor: "rgba(0, 0, 0, 0.38)",
     backdropFilter: "blur(3px)",
     "&:hover": { bgcolor: "rgba(0, 0, 0, 0.58)" },
+    "&:focus-visible": { outline: "2px solid #fff", outlineOffset: 2 },
   } as const;
 }

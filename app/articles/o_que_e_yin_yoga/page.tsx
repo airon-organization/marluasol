@@ -11,7 +11,7 @@ export default function YinYogaArticlePage() {
       <Stack spacing={2.5} sx={{ mt: 4, maxWidth: 760 }}>
         <Typography component="h2" variant="h2" sx={{ color: "primary.main", fontSize: "1.55rem" }}>Um convite à permanência</Typography>
         <Typography sx={{ lineHeight: 1.8 }}>Inspirado na medicina chinesa e na cultura yogue, o Yin Yoga trabalha o tecido conjuntivo por meio de posturas mantidas por mais tempo e com menos esforço muscular.</Typography>
-        <Typography sx={{ lineHeight: 1.8 }}>Este esboço pode receber o texto completo sobre benefícios, cuidados, experiência de aula e orientações para iniciantes.</Typography>
+        <Typography sx={{ lineHeight: 1.8 }}>Com permanências mais longas e foco na respiração, a prática favorece mobilidade, presença e regulação do estresse. Para iniciantes, o ideal é começar com apoio de props e orientação para respeitar limites com segurança.</Typography>
       </Stack>
     </InnerPage>
   );

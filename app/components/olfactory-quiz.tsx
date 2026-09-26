@@ -24,6 +24,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { FormEvent, ReactNode, useRef, useState } from "react";
+import { buildWhatsAppLink } from "../lib/contact";
 
 type OlfactoryFamily = "citrico" | "floral" | "amadeirado" | "oriental";
 type Scores = Partial<Record<OlfactoryFamily, number>>;
@@ -313,11 +314,20 @@ export default function OlfactoryQuiz() {
     ? `${primaryProfile.name} com nuances ${secondaryProfile.adjective}`
     : "";
   const whatsappMessage = resultName
-    ? encodeURIComponent(`Olá! Fiz o questionário olfativo e meu perfil é ${resultName}, com intensidade ${intensityLabels[intensity].toLowerCase()}. Gostaria de conhecer um perfume para mim.`)
+    ? `Ola! Fiz o questionario olfativo e meu perfil e ${resultName}, com intensidade ${intensityLabels[intensity].toLowerCase()}. Gostaria de conhecer um perfume para mim.`
     : "";
 
   return (
-    <Box component="section" ref={quizRef} sx={{ overflow: "hidden", bgcolor: "#fffdf8", scrollMarginTop: 16 }}>
+    <Box
+      component="section"
+      ref={quizRef}
+      sx={{
+        overflow: "hidden",
+        scrollMarginTop: 16,
+        background:
+          "linear-gradient(180deg, #3e063d 0%, #5a0d56 31%, #efe4ef 31.1%, #ece0ec 100%)",
+      }}
+    >
       <Box
         sx={{
           bgcolor: "primary.dark",
@@ -351,8 +361,8 @@ export default function OlfactoryQuiz() {
             </Typography>
             <Box sx={{ mt: 3, maxWidth: 620 }}>
               <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
-                <Typography sx={{ fontSize: "0.68rem" }}>Seu caminho olfativo</Typography>
-                <Typography sx={{ fontSize: "0.68rem", fontWeight: 800 }}>
+                  <Typography sx={{ fontSize: "0.85rem" }}>Seu caminho olfativo</Typography>
+                  <Typography sx={{ fontSize: "0.85rem", fontWeight: 800 }}>
                   {result ? "Concluído" : `Pergunta ${currentStep + 1} de ${questionTitles.length}`}
                 </Typography>
               </Stack>
@@ -388,7 +398,7 @@ export default function OlfactoryQuiz() {
               },
             }}
           >
-            <Typography sx={{ mb: 2, color: "secondary.light", fontSize: "0.65rem", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+            <Typography sx={{ mb: 2, color: "secondary.light", fontSize: "0.82rem", fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Seu ritual olfativo
             </Typography>
             <Stack
@@ -413,10 +423,10 @@ export default function OlfactoryQuiz() {
                     {benefit.icon}
                   </Box>
                   <Box>
-                    <Typography sx={{ fontSize: "0.72rem", fontWeight: 900, lineHeight: 1.3 }}>
+                    <Typography sx={{ fontSize: "0.9rem", fontWeight: 900, lineHeight: 1.3 }}>
                       {benefit.label}
                     </Typography>
-                    <Typography sx={{ mt: 0.25, color: "rgba(255,255,255,0.68)", fontSize: "0.61rem", lineHeight: 1.45 }}>
+                    <Typography sx={{ mt: 0.25, color: "rgba(255,255,255,0.68)", fontSize: "0.8rem", lineHeight: 1.45 }}>
                       {benefit.description}
                     </Typography>
                   </Box>
@@ -428,12 +438,22 @@ export default function OlfactoryQuiz() {
       </Box>
 
       {!result && (
-        <Box component="form" onSubmit={handleSubmit} sx={{ minHeight: { xs: 490, sm: 420 }, px: { xs: 2.5, sm: 6, lg: 10 }, py: { xs: 4, sm: 5 } }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            minHeight: { xs: 490, sm: 420 },
+            px: { xs: 2.5, sm: 6, lg: 10 },
+            py: { xs: 4, sm: 5 },
+            bgcolor: "#efe4ef",
+            borderTop: "1px solid rgba(100,16,95,0.15)",
+          }}
+        >
           <Typography component="h2" sx={{ mb: 1, color: "primary.dark", fontSize: { xs: "1.2rem", sm: "1.5rem" }, fontWeight: 900 }}>
             {currentStep + 1}. {questionTitles[currentStep]}
           </Typography>
           {currentStep === 2 && (
-            <Typography sx={{ mb: 2.5, color: "text.secondary", fontSize: "0.72rem" }}>
+            <Typography sx={{ mb: 2.5, color: "text.secondary", fontSize: "0.9rem" }}>
               Escolha de duas a três notas. ({selectedIngredients.length}/3 selecionadas)
             </Typography>
           )}
@@ -467,13 +487,28 @@ export default function OlfactoryQuiz() {
                       cursor: disabled ? "not-allowed" : "pointer",
                     }}
                   >
-                    <Checkbox checked={selected} disabled={disabled} onChange={() => toggleIngredient(ingredient.id)} sx={{ display: "none" }} />
+                    <Checkbox
+                      checked={selected}
+                      disabled={disabled}
+                      onChange={() => toggleIngredient(ingredient.id)}
+                      sx={{
+                        position: "absolute",
+                        width: 1,
+                        height: 1,
+                        p: 0,
+                        m: -1,
+                        overflow: "hidden",
+                        clip: "rect(0 0 0 0)",
+                        whiteSpace: "nowrap",
+                        border: 0,
+                      }}
+                    />
                     <Box sx={{ width: 42, height: 42, flexShrink: 0, display: "grid", placeItems: "center", borderRadius: "50%", bgcolor: ingredient.color, boxShadow: "inset 0 0 0 5px rgba(255,255,255,0.28)" }}>
                       {selected && <CheckRoundedIcon sx={{ color: "common.white" }} />}
                     </Box>
                     <Box>
-                      <Typography sx={{ fontSize: "0.76rem", fontWeight: 900 }}>{ingredient.label}</Typography>
-                      <Typography sx={{ mt: 0.25, color: "text.secondary", fontSize: "0.63rem" }}>{ingredient.detail}</Typography>
+                      <Typography sx={{ fontSize: "0.92rem", fontWeight: 900 }}>{ingredient.label}</Typography>
+                      <Typography sx={{ mt: 0.25, color: "text.secondary", fontSize: "0.82rem" }}>{ingredient.detail}</Typography>
                     </Box>
                   </Box>
                 );
@@ -488,7 +523,7 @@ export default function OlfactoryQuiz() {
               <Typography sx={{ mt: 2, color: "primary.dark", fontSize: { xs: "1.25rem", sm: "1.65rem" }, fontWeight: 900 }}>
                 {intensityLabels[intensity]}
               </Typography>
-              <Typography sx={{ mt: 0.75, color: "text.secondary", fontSize: "0.72rem" }}>
+              <Typography sx={{ mt: 0.75, color: "text.secondary", fontSize: "0.9rem" }}>
                 Deslize para escolher a presença que o perfume deve ter na sua pele.
               </Typography>
               <Slider
@@ -499,7 +534,7 @@ export default function OlfactoryQuiz() {
                 onChange={(_, value) => setIntensity(value as number)}
                 step={1}
                 value={intensity}
-                sx={{ mt: 4, color: "primary.main", "& .MuiSlider-markLabel": { fontSize: { xs: "0.54rem", sm: "0.64rem" } } }}
+                sx={{ mt: 4, color: "primary.main", "& .MuiSlider-markLabel": { fontSize: { xs: "0.75rem", sm: "0.82rem" } } }}
               />
             </Box>
           )}
@@ -540,20 +575,20 @@ export default function OlfactoryQuiz() {
             </Stack>
 
             <Box sx={{ mt: 3, p: 2, borderRadius: 2, bgcolor: "rgba(255,255,255,0.58)" }}>
-              <Typography sx={{ fontSize: "0.72rem", fontWeight: 900 }}>Sua composição ideal</Typography>
-              <Typography sx={{ mt: 0.6, fontSize: "0.7rem", lineHeight: 1.6 }}>
+              <Typography sx={{ fontSize: "0.9rem", fontWeight: 900 }}>Sua composição ideal</Typography>
+              <Typography sx={{ mt: 0.6, fontSize: "0.86rem", lineHeight: 1.6 }}>
                 Intensidade {intensityLabels[intensity].toLowerCase()}, com {primaryProfile.notes} e toques de {secondaryProfile.notes}.
               </Typography>
             </Box>
 
             <Box sx={{ mt: 3 }}>
-              <Typography sx={{ fontSize: "0.72rem", fontWeight: 900 }}>Perfumes indicados para você</Typography>
+              <Typography sx={{ fontSize: "0.9rem", fontWeight: 900 }}>Perfumes indicados para você</Typography>
               <Stack direction="row" spacing={1} sx={{ mt: 1.25, flexWrap: "wrap", gap: 1 }}>
                 {primaryProfile.perfumes.map((perfume) => {
-                  const productMessage = encodeURIComponent(`Olá! Fiz o questionário olfativo, meu resultado foi família ${primaryProfile.name} e gostaria de conhecer o perfume ${perfume}.`);
+                  const productMessage = `Ola! Fiz o questionario olfativo, meu resultado foi familia ${primaryProfile.name} e gostaria de conhecer o perfume ${perfume}.`;
                   return (
                     <Button
-                      href={`https://wa.me/554891645940?text=${productMessage}`}
+                      href={buildWhatsAppLink(productMessage)}
                       key={perfume}
                       rel="noopener noreferrer"
                       startIcon={<ShoppingBagRoundedIcon />}
@@ -570,7 +605,7 @@ export default function OlfactoryQuiz() {
 
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mt: 3, alignItems: { xs: "stretch", sm: "center" }, flexWrap: "wrap" }}>
               <Button href="#produtos" variant="contained" sx={{ py: 1.2 }}>Ver produtos para mim</Button>
-              <Button href={`https://wa.me/554891645940?text=${whatsappMessage}`} rel="noopener noreferrer" startIcon={<WhatsAppIcon />} target="_blank" variant="outlined" sx={{ py: 1.1 }}>
+              <Button href={buildWhatsAppLink(whatsappMessage)} rel="noopener noreferrer" startIcon={<WhatsAppIcon />} target="_blank" variant="outlined" sx={{ py: 1.1 }}>
                 Falar com a perfumista
               </Button>
               <Button onClick={resetQuiz} startIcon={<ReplayRoundedIcon />} sx={{ color: "primary.main" }}>Refazer</Button>
@@ -621,8 +656,8 @@ function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceO
             <Box sx={{ display: "flex", alignItems: "flex-start", gap: 0.75, minHeight: variant === "image" ? 105 : 95, p: 1.5 }}>
               <Radio checked={isSelected} name="quiz-choice" onChange={() => onSelect(option.id)} size="small" value={option.id} sx={{ p: 0.25, color: "primary.light", "&.Mui-checked": { color: "primary.main" } }} />
               <Box>
-                <Typography sx={{ fontSize: "0.76rem", fontWeight: 900, lineHeight: 1.3 }}>{option.label}</Typography>
-                <Typography sx={{ mt: 0.45, color: "text.secondary", fontSize: "0.65rem", lineHeight: 1.42 }}>{option.description}</Typography>
+                <Typography sx={{ fontSize: "0.92rem", fontWeight: 900, lineHeight: 1.3 }}>{option.label}</Typography>
+                <Typography sx={{ mt: 0.45, color: "text.secondary", fontSize: "0.85rem", lineHeight: 1.5 }}>{option.description}</Typography>
               </Box>
             </Box>
           </Box>
@@ -636,8 +671,8 @@ function AffinityBar({ label, value }: { label: string; value: number }) {
   return (
     <Box>
       <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.5 }}>
-        <Typography sx={{ fontSize: "0.68rem", fontWeight: 800 }}>{label}</Typography>
-        <Typography sx={{ fontSize: "0.68rem", fontWeight: 900 }}>{value}%</Typography>
+        <Typography sx={{ fontSize: "0.84rem", fontWeight: 800 }}>{label}</Typography>
+        <Typography sx={{ fontSize: "0.84rem", fontWeight: 900 }}>{value}%</Typography>
       </Stack>
       <LinearProgress value={value} variant="determinate" sx={{ height: 8, borderRadius: 5, bgcolor: "rgba(100,16,95,0.12)", "& .MuiLinearProgress-bar": { bgcolor: "primary.main" } }} />
     </Box>

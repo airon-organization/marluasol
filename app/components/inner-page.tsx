@@ -41,7 +41,7 @@ export default function InnerPage({ eyebrow, title, description, children }: Inn
           </Typography>
         </Box>
 
-        <Box component="main" sx={{ px: { xs: 2.5, sm: 6 }, py: { xs: 4, sm: 6 } }}>
+        <Box component="main" id="page-content" sx={{ px: { xs: 2.5, sm: 6 }, py: { xs: 4, sm: 6 } }}>
           {children}
           <Stack direction="row" sx={{ mt: 6 }}>
             <Button component={Link} href="/" startIcon={<ArrowBackRoundedIcon />} sx={{ color: "primary.main" }}>

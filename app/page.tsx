@@ -32,7 +32,7 @@ const articles: ArticleCardProps[] = [
 export default function Home() {
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
-      <main>
+      <main id="page-content">
         <Header />
         <Box sx={{ width: "100%", bgcolor: "background.paper" }} >
           <HomeCarousel />
@@ -54,7 +54,7 @@ export default function Home() {
               )}
             </Grid>
             <Stack sx={{ alignItems: "flex-end", mt: 3.5 }}>
-              <Button href="/articles" sx={{ color: "primary.main", fontSize: "0.62rem" }}>
+              <Button href="/articles" sx={{ color: "primary.main", fontSize: "0.85rem" }}>
                 Mais artigos…
               </Button>
             </Stack>

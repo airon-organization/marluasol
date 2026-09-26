@@ -6,6 +6,8 @@ import Link from "next/link";
 
 const navigationItems = [
   { label: "Loja online", href: "/loja" },
+  { label: "Artigos", href: "/articles" },
+  { label: "Contato", href: "/contatos" },
   { label: "Quem sou eu", href: "/quem-sou-eu" },
 ];
 
@@ -84,7 +86,7 @@ export default function Header() {
                 borderRadius: 1.25,
                 px: { xs: 1.5, sm: 2 },
                 py: 1,
-                fontSize: { xs: "0.58rem", sm: "0.64rem" },
+                fontSize: { xs: "0.78rem", sm: "0.85rem" },
                 fontWeight: 800,
                 letterSpacing: "0.03em",
                 boxShadow: "0 5px 16px rgba(0,0,0,0.22)",

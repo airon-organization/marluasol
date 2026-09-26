@@ -3,6 +3,7 @@ import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { buildWhatsAppLink } from "../lib/contact";
 
 const paragraphs = [
   "Desde muito jovem me identifico profundamente com a natureza e com a filosofia do Yoga. As plantas são minhas guias no meu processo de autoconhecimento: me inspiram como seres vivos complexos e me ajudam a buscar uma vida com mais equilíbrio.",
@@ -17,7 +18,7 @@ export default function QuemSouEuPage() {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       <Header />
-      <Box component="main" sx={{ width: "100%", bgcolor: "background.paper", px: { xs: 2.5, sm: 5, lg: 7.5 }, py: { xs: 5, md: 7 } }}>
+      <Box component="main" id="page-content" sx={{ width: "100%", bgcolor: "background.paper", px: { xs: 2.5, sm: 5, lg: 7.5 }, py: { xs: 5, md: 7 } }}>
         <Grid container spacing={{ xs: 5, md: 7, lg: 10 }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography component="h1" variant="h1" sx={{ fontSize: { xs: "2rem", sm: "2.5rem" }, color: "#111", textTransform: "uppercase" }}>
@@ -49,7 +50,7 @@ export default function QuemSouEuPage() {
                   Fale comigo pelo WhatsApp para saber mais sobre Yin Yoga, perfumaria natural e atendimentos.
                 </Typography>
                 <Button
-                  href="https://wa.me/554891645940?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20um%20perfume."
+                  href={buildWhatsAppLink("Ola! Gostaria de saber mais sobre Yin Yoga, perfumaria natural e atendimentos.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"

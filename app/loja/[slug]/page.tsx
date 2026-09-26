@@ -7,6 +7,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
+import { buildWhatsAppLink } from "../../lib/contact";
 import { getProduct, products } from "../products";
 
 type ProductPageProps = {
@@ -37,15 +38,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   if (!product) notFound();
 
-  const purchaseMessage = encodeURIComponent(
-    `Olá! Gostaria de saber mais sobre o perfume ${product.name} (${product.volume}).`,
-  );
+  const purchaseMessage = `Ola! Gostaria de saber mais sobre o perfume ${product.name} (${product.volume}).`;
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#fffdf8" }}>
       <Header />
 
-      <Box component="main">
+      <Box component="main" id="page-content">
         <Box
           sx={{
             width: "100%",
@@ -172,7 +171,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                 <Button
                   fullWidth
-                  href={`https://wa.me/554891645940?text=${purchaseMessage}`}
+                  href={buildWhatsAppLink(purchaseMessage)}
                   rel="noopener noreferrer"
                   startIcon={<WhatsAppIcon />}
                   target="_blank"

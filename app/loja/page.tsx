@@ -10,12 +10,12 @@ export default function LojaPage() {
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <Header />
-      <Box component="main">
+      <Box component="main" id="page-content">
         <OlfactoryQuiz />
 
         <Box sx={{ width: "100%", bgcolor: "background.paper", px: { xs: 2.5, sm: 6, lg: 10 }, py: { xs: 5, sm: 7 } }}>
           <Box component="section" id="produtos" sx={{ scrollMarginTop: 24 }}>
-            <Typography sx={{ color: "primary.main", fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            <Typography sx={{ color: "primary.main", fontSize: "0.85rem", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase" }}>
               Loja online
             </Typography>
             <Typography component="h2" variant="h2" sx={{ mt: 1, color: "primary.dark", fontSize: { xs: "1.55rem", sm: "2rem" } }}>
@@ -77,7 +77,7 @@ export default function LojaPage() {
                           sx={{
                             minHeight: "1.3em",
                             color: "text.primary",
-                            fontSize: { xs: "0.9rem", sm: "0.78rem" },
+                            fontSize: { xs: "1rem", sm: "0.92rem" },
                             fontWeight: 500,
                             lineHeight: 1.3,
                             textTransform: "uppercase",
@@ -105,7 +105,7 @@ export default function LojaPage() {
 const productDetailStyles = {
   mt: 0.3,
   color: "text.secondary",
-  fontSize: { xs: "0.72rem", sm: "0.66rem" },
+  fontSize: { xs: "0.92rem", sm: "0.86rem" },
   fontWeight: 400,
   letterSpacing: "0.025em",
   lineHeight: 1.35,
