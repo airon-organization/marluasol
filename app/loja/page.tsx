@@ -1,35 +1,10 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import OlfactoryQuiz from "../components/olfactory-quiz";
-
-const products = [
-  {
-    name: "Rosa Vermelha",
-    family: "Família olfativa floral doce",
-    volume: "30 ml",
-    price: "R$ 200,00",
-    image: "/products/rosa_vermelha.png",
-    imageAlt: "Perfume Rosa Vermelha com rosa e elementos botânicos",
-  },
-  {
-    name: "Lakshmi",
-    family: "Família olfativa fresco verde",
-    volume: "50 ml",
-    price: "R$ 250,00",
-    image: "/products/lakshmi.png",
-    imageAlt: "Perfume Lakshmi entre plantas aromáticas",
-  },
-  {
-    name: "Maçã e Canela",
-    family: "Família olfativa oriental doce",
-    volume: "25 ml",
-    price: "R$ 150,00",
-    image: "/products/maca_e_canela.png",
-    imageAlt: "Frasco do perfume Maçã e Canela",
-  },
-] as const;
+import { products } from "./products";
 
 export default function LojaPage() {
   return (
@@ -53,45 +28,69 @@ export default function LojaPage() {
             <Grid container spacing={{ xs: 3.5, sm: 2.25 }}>
               {products.map((product) => (
                 <Grid key={product.name} size={{ xs: 12, sm: 4 }} sx={{ display: "flex" }}>
-                  <Box component="article" sx={{ display: "flex", width: "100%", height: "100%", flexDirection: "column" }}>
+                  <Link
+                    href={`/loja/${product.slug}`}
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      height: "100%",
+                      color: "inherit",
+                      textDecoration: "none",
+                    }}
+                  >
                     <Box
+                      component="article"
                       sx={{
-                        position: "relative",
+                        display: "flex",
                         width: "100%",
-                        aspectRatio: "1 / 1",
-                        overflow: "hidden",
-                        borderRadius: 1,
-                        bgcolor: "#e8e4df",
+                        flexDirection: "column",
+                        "& img": { transition: "transform 350ms ease" },
+                        "a:hover & img": { transform: "scale(1.025)" },
+                        "a:focus-visible &": { outline: "2px solid", outlineColor: "primary.main", outlineOffset: 5 },
+                        "@media (prefers-reduced-motion: reduce)": {
+                          "& img": { transition: "none" },
+                        },
                       }}
                     >
-                      <Image
-                        alt={product.imageAlt}
-                        fill
-                        sizes="(max-width: 600px) 100vw, 33vw"
-                        src={product.image}
-                        style={{ objectFit: "cover" }}
-                      />
-                    </Box>
-
-                    <Box sx={{ display: "flex", flex: 1, flexDirection: "column", pt: 1.5 }}>
-                      <Typography
-                        component="h3"
+                      <Box
                         sx={{
-                          minHeight: "1.3em",
-                          color: "text.primary",
-                          fontSize: { xs: "0.9rem", sm: "0.78rem" },
-                          fontWeight: 500,
-                          lineHeight: 1.3,
-                          textTransform: "uppercase",
+                          position: "relative",
+                          width: "100%",
+                          aspectRatio: "1 / 1",
+                          overflow: "hidden",
+                          borderRadius: 1,
+                          bgcolor: "#e8e4df",
                         }}
                       >
-                        {product.name}
-                      </Typography>
-                      <Typography sx={{ ...productDetailStyles, minHeight: "1.35em" }}>{product.family}</Typography>
-                      <Typography sx={productDetailStyles}>{product.volume}</Typography>
-                      <Typography sx={{ ...productDetailStyles, mt: 0.25 }}>{product.price}</Typography>
+                        <Image
+                          alt={product.listImageAlt}
+                          fill
+                          sizes="(max-width: 600px) 100vw, 33vw"
+                          src={product.listImage}
+                          style={{ objectFit: "cover" }}
+                        />
+                      </Box>
+
+                      <Box sx={{ display: "flex", flex: 1, flexDirection: "column", pt: 1.5 }}>
+                        <Typography
+                          component="h3"
+                          sx={{
+                            minHeight: "1.3em",
+                            color: "text.primary",
+                            fontSize: { xs: "0.9rem", sm: "0.78rem" },
+                            fontWeight: 500,
+                            lineHeight: 1.3,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {product.name}
+                        </Typography>
+                        <Typography sx={{ ...productDetailStyles, minHeight: "1.35em" }}>Família olfativa {product.family}</Typography>
+                        <Typography sx={productDetailStyles}>{product.volume}</Typography>
+                        <Typography sx={{ ...productDetailStyles, mt: 0.25 }}>{product.price}</Typography>
+                      </Box>
                     </Box>
-                  </Box>
+                  </Link>
                 </Grid>
               ))}
             </Grid>
