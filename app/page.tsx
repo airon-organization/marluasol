@@ -13,11 +13,11 @@ const articles: ArticleCardProps[] = [
     imageAlt: "Plantas e paisagem natural",
   },
   {
-    title: "QUEM SÃO AS DEUSAS E O QUE ELAS TEM A VER COM OS AROMAS DAS PLANTAS",
+    title: "QUEM SÃO AS DEUSAS E O QUE ELAS TÊM A VER COM OS AROMAS DAS PLANTAS?",
     excerpt: "Cleópatra compreendia o poder dos aromas e usava ao seu favor. Nos perfumes, as plantas tornam-se linguagem — e cada aroma desperta em nós uma força, uma memória, uma deusa.",
     href: "/articles/quem_sao_as_deusas",
     image: "/articles/quem_sao_as_deusas/01.png",
-    imageAlt: "",
+    imageAlt: "Representação simbólica de uma deusa entre elementos naturais",
   },
   {
     title: "Perfumaria ancestral e o ritual dos aromas",

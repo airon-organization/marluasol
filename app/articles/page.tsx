@@ -14,8 +14,15 @@ const articles: ArticleCardProps[] = [
     title: "MULHERES E PLANTAS - DESCUBRA O QUE AS PLANTAS PODEM FAZER POR VOCÊ",
     excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas.",
     href: "/articles/mulheres_e_plantas",
-    image: "/articles/mulheres_e_plantas/IMG_20160715_124006_HDR 1.png",
-    imageAlt: "Plantas em uma paisagem natural",
+    image: "/articles/mulheres_e_plantas/QUADROSEMTE 1.png",
+    imageAlt: "Mulher em conexão com plantas e a paisagem natural",
+  },
+  {
+    title: "QUEM SÃO AS DEUSAS E O QUE ELAS TÊM A VER COM OS AROMAS DAS PLANTAS?",
+    excerpt: "Perfumes, plantas e figuras mitológicas como caminhos para despertar memória, presença e diferentes forças femininas.",
+    href: "/articles/quem_sao_as_deusas",
+    image: "/articles/quem_sao_as_deusas/01.png",
+    imageAlt: "Representação simbólica de uma deusa entre elementos naturais",
   },
   {
     title: "Perfumaria ancestral e o ritual dos aromas",
@@ -29,10 +36,10 @@ const articles: ArticleCardProps[] = [
 export default function ArticlesPage() {
   return (
     <InnerPage eyebrow="Leituras" title="Artigos" description="Reflexões sobre perfumaria natural, plantas, cuidado, memória e práticas de presença.">
-      <Typography sx={{ mb: 4, maxWidth: 680, lineHeight: 1.7 }}>Explore os primeiros temas do universo MarLuaSol. Os textos abaixo já têm rotas próprias e estão prontos para receber o conteúdo final.</Typography>
+      <Typography sx={{ mb: 4, maxWidth: 680, lineHeight: 1.7 }}>Explore histórias sobre plantas, aromas, mitologia feminina e práticas de presença no universo MarLuaSol.</Typography>
       <Grid container spacing={4}>
         {articles.map((article) => (
-          <Grid key={article.href} size={{ xs: 12, md: 4 }}>
+          <Grid key={article.href} size={{ xs: 12, sm: 6 }}>
             <ArticleCard {...article} />
           </Grid>
         ))}
