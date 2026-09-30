@@ -30,7 +30,7 @@ export default function Header() {
           zIndex: 2,
           minHeight: { xs: 88, sm: 112 },
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", lg: "row" },
           alignItems: "center",
           justifyContent: "space-between",
           gap: 2,
@@ -72,7 +72,17 @@ export default function Header() {
           </Stack>
         </Link>
 
-        <Stack aria-label="Navegação principal" component="nav" direction="row" spacing={{ xs: 1.25, sm: 2.5 }}>
+        <Box
+          aria-label="Navegação principal"
+          component="nav"
+          sx={{
+            width: { xs: "100%", sm: "auto" },
+            display: "grid",
+            gridTemplateColumns: { xs: "repeat(2, minmax(0, 1fr))", sm: "repeat(4, auto)" },
+            justifyContent: "center",
+            gap: { xs: 1, sm: 2.5 },
+          }}
+        >
           {navigationItems.map((item) => (
             <Button
               component={Link}
@@ -80,7 +90,8 @@ export default function Header() {
               key={item.href}
               size="small"
               sx={{
-                minWidth: { xs: 132, sm: 158 },
+                minWidth: { xs: 0, sm: 132, lg: 158 },
+                width: { xs: "100%", sm: "auto" },
                 bgcolor: "#E0AA18",
                 color: "primary.dark",
                 borderRadius: 1.25,
@@ -96,7 +107,7 @@ export default function Header() {
               {item.label}
             </Button>
           ))}
-        </Stack>
+        </Box>
       </Box>
     </Box>
   );
