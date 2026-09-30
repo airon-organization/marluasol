@@ -325,7 +325,7 @@ export default function OlfactoryQuiz() {
         overflow: "hidden",
         scrollMarginTop: 16,
         background:
-          "linear-gradient(180deg, #3e063d 0%, #5a0d56 31%, #efe4ef 31.1%, #ece0ec 100%)",
+          "radial-gradient(circle at 88% 8%, rgba(224,170,24,0.16), transparent 27%), radial-gradient(circle at 62% 55%, rgba(138,57,133,0.38), transparent 42%), linear-gradient(118deg, #350333 0%, #4b0748 52%, #64105f 100%)",
       }}
     >
       <Box
@@ -333,9 +333,9 @@ export default function OlfactoryQuiz() {
           bgcolor: "primary.dark",
           color: "common.white",
           px: { xs: 2.5, sm: 6, lg: 10 },
-          py: { xs: 4, sm: 5 },
-          background:
-            "radial-gradient(circle at 88% 8%, rgba(224,170,24,0.16), transparent 27%), radial-gradient(circle at 62% 110%, rgba(138,57,133,0.38), transparent 42%), linear-gradient(118deg, #350333 0%, #4b0748 52%, #64105f 100%)",
+          pt: { xs: 4, sm: 5 },
+          pb: { xs: 3, sm: 4 },
+          background: "transparent",
         }}
       >
         <Box
@@ -443,10 +443,15 @@ export default function OlfactoryQuiz() {
           onSubmit={handleSubmit}
           sx={{
             minHeight: { xs: 490, sm: 420 },
-            px: { xs: 2.5, sm: 6, lg: 10 },
-            py: { xs: 4, sm: 5 },
+            px: { xs: 2, sm: 3.5, lg: 5 },
+            py: { xs: 2.5, sm: 3.5 },
+            mx: { xs: 1.5, sm: 3, lg: 6 },
+            mb: { xs: 1.5, sm: 3 },
+            color: "text.primary",
             bgcolor: "#efe4ef",
-            borderTop: "1px solid rgba(100,16,95,0.15)",
+            border: "1px solid rgba(255,255,255,0.18)",
+            borderRadius: 3,
+            boxShadow: "0 20px 48px rgba(22,2,22,0.2)",
           }}
         >
           <Typography component="h2" sx={{ mb: 1, color: "primary.dark", fontSize: { xs: "1.2rem", sm: "1.5rem" }, fontWeight: 900 }}>
@@ -543,10 +548,10 @@ export default function OlfactoryQuiz() {
           )}
 
           <Stack direction="row" spacing={1.5} sx={{ justifyContent: "space-between", mt: 5 }}>
-            <Button disabled={currentStep === 0} onClick={() => setCurrentStep((step) => step - 1)} sx={{ color: "primary.main" }}>
+            <Button disabled={currentStep === 0} onClick={() => setCurrentStep((step) => step - 1)} sx={{ color: "primary.main", "&:hover": { bgcolor: "rgba(100,16,95,0.06)" }, "&.Mui-disabled": { color: "rgba(100,16,95,0.35)" } }}>
               Voltar
             </Button>
-            <Button disabled={!isCurrentStepComplete} type="submit" variant="contained" sx={{ bgcolor: "primary.main", px: { xs: 2.5, sm: 4 }, py: 1.35 }}>
+            <Button disabled={!isCurrentStepComplete} type="submit" variant="contained" sx={{ color: "primary.dark", bgcolor: "secondary.main", px: { xs: 2.5, sm: 4 }, py: 1.35, "&:hover": { bgcolor: "#efbd35" }, "&.Mui-disabled": { color: "rgba(69,6,68,0.55)", bgcolor: "rgba(224,170,24,0.42)" } }}>
               {currentStep === questionTitles.length - 1 ? "Ver meu resultado" : "Continuar"}
             </Button>
           </Stack>
