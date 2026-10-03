@@ -38,7 +38,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   if (!product) notFound();
 
-  const purchaseMessage = `Ola! Gostaria de saber mais sobre o perfume ${product.name} (${product.volume}).`;
+  const purchaseMessage = `Ola! Gostaria de comprar o perfume ${product.name} (${product.volume}).`;
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#fffdf8" }}>
@@ -185,6 +185,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 >
                   Quero este perfume
                 </Button>
+                <Typography
+                  sx={{
+                    mt: 1.25,
+                    color: "text.secondary",
+                    fontSize: "0.85rem",
+                    lineHeight: 1.5,
+                    textAlign: "center",
+                  }}
+                >
+                  Pedidos realizados pelo WhatsApp. Pagamento via Pix.
+                </Typography>
               </Box>
             </Grid>
           </Grid>
