@@ -58,7 +58,10 @@ export default function LojaPage() {
                           <Typography component="h3" sx={productNameStyles}>{product.name}</Typography>
                           <Typography sx={{ ...detailStyles, minHeight: "1.35em" }}>Família olfativa {product.family}</Typography>
                           <Typography sx={detailStyles}>{product.volume}</Typography>
-                          <Typography sx={{ ...detailStyles, mt: 0.25 }}>{product.price}</Typography>
+                          <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", mt: 0.45, flexWrap: "wrap" }}>
+                            <Typography sx={originalPriceStyles}>{product.originalPrice}</Typography>
+                            <Typography sx={promotionalPriceStyles}>{product.price}</Typography>
+                          </Stack>
                         </Box>
                       </Box>
                     </Link>
@@ -88,7 +91,10 @@ export default function LojaPage() {
                     </Stack>
                     <Stack spacing={0.25} sx={{ mt: 2 }}>
                       <Typography sx={detailStyles}>3 frascos x 30 ml</Typography>
-                      <Typography sx={detailStyles}>R$ 600,00</Typography>
+                      <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
+                        <Typography sx={originalPriceStyles}>R$ 750,00</Typography>
+                        <Typography sx={promotionalPriceStyles}>R$ 600,00</Typography>
+                      </Stack>
                     </Stack>
                   </Box>
                 </Grid>
@@ -167,4 +173,18 @@ const detailStyles = {
   letterSpacing: "0.025em",
   lineHeight: 1.35,
   textTransform: "uppercase",
+} as const;
+
+const originalPriceStyles = {
+  color: "text.secondary",
+  fontSize: { xs: "0.78rem", sm: "0.74rem" },
+  lineHeight: 1.35,
+  textDecoration: "line-through",
+} as const;
+
+const promotionalPriceStyles = {
+  color: "primary.main",
+  fontSize: { xs: "1rem", sm: "0.92rem" },
+  fontWeight: 900,
+  lineHeight: 1.35,
 } as const;

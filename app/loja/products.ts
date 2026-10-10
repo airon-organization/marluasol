@@ -19,6 +19,7 @@ export type Product = {
   liquid?: string;
   material: string;
   packaging: string;
+  originalPrice: string;
   price: string;
   listImage: string;
   listImageAlt: string;
@@ -66,6 +67,7 @@ export const products: Product[] = [
     liquid: "Avermelhado",
     material: "Vidro redondo, tampa prata com rosa",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 250,00",
     price: "R$ 200,00",
     listImage: "/products/rosa_vermelha.png",
     listImageAlt: "Perfume Rosa Vermelha com rosa e elementos botânicos",
@@ -128,6 +130,7 @@ export const products: Product[] = [
     liquid: "Transparente",
     material: "Vidro redondo ou quadrado, borrifador prata ou dourado",
     packaging: "Saco de linho bordado",
+    originalPrice: "R$ 300,00",
     price: "R$ 250,00",
     listImage: "/products/lakshmi.png",
     listImageAlt: "Perfume Lakshmi entre plantas aromáticas",
@@ -193,6 +196,7 @@ export const products: Product[] = [
     liquid: "Dourado claro",
     material: "Vidro em forma de maçã com tampa dourada",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 200,00",
     price: "R$ 150,00",
     listImage: "/products/maca_e_canela.png",
     listImageAlt: "Frasco do perfume Maçã e Canela",
@@ -254,6 +258,7 @@ export const products: Product[] = [
     liquid: "Âmbar",
     material: "Vidro quadrado, tampa dourada",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 300,00",
     price: "R$ 250,00",
     listImage: "/products/store/pachamama.png",
     listImageAlt: "Frasco do perfume natural Pachamama",
@@ -302,6 +307,7 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 250,00",
     price: "R$ 200,00",
     listImage: "/products/store/perfume_mar.png",
     listImageAlt: "Frasco do perfume natural Mar",
@@ -349,6 +355,7 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 250,00",
     price: "R$ 200,00",
     listImage: "/products/store/perfume_lua.png",
     listImageAlt: "Frasco do perfume natural Lua",
@@ -395,6 +402,7 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 250,00",
     price: "R$ 200,00",
     listImage: "/products/store/perfume_sol.png",
     listImageAlt: "Frasco do perfume natural Sol",

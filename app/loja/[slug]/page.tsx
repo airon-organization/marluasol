@@ -124,16 +124,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {product.composition}
                 </Typography>
 
-                <Typography
-                  sx={{
-                    mt: 3,
-                    color: "primary.dark",
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  {product.price}
-                </Typography>
+                <Box sx={{ mt: 3 }}>
+                  <Typography sx={{ color: "text.secondary", fontSize: "0.82rem", textDecoration: "line-through" }}>
+                    {product.originalPrice}
+                  </Typography>
+                  <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
+                    <Typography
+                      sx={{
+                        color: "primary.dark",
+                        fontFamily: "Georgia, 'Times New Roman', serif",
+                        fontSize: "1.65rem",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {product.price}
+                    </Typography>
+                    <Typography sx={{ color: "primary.main", fontSize: "0.68rem", fontWeight: 900, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                      Preço promocional
+                    </Typography>
+                  </Stack>
+                </Box>
 
                 <Button
                   fullWidth
