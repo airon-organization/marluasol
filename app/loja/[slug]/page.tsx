@@ -87,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <Image
                       alt={image.alt}
                       fill
-                      priority={index === 0}
+                      preload={index === 0}
                       sizes={
                         index === 0
                           ? "(max-width: 900px) 100vw, 58vw"
@@ -262,7 +262,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </Stack>
                 <Stack divider={<Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.15)" }} />} sx={{ mt: 2.5 }}>
                   <ProductDetail label="Volume" value={product.volume} />
-                  <ProductDetail label="Líquido" value={product.liquid} />
+                  {product.liquid && <ProductDetail label="Líquido" value={product.liquid} />}
                   <ProductDetail label="Frasco" value={product.material} />
                   <ProductDetail label="Embalagem" value={product.packaging} />
                 </Stack>

@@ -16,7 +16,7 @@ export type Product = {
   mythologyTitle: string;
   mythology: string[];
   volume: string;
-  liquid: string;
+  liquid?: string;
   material: string;
   packaging: string;
   price: string;
@@ -82,6 +82,10 @@ export const products: Product[] = [
         src: "/products/rosa-vermelha/galeria-3.jpg",
         alt: "Detalhes do perfume natural Rosa Vermelha",
       },
+      {
+        src: "/products/rosa-vermelha/inspiracao-rosa-vermelha.png",
+        alt: "Representação da força feminina que inspira o perfume Rosa Vermelha",
+      },
     ],
   },
   {
@@ -144,11 +148,15 @@ export const products: Product[] = [
         src: "/products/lakshmi/galeria-4.png",
         alt: "Detalhe do frasco do perfume Lakshmi",
       },
+      {
+        src: "/products/lakshmi/inspiracao-lakshmi.png",
+        alt: "Representação da deusa Lakshmi entre flores de lótus",
+      },
     ],
   },
   {
     slug: "maca-e-canela",
-    name: "Maçã e Canela",
+    name: "Maçã",
     family: "Frutado doce especiado",
     tagline: "Um convite ao florescimento e à doçura da vida",
     introduction:
@@ -199,7 +207,201 @@ export const products: Product[] = [
       },
       {
         src: "/products/maca-e-canela/galeria-3.jpg",
-        alt: "Detalhes do perfume Maçã e Canela",
+        alt: "Detalhes do perfume Maçã",
+      },
+      {
+        src: "/products/maca-e-canela/inspiracao-core.jpg",
+        alt: "Coré colhendo flores, inspiração do perfume Maçã",
+      },
+    ],
+  },
+  {
+    slug: "pachamama",
+    name: "Pachamama",
+    family: "Terrosa fresca",
+    tagline: "Um convite para retornar ao essencial",
+    introduction:
+      "Pachamama é um perfume natural artesanal de perfil terroso, fresco e amadeirado. Sua composição começa verde e aromática e evolui para um fundo profundo e terroso, equilibrando frescor e enraizamento.",
+    composition:
+      "Tintura botânica alcoólica de vetiver e óleos essenciais de cedro, lavanda e petitgrain.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Petitgrain",
+        description: "Uma abertura aromática, verde e luminosa.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Lavanda e petitgrain",
+        description:
+          "A lavanda e o petitgrain mantêm o frescor e o equilíbrio no coração da fragrância.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Vetiver e cedro",
+        description:
+          "O cedro acrescenta estrutura e profundidade amadeirada, enquanto o vetiver traz elegância, sustentação e a sensação de terra úmida, raízes e floresta.",
+      },
+    ],
+    mythologyTitle: "A Mãe Terra que inspira o perfume",
+    mythology: [
+      "Pachamama é a Mãe Terra nas tradições andinas. Seu nome está ligado à ideia de mundo, tempo, espaço e natureza viva. Mais do que uma divindade associada à terra, representa a fertilidade, os ciclos naturais, a abundância e a reciprocidade entre os seres humanos e o planeta.",
+      "Ela nos lembra que não estamos separados da natureza: fazemos parte dela. Inspirado nessa força ancestral, o perfume nasce das raízes, madeiras, folhas e aromas verdes das plantas.",
+      "O vetiver conecta a fragrância à terra; o cedro traz estrutura e força; a lavanda e o petitgrain iluminam a composição com frescor e equilíbrio. Pachamama é um convite para sentir os pés no chão e lembrar da força que existe em pertencer à Terra.",
+    ],
+    volume: "50 ml",
+    liquid: "Âmbar",
+    material: "Vidro quadrado, tampa dourada",
+    packaging: "Saco de linho bordado com flores",
+    price: "R$ 250,00",
+    listImage: "/products/store/pachamama.png",
+    listImageAlt: "Frasco do perfume natural Pachamama",
+    gallery: [
+      {
+        src: "/products/store/pachamama.png",
+        alt: "Frasco do perfume natural Pachamama entre elementos botânicos",
+      },
+    ],
+  },
+  {
+    slug: "mar",
+    name: "Mar",
+    family: "Fresca",
+    tagline: "Movimento, frescor e liberdade",
+    introduction:
+      "Uma fragrância fresca, aromática e luminosa, inspirada no movimento das águas e na sensação de liberdade que nasce diante do mar.",
+    composition:
+      "Álcool de cereais e óleos essenciais de olíbano, lavanda, rosa, alecrim, capim-limão e bergamota.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Bergamota, capim-limão e alecrim",
+        description:
+          "Uma abertura cítrica, vibrante e herbal que traz a sensação de ar fresco e movimento.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Lavanda e rosa",
+        description:
+          "A lavanda acrescenta equilíbrio aromático, enquanto a rosa suaviza a composição com delicadeza floral.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Olíbano",
+        description: "Permanece ao fundo trazendo profundidade e sustentação à fragrância.",
+      },
+    ],
+    mythologyTitle: "A força da natureza que inspira o perfume",
+    mythology: [
+      "O Mar representa movimento, frescor e fluidez. Nunca permanece exatamente o mesmo: avança, recua, transforma-se e encontra novamente seu ritmo. É dessa natureza em constante movimento que nasce este perfume.",
+      "Mar foi criado para traduzir em aroma a sensação de estar diante das águas: o ar fresco, a amplitude do horizonte e aquele instante em que respiramos profundamente e voltamos nossa atenção para o presente.",
+      "Uma fragrância feita de plantas para momentos que pedem leveza, movimento e liberdade.",
+    ],
+    volume: "30 ml",
+    material: "Vidro",
+    packaging: "Saco de linho bordado com flores",
+    price: "R$ 200,00",
+    listImage: "/products/store/perfume_mar.png",
+    listImageAlt: "Frasco do perfume natural Mar",
+    gallery: [
+      {
+        src: "/products/store/perfume_mar.png",
+        alt: "Frasco do perfume natural Mar",
+      },
+    ],
+  },
+  {
+    slug: "lua",
+    name: "Lua",
+    family: "Terrosa",
+    tagline: "Silêncio, profundidade e introspecção",
+    introduction:
+      "Uma fragrância terrosa, amadeirada, profunda e contemplativa, inspirada no silêncio da noite e nos ciclos da Lua.",
+    composition:
+      "Álcool de cereais e óleos essenciais de vetiver, cedro, petitgrain, lavanda e ylang-ylang.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Petitgrain e lavanda",
+        description: "Uma abertura aromática e fresca que convida à quietude.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Ylang-ylang",
+        description: "Acrescenta suavidade floral ao coração da fragrância.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Cedro e vetiver",
+        description:
+          "Uma base amadeirada, terrosa e envolvente, que traz profundidade e sustentação à composição.",
+      },
+    ],
+    mythologyTitle: "Os ciclos da Lua que inspiram o perfume",
+    mythology: [
+      "A Lua representa silêncio, profundidade e introspecção. Seus ciclos lembram que a natureza também conhece o tempo da pausa, do recolhimento e da transformação.",
+      "Lua foi criado para traduzir em aroma a sensação da noite: a quietude, a presença e o convite para voltar a atenção para dentro.",
+      "Uma fragrância feita de plantas para momentos que pedem calma, profundidade e conexão consigo mesma.",
+    ],
+    volume: "30 ml",
+    material: "Vidro",
+    packaging: "Saco de linho bordado com flores",
+    price: "R$ 200,00",
+    listImage: "/products/store/perfume_lua.png",
+    listImageAlt: "Frasco do perfume natural Lua",
+    gallery: [
+      {
+        src: "/products/store/perfume_lua.png",
+        alt: "Frasco do perfume natural Lua",
+      },
+    ],
+  },
+  {
+    slug: "sol",
+    name: "Sol",
+    family: "Oriental",
+    tagline: "Calor, vitalidade e expansão",
+    introduction:
+      "Uma fragrância quente, intensa e envolvente, inspirada na força e na luminosidade do Sol.",
+    composition:
+      "Álcool de cereais e óleos essenciais de amêndoas amargas, canela, cravo, junípero e rosa.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Junípero",
+        description: "Uma abertura verde e luminosa que traz movimento à composição.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Rosa e amêndoas amargas",
+        description: "Um coração floral e envolvente, com personalidade e intensidade.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Canela e cravo",
+        description: "Uma base quente e especiada que sustenta a fragrância.",
+      },
+    ],
+    mythologyTitle: "A luminosidade do Sol que inspira o perfume",
+    mythology: [
+      "O Sol representa calor, vitalidade e expansão. Sua presença ilumina, aquece e convida a natureza ao movimento.",
+      "Sol foi criado para transformar essa força em uma experiência olfativa intensa e envolvente, combinando a luminosidade do junípero e da rosa ao calor das amêndoas, da canela e do cravo.",
+      "Uma fragrância feita de plantas para momentos que pedem presença, energia e expansão.",
+    ],
+    volume: "30 ml",
+    material: "Vidro",
+    packaging: "Saco de linho bordado com flores",
+    price: "R$ 200,00",
+    listImage: "/products/store/perfume_sol.png",
+    listImageAlt: "Frasco do perfume natural Sol",
+    gallery: [
+      {
+        src: "/products/store/perfume_sol.png",
+        alt: "Frasco do perfume natural Sol",
       },
     ],
   },

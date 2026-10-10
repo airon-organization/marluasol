@@ -6,66 +6,6 @@ import Header from "../components/header";
 import OlfactoryQuiz from "../components/olfactory-quiz";
 import { products } from "./products";
 
-type StoreProduct = {
-  name: string;
-  family: string;
-  volume: string;
-  price: string;
-  image: string;
-  imageAlt: string;
-};
-
-const storeProducts: StoreProduct[] = [
-  {
-    name: "Pachamama",
-    family: "Terrosa fresca",
-    volume: "50 ml",
-    price: "R$ 250,00",
-    image: "/products/store/pachamama.png",
-    imageAlt: "Frasco do perfume natural Pachamama",
-  },
-  {
-    name: "Maçã e Figo",
-    family: "Frutado doce",
-    volume: "25 ml",
-    price: "R$ 150,00",
-    image: "/products/store/maca_e_figo.png",
-    imageAlt: "Frasco do perfume natural Maçã e Figo",
-  },
-  {
-    name: "Hécate",
-    family: "Oriental resinoso",
-    volume: "180 ml",
-    price: "R$ 450,00",
-    image: "/products/store/hecate.png",
-    imageAlt: "Frasco do perfume natural Hécate",
-  },
-  {
-    name: "Perfume Mar",
-    family: "Fresca",
-    volume: "30 ml",
-    price: "R$ 200,00",
-    image: "/products/store/perfume_mar.png",
-    imageAlt: "Frasco do Perfume Mar",
-  },
-  {
-    name: "Perfume Lua",
-    family: "Amadeirada",
-    volume: "30 ml",
-    price: "R$ 200,00",
-    image: "/products/store/perfume_lua.png",
-    imageAlt: "Frasco do Perfume Lua",
-  },
-  {
-    name: "Perfume Sol",
-    family: "Oriental",
-    volume: "30 ml",
-    price: "R$ 200,00",
-    image: "/products/store/perfume_sol.png",
-    imageAlt: "Frasco do Perfume Sol",
-  },
-];
-
 export default function LojaPage() {
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
@@ -80,10 +20,10 @@ export default function LojaPage() {
                 Loja online
               </Typography>
               <Typography component="h2" id="rituals-title" variant="h2" sx={{ mt: 1, color: "primary.dark", fontSize: { xs: "1.55rem", sm: "2rem" } }}>
-                Aromas para seus rituais
+                Perfumes naturais
               </Typography>
               <Typography sx={{ mt: 1.5, mb: 4, maxWidth: 720, color: "text.secondary", lineHeight: 1.7 }}>
-                Uma curadoria de criações botânicas para transformar o cuidado cotidiano em presença.
+                Criações botânicas artesanais feitas a partir de plantas, em pequenos lotes.
               </Typography>
 
               <Grid container spacing={{ xs: 3.5, sm: 2.25 }}>
@@ -143,7 +83,7 @@ export default function LojaPage() {
                     </Typography>
                     <Stack spacing={0.25} sx={{ mt: 0.65 }}>
                       <Typography sx={detailStyles}>Família olfativa fresca</Typography>
-                      <Typography sx={detailStyles}>Família olfativa amadeirada</Typography>
+                      <Typography sx={detailStyles}>Família olfativa terrosa</Typography>
                       <Typography sx={detailStyles}>Família olfativa oriental</Typography>
                     </Stack>
                     <Stack spacing={0.25} sx={{ mt: 2 }}>
@@ -171,40 +111,6 @@ export default function LojaPage() {
                 </Grid>
               </Grid>
             </Box>
-
-            <Box component="section" id="perfumes-naturais" aria-labelledby="products-title" sx={{ mt: { xs: 7, sm: 9 } }}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box aria-hidden="true" sx={{ width: 3, height: 26, bgcolor: "primary.main", borderRadius: 2 }} />
-                <Typography component="h2" id="products-title" sx={sectionTitleStyles}>
-                  Perfumes naturais para todos os gostos
-                </Typography>
-              </Box>
-
-              <Grid container spacing={{ xs: 4, sm: 2.5, md: 3 }} sx={{ mt: { xs: 2.5, sm: 3 } }}>
-                {storeProducts.map((product) => (
-                  <Grid key={product.name} size={{ xs: 12, sm: 6, md: 4 }} sx={{ display: "flex" }}>
-                    <Box component="article" sx={{ display: "flex", width: "100%", flexDirection: "column" }}>
-                      <Box sx={{ position: "relative", width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: 1, bgcolor: "#e8e4df" }}>
-                        <Image
-                          alt={product.imageAlt}
-                          fill
-                          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-                          src={product.image}
-                          style={{ objectFit: "cover" }}
-                        />
-                      </Box>
-                      <Box sx={{ display: "flex", flex: 1, flexDirection: "column", pt: 1.35 }}>
-                        <Typography component="h3" sx={productNameStyles}>{product.name}</Typography>
-                        <Typography sx={{ ...detailStyles, minHeight: { md: "2.6em" } }}>Família olfativa {product.family}</Typography>
-                        <Typography sx={detailStyles}>{product.volume}</Typography>
-                        <Typography sx={{ ...detailStyles, mt: 0.25 }}>{product.price}</Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-
 
           </Box>
         </Box>
