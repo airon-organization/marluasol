@@ -3,11 +3,11 @@ import LocalFloristRoundedIcon from "@mui/icons-material/LocalFloristRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Box, Button, Chip, Divider, Grid, Stack, Typography } from "@mui/material";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import { buildWhatsAppLink } from "../../lib/contact";
+import ProductGallery, { ProductImageGallery } from "../product-gallery";
 import { getProduct, products } from "../products";
 
 type ProductPageProps = {
@@ -64,41 +64,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <Grid container spacing={{ xs: 4, md: 7, lg: 9 }} sx={{ alignItems: "flex-start" }}>
             <Grid size={{ xs: 12, md: 7 }}>
-              <Box
-                aria-label={`Galeria do perfume ${product.name}`}
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: { xs: 1.25, sm: 2 },
-                }}
-              >
-                {product.gallery.map((image, index) => (
-                  <Box
-                    key={image.src}
-                    sx={{
-                      position: "relative",
-                      gridColumn: index === 0 ? "1 / -1" : "auto",
-                      aspectRatio: index === 0 ? { xs: "4 / 5", sm: "5 / 4" } : "1 / 1",
-                      overflow: "hidden",
-                      borderRadius: { xs: 1.5, sm: 2 },
-                      bgcolor: "#eee8df",
-                    }}
-                  >
-                    <Image
-                      alt={image.alt}
-                      fill
-                      preload={index === 0}
-                      sizes={
-                        index === 0
-                          ? "(max-width: 900px) 100vw, 58vw"
-                          : "(max-width: 900px) 50vw, 29vw"
-                      }
-                      src={image.src}
-                      style={{ objectFit: "cover" }}
-                    />
-                  </Box>
-                ))}
-              </Box>
+              <ProductGallery images={product.gallery} productName={product.name} />
             </Grid>
 
             <Grid size={{ xs: 12, md: 5 }}>
@@ -199,6 +165,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </Box>
             </Grid>
           </Grid>
+
+          <ProductImageGallery images={product.gallery.slice(1)} productName={product.name} />
         </Box>
 
         <Box sx={{ bgcolor: "#f2eaf2" }}>
