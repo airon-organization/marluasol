@@ -15,6 +15,82 @@ body {
   color: #222;
 }
 
+.page-loading-overlay {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(111, 31, 98, 0.92), transparent 48%),
+    #26071f;
+  color: #fff8e9;
+  opacity: 1;
+  transition: opacity 350ms ease, visibility 350ms ease;
+}
+
+.page-loading-overlay--leaving {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.page-loading-overlay__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-loading-overlay__symbol {
+  width: clamp(7.5rem, 24vw, 10.25rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.page-loading-overlay__wordmark {
+  width: min(20.6875rem, 72vw);
+  position: relative;
+  aspect-ratio: 461 / 143;
+  overflow: hidden;
+}
+
+.page-loading-overlay__wordmark-image {
+  position: absolute;
+  width: 106.94%;
+  height: 172.03%;
+  max-width: none;
+  left: -3.04%;
+  top: -16.08%;
+}
+
+.page-loading-overlay__spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 248, 233, 0.3);
+  border-top-color: #e0aa18;
+  border-radius: 50%;
+  animation: page-loading-spin 800ms linear infinite;
+}
+
+.page-loading-overlay__label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes page-loading-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 .skip-link {
   position: absolute;
   left: -999px;
@@ -124,6 +200,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
+  .page-loading-overlay,
+  .page-loading-overlay__spinner {
+    animation: none;
+    transition: none;
+  }
 
   .cosmic-flight__starfield,
   .cosmic-flight__shooting-star {

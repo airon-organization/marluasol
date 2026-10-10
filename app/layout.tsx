@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PageLoadingOverlay from "./components/page-loading-overlay";
 import ThemeRegistry from "./components/theme-registry";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
       lang="pt-BR"
     >
       <body>
+        <PageLoadingOverlay />
         <a className="skip-link" href="#page-content">Pular para o conteudo principal</a>
         <ThemeRegistry>{children}</ThemeRegistry>
       </body>
