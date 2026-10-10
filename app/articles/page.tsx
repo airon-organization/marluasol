@@ -11,13 +11,6 @@ const articleCards: ArticleCardProps[] = [
     image: article.image,
     imageAlt: article.imageAlt,
   })),
-  {
-    title: "O que é Yin Yoga",
-    excerpt: "Uma introdução à prática, seus fundamentos e o convite à quietude. Saiba mais aqui.",
-    href: "/articles/o_que_e_yin_yoga",
-    image: "/articles/o_que_e_yin_yoga/IMG-20251001-WA0015 1.png",
-    imageAlt: "Prática de Yin Yoga",
-  },
 ];
 
 export default function ArticlesPage() {

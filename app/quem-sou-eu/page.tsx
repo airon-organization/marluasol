@@ -7,12 +7,12 @@ import { buildWhatsAppLink } from "../lib/contact";
 
 const paragraphs = [
   "Sempre tive uma conexão muito forte com a natureza e com as plantas, embora, durante muitos anos, tenha vivido essa relação quase como se fosse um segredo, talvez por seguir uma trajetória profissional tão diferente. Sou engenheira e construí minha carreira em ambientes técnicos, trabalhando com qualidade de materiais em multinacionais, em um universo marcado por precisão, especificações e racionalidade.",
-  "Ao mesmo tempo, porém, o estudo das plantas, dos aromas e das práticas de bem-estar esteve sempre presente na minha vida. A aromaterapia surgiu primeiro como interesse pessoal, depois como campo de estudo, assim como a filosofia do Yoga, que me acompanha há anos. Minha formação em Yin Yoga foi mais um passo nesse percurso e me ajudou a compreender, com ainda mais clareza, o quanto presença, sensibilidade e conexão com o corpo fazem parte daquilo que quero levar para o mundo.",
+  "Ao mesmo tempo, porém, o estudo das plantas, dos aromas e das práticas de bem-estar esteve sempre presente na minha vida. A aromaterapia surgiu primeiro como interesse pessoal e depois como campo de estudo, ajudando-me a compreender, com ainda mais clareza, o quanto presença, sensibilidade e conexão com o corpo fazem parte daquilo que quero levar para o mundo.",
   "Foi através dos aromas naturais que essas diferentes partes da minha história começaram a se encontrar. A paixão pelas plantas e a percepção de que seus aromas podem transformar a maneira como vivenciamos um momento despertaram em mim o desejo de aprofundar esse conhecimento e compartilhá-lo com outras pessoas que também buscam uma vida mais natural, consciente e conectada consigo mesmas.",
   "O estudo em uma escola de perfumaria natural aprofundou ainda mais essa relação. Fui aluna da Dra. Palmira Margarida, na Escola de Perfumaria Ancestral, onde mergulhei no estudo das plantas e de seus simbolismos, mitologias femininas e dos benefícios físicos e mentais dos perfumes naturais. Aos poucos, aquilo que antes era apenas uma paixão foi ganhando forma, propósito e identidade.",
   "Assim nasceu a MarLuaSol. Hoje, crio perfumes naturais em pequenos lotes, utilizando somente produtos naturais, como óleos essenciais, extratos botânicos e plantas. Cada perfume nasce do encontro entre estudo, sensibilidade, história, natureza e criação artesanal. Utilizo na perfumaria o cuidado com segurança e qualidade que aprendi na engenharia.",
   "A MarLuaSol representa essa união entre dois mundos que durante muito tempo pareceram separados para mim: o olhar técnico e racional da engenharia e a sensibilidade das plantas, dos aromas e das práticas ancestrais.",
-  "No fim, percebi que nunca precisei escolher entre um e outro. Era justamente dessa união que a MarLuaSol precisava nascer. Hoje me vejo como uma pessoa com várias facetas: sou engenheira de controle e automação, com pós-graduação em segurança do trabalho, mas também sou professora de Yin Yoga e perfumista natural. Espero trazer ao mundo o melhor de todos os meus lados, com o intuito de ajudar as pessoas e fazer minha parte para tornar o mundo um lugar mais gentil e perfumado.",
+  "No fim, percebi que nunca precisei escolher entre um e outro. Era justamente dessa união que a MarLuaSol precisava nascer. Hoje me vejo como uma pessoa com várias facetas: sou engenheira de controle e automação, com pós-graduação em segurança do trabalho, e também perfumista natural. Espero trazer ao mundo o melhor de todos os meus lados, com o intuito de ajudar as pessoas e fazer minha parte para tornar o mundo um lugar mais gentil e perfumado.",
 ];
 
 export default function QuemSouEuPage() {
@@ -26,7 +26,7 @@ export default function QuemSouEuPage() {
               Mariane Vidal
             </Typography>
             <Typography sx={{ mt: 1.5, mb: 3, color: "#111", fontSize: { xs: "0.78rem", sm: "0.86rem" }, fontWeight: 900, textTransform: "uppercase" }}>
-              Perfumista natural e professora de Yin Yoga
+              Perfumista natural e engenheira
             </Typography>
             <Stack spacing={2.5}>
               {paragraphs.map((paragraph) => (
@@ -48,10 +48,10 @@ export default function QuemSouEuPage() {
               </Typography>
               <Stack spacing={2} sx={{ alignItems: "center" }}>
                 <Typography align="center" sx={{ lineHeight: 1.6 }}>
-                  Fale comigo pelo WhatsApp para saber mais sobre Yin Yoga, perfumaria natural e atendimentos.
+                  Fale comigo pelo WhatsApp para saber mais sobre perfumaria natural e atendimentos.
                 </Typography>
                 <Button
-                  href={buildWhatsAppLink("Ola! Gostaria de saber mais sobre Yin Yoga, perfumaria natural e atendimentos.")}
+                  href={buildWhatsAppLink("Olá! Gostaria de saber mais sobre perfumaria natural e atendimentos.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"
