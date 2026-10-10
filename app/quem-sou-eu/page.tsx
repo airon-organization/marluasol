@@ -6,12 +6,13 @@ import Header from "../components/header";
 import { buildWhatsAppLink } from "../lib/contact";
 
 const paragraphs = [
-  "Desde muito jovem me identifico profundamente com a natureza e com a filosofia do Yoga. As plantas são minhas guias no meu processo de autoconhecimento: me inspiram como seres vivos complexos e me ajudam a buscar uma vida com mais equilíbrio.",
-  "Minha paixão pelos aromas naturais e a compreensão de que eles atuam de maneira sinérgica com nossos corpos despertaram em mim o desejo de compartilhar esse conhecimento com quem também sente o chamado para uma vida mais natural, harmoniosa com a natureza e consigo.",
-  "A perfumaria natural e a aromaterapia fizeram sentido na minha vida muito antes de se tornarem algo que eu pudesse imaginar compartilhar com outras pessoas. Durante muito tempo, foi uma jornada pessoal e quase secreta.",
-  "Porque uma engenheira de controle e automação faria perfumes?",
-  "Por algum tempo, isso foi um conflito para mim. Mas estudar me trouxe segurança — e, principalmente, a vontade de permitir que outras pessoas também conhecessem essa arte.\nFui aluna da Doutora Palmira Margarida, na Escola de Perfumaria Ancestral, e, com o tempo, fui me envolvendo cada vez mais com a alquimia das plantas. Hoje crio perfumes naturais e pequenos lotes exclusivos, feitos com matérias-primas de origem vegetal e pensados para proporcionar experiências por meio dos aromas naturais.",
-  "A natureza não é algo externo a nós. Nós fazemos parte dela.\nE talvez seja justamente essa comunhão entre nosso mundo interior e o mundo das plantas o que temos de mais próximo da verdadeira MAGIA.",
+  "Sempre tive uma conexão muito forte com a natureza e com as plantas, embora, durante muitos anos, tenha vivido essa relação quase como se fosse um segredo, talvez por seguir uma trajetória profissional tão diferente. Sou engenheira e construí minha carreira em ambientes técnicos, trabalhando com qualidade de materiais em multinacionais, em um universo marcado por precisão, especificações e racionalidade.",
+  "Ao mesmo tempo, porém, o estudo das plantas, dos aromas e das práticas de bem-estar esteve sempre presente na minha vida. A aromaterapia surgiu primeiro como interesse pessoal, depois como campo de estudo, assim como a filosofia do Yoga, que me acompanha há anos. Minha formação em Yin Yoga foi mais um passo nesse percurso e me ajudou a compreender, com ainda mais clareza, o quanto presença, sensibilidade e conexão com o corpo fazem parte daquilo que quero levar para o mundo.",
+  "Foi através dos aromas naturais que essas diferentes partes da minha história começaram a se encontrar. A paixão pelas plantas e a percepção de que seus aromas podem transformar a maneira como vivenciamos um momento despertaram em mim o desejo de aprofundar esse conhecimento e compartilhá-lo com outras pessoas que também buscam uma vida mais natural, consciente e conectada consigo mesmas.",
+  "O estudo em uma escola de perfumaria natural aprofundou ainda mais essa relação. Fui aluna da Dra. Palmira Margarida, na Escola de Perfumaria Ancestral, onde mergulhei no estudo das plantas e de seus simbolismos, mitologias femininas e dos benefícios físicos e mentais dos perfumes naturais. Aos poucos, aquilo que antes era apenas uma paixão foi ganhando forma, propósito e identidade.",
+  "Assim nasceu a MarLuaSol. Hoje, crio perfumes naturais em pequenos lotes, utilizando somente produtos naturais, como óleos essenciais, extratos botânicos e plantas. Cada perfume nasce do encontro entre estudo, sensibilidade, história, natureza e criação artesanal. Utilizo na perfumaria o cuidado com segurança e qualidade que aprendi na engenharia.",
+  "A MarLuaSol representa essa união entre dois mundos que durante muito tempo pareceram separados para mim: o olhar técnico e racional da engenharia e a sensibilidade das plantas, dos aromas e das práticas ancestrais.",
+  "No fim, percebi que nunca precisei escolher entre um e outro. Era justamente dessa união que a MarLuaSol precisava nascer. Hoje me vejo como uma pessoa com várias facetas: sou engenheira de controle e automação, com pós-graduação em segurança do trabalho, mas também sou professora de Yin Yoga e perfumista natural. Espero trazer ao mundo o melhor de todos os meus lados, com o intuito de ajudar as pessoas e fazer minha parte para tornar o mundo um lugar mais gentil e perfumado.",
 ];
 
 export default function QuemSouEuPage() {
@@ -37,8 +38,8 @@ export default function QuemSouEuPage() {
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
-            <Box sx={{ position: "relative", width: "100%", maxWidth: 520, mx: "auto", aspectRatio: "1113 / 1414", overflow: "hidden", borderRadius: 1 }}>
-              <Image alt="Mariane Vidal em momento de meditação" fill priority sizes="(max-width: 900px) 100vw, 42vw" src="/quem-sou-eu/PERFIL 1.png" style={{ objectFit: "cover" }} />
+            <Box sx={{ position: "relative", width: "100%", maxWidth: 520, mx: "auto", aspectRatio: "1046 / 1504", overflow: "hidden", borderRadius: 1 }}>
+              <Image alt="Mariane Vidal em meio à natureza" fill preload sizes="(max-width: 900px) 100vw, 42vw" src="/quem-sou-eu/imagem-quem-sou-eu.png" style={{ objectFit: "cover" }} />
             </Box>
 
             <Box component="section" sx={{ maxWidth: 620, mx: "auto", mt: { xs: 5, md: 6 } }}>

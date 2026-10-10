@@ -18,16 +18,8 @@ export default function InnerPage({ eyebrow, title, description, children }: Inn
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <Header />
-      <Container disableGutters maxWidth="lg" sx={{ bgcolor: "background.paper", minHeight: "60vh" }}>
-        <Box
-          component="header"
-          sx={{
-            bgcolor: "primary.dark",
-            color: "common.white",
-            px: { xs: 2.5, sm: 6 },
-            py: { xs: 5, sm: 7 },
-          }}
-        >
+      <Box component="header" sx={{ width: "100%", bgcolor: "primary.dark", color: "common.white" }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2.5, sm: 6 }, py: { xs: 5, sm: 7 } }}>
           {eyebrow && (
             <Typography sx={{ color: "secondary.light", fontSize: "0.72rem", fontWeight: 900, letterSpacing: "0.14em", textTransform: "uppercase" }}>
               {eyebrow}
@@ -39,8 +31,10 @@ export default function InnerPage({ eyebrow, title, description, children }: Inn
           <Typography sx={{ mt: 2, maxWidth: 720, color: "rgba(255,255,255,0.82)", fontSize: { xs: "1rem", sm: "1.12rem" }, lineHeight: 1.6 }}>
             {description}
           </Typography>
-        </Box>
+        </Container>
+      </Box>
 
+      <Container disableGutters maxWidth="lg" sx={{ bgcolor: "background.paper", minHeight: "60vh" }}>
         <Box component="main" id="page-content" sx={{ px: { xs: 2.5, sm: 6 }, py: { xs: 4, sm: 6 } }}>
           {children}
           <Stack direction="row" sx={{ mt: 6 }}>
