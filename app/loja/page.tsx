@@ -67,9 +67,9 @@ export default function LojaPage() {
                     <Stack spacing={0.25} sx={{ mt: 2 }}>
                       <Typography sx={detailStyles}>3 frascos x 30 ml</Typography>
                       <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
-                        <Typography sx={originalPriceStyles}>R$ 750,00</Typography>
+                        <Typography sx={originalPriceStyles}>R$ 600,00</Typography>
                         <Typography sx={priceConnectorStyles}>por</Typography>
-                        <Typography sx={promotionalPriceStyles}>R$ 600,00</Typography>
+                        <Typography sx={promotionalPriceStyles}>R$ 480,00</Typography>
                       </Stack>
                     </Stack>
                   </Box>
