@@ -69,20 +69,28 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 200,00",
     price: "R$ 180,00",
-    listImage: "/products/rosa_vermelha.png",
+    listImage: "/products/rosa-vermelha/imagem-1.png",
     listImageAlt: "Perfume Rosa Vermelha com rosa e elementos botânicos",
     gallery: [
       {
-        src: "/products/rosa-vermelha/galeria-1.png",
-        alt: "Frasco do perfume Rosa Vermelha com rosas e canela",
+        src: "/products/rosa-vermelha/imagem-1.png",
+        alt: "Perfume natural Rosa Vermelha - imagem 1",
       },
       {
-        src: "/products/rosa-vermelha/galeria-2.png",
-        alt: "Perfume Rosa Vermelha em composição botânica",
+        src: "/products/rosa-vermelha/imagem-2.png",
+        alt: "Perfume natural Rosa Vermelha - imagem 2",
       },
       {
-        src: "/products/rosa-vermelha/galeria-3.jpg",
-        alt: "Detalhes do perfume natural Rosa Vermelha",
+        src: "/products/rosa-vermelha/imagem-3.jpg",
+        alt: "Perfume natural Rosa Vermelha - imagem 3",
+      },
+      {
+        src: "/products/rosa-vermelha/imagem-4.png",
+        alt: "Perfume natural Rosa Vermelha - imagem 4",
+      },
+      {
+        src: "/products/rosa-vermelha/imagem-5.png",
+        alt: "Perfume natural Rosa Vermelha - imagem 5",
       },
       {
         src: "/products/rosa-vermelha/inspiracao-rosa-vermelha.png",
@@ -132,24 +140,24 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado",
     originalPrice: "R$ 250,00",
     price: "R$ 225,00",
-    listImage: "/products/lakshmi.png",
+    listImage: "/products/lakshmi/imagem-1.png",
     listImageAlt: "Perfume Lakshmi entre plantas aromáticas",
     gallery: [
       {
-        src: "/products/lakshmi/galeria-1.png",
-        alt: "Frasco do perfume natural Lakshmi",
+        src: "/products/lakshmi/imagem-1.png",
+        alt: "Perfume natural Lakshmi - imagem 1",
       },
       {
-        src: "/products/lakshmi/galeria-2.png",
-        alt: "Perfume Lakshmi em cenário botânico",
+        src: "/products/lakshmi/imagem-2.jpg",
+        alt: "Perfume natural Lakshmi - imagem 2",
       },
       {
-        src: "/products/lakshmi/galeria-3.png",
-        alt: "Composição aromática do perfume Lakshmi",
+        src: "/products/lakshmi/imagem-3.png",
+        alt: "Perfume natural Lakshmi - imagem 3",
       },
       {
-        src: "/products/lakshmi/galeria-4.png",
-        alt: "Detalhe do frasco do perfume Lakshmi",
+        src: "/products/lakshmi/imagem-4.png",
+        alt: "Perfume natural Lakshmi - imagem 4",
       },
       {
         src: "/products/lakshmi/inspiracao-lakshmi.png",
@@ -198,20 +206,20 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 180,00",
     price: "R$ 150,00",
-    listImage: "/products/maca_e_canela.png",
+    listImage: "/products/maca-e-canela/imagem-1.png",
     listImageAlt: "Frasco do perfume Maçã e Canela",
     gallery: [
       {
-        src: "/products/maca-e-canela/galeria-1.png",
-        alt: "Frasco do perfume natural Maçã e Canela",
+        src: "/products/maca-e-canela/imagem-1.png",
+        alt: "Perfume natural Maçã - imagem 1",
       },
       {
-        src: "/products/maca-e-canela/galeria-2.png",
-        alt: "Perfume Maçã e Canela com ingredientes botânicos",
+        src: "/products/maca-e-canela/imagem-2.png",
+        alt: "Perfume natural Maçã - imagem 2",
       },
       {
-        src: "/products/maca-e-canela/galeria-3.jpg",
-        alt: "Detalhes do perfume Maçã",
+        src: "/products/maca-e-canela/imagem-3.jpg",
+        alt: "Perfume natural Maçã - imagem 3",
       },
       {
         src: "/products/maca-e-canela/inspiracao-core.jpg",
@@ -260,12 +268,12 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 200,00",
     price: "R$ 150,00",
-    listImage: "/products/maca-e-figo/galeria-1.jpg",
+    listImage: "/products/maca-e-figo/imagem-1.jpg",
     listImageAlt: "Frasco do perfume natural Maçã e Figo",
     gallery: [
       {
-        src: "/products/maca-e-figo/galeria-1.jpg",
-        alt: "Frasco do perfume natural Maçã e Figo",
+        src: "/products/maca-e-figo/imagem-1.jpg",
+        alt: "Perfume natural Maçã e Figo - imagem 1",
       },
     ],
   },
@@ -310,12 +318,20 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 250,00",
     price: "R$ 225,00",
-    listImage: "/products/store/pachamama.png",
+    listImage: "/products/pachamama/imagem-1.png",
     listImageAlt: "Frasco do perfume natural Pachamama",
     gallery: [
       {
-        src: "/products/store/pachamama.png",
-        alt: "Frasco do perfume natural Pachamama entre elementos botânicos",
+        src: "/products/pachamama/imagem-1.png",
+        alt: "Perfume natural Pachamama - imagem 1",
+      },
+      {
+        src: "/products/pachamama/imagem-2.jpg",
+        alt: "Perfume natural Pachamama - imagem 2",
+      },
+      {
+        src: "/products/pachamama/imagem-3.png",
+        alt: "Perfume natural Pachamama - imagem 3",
       },
     ],
   },
@@ -359,16 +375,16 @@ export const products: Product[] = [
     material: "Vidro em formato de caveira",
     originalPrice: "R$ 450,00",
     price: "R$ 360,00",
-    listImage: "/products/hecate/galeria-1.png",
+    listImage: "/products/hecate/imagem-1.png",
     listImageAlt: "Frasco em formato de caveira do perfume natural Hécate",
     gallery: [
       {
-        src: "/products/hecate/galeria-1.png",
-        alt: "Frasco em formato de caveira do perfume natural Hécate",
+        src: "/products/hecate/imagem-1.png",
+        alt: "Perfume natural Hécate - imagem 1",
       },
       {
-        src: "/products/hecate/galeria-2.png",
-        alt: "Vista frontal do frasco do perfume natural Hécate",
+        src: "/products/hecate/imagem-2.png",
+        alt: "Perfume natural Hécate - imagem 2",
       },
     ],
   },
@@ -412,12 +428,20 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 200,00",
     price: "R$ 180,00",
-    listImage: "/products/store/perfume_mar.png",
+    listImage: "/products/mar/imagem-1.png",
     listImageAlt: "Frasco do perfume natural Mar",
     gallery: [
       {
-        src: "/products/store/perfume_mar.png",
-        alt: "Frasco do perfume natural Mar",
+        src: "/products/mar/imagem-1.png",
+        alt: "Perfume natural Mar - imagem 1",
+      },
+      {
+        src: "/products/mar/imagem-2.png",
+        alt: "Perfume natural Mar - imagem 2",
+      },
+      {
+        src: "/products/mar/imagem-3.png",
+        alt: "Perfume natural Mar - imagem 3",
       },
     ],
   },
@@ -460,12 +484,20 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 200,00",
     price: "R$ 180,00",
-    listImage: "/products/store/perfume_lua.png",
+    listImage: "/products/lua/imagem-1.png",
     listImageAlt: "Frasco do perfume natural Lua",
     gallery: [
       {
-        src: "/products/store/perfume_lua.png",
-        alt: "Frasco do perfume natural Lua",
+        src: "/products/lua/imagem-1.png",
+        alt: "Perfume natural Lua - imagem 1",
+      },
+      {
+        src: "/products/lua/imagem-2.jpg",
+        alt: "Perfume natural Lua - imagem 2",
+      },
+      {
+        src: "/products/lua/imagem-3.png",
+        alt: "Perfume natural Lua - imagem 3",
       },
     ],
   },
@@ -507,12 +539,20 @@ export const products: Product[] = [
     packaging: "Saco de linho bordado com flores",
     originalPrice: "R$ 200,00",
     price: "R$ 180,00",
-    listImage: "/products/store/perfume_sol.png",
+    listImage: "/products/sol/imagem-1.png",
     listImageAlt: "Frasco do perfume natural Sol",
     gallery: [
       {
-        src: "/products/store/perfume_sol.png",
-        alt: "Frasco do perfume natural Sol",
+        src: "/products/sol/imagem-1.png",
+        alt: "Perfume natural Sol - imagem 1",
+      },
+      {
+        src: "/products/sol/imagem-2.jpg",
+        alt: "Perfume natural Sol - imagem 2",
+      },
+      {
+        src: "/products/sol/imagem-3.png",
+        alt: "Perfume natural Sol - imagem 3",
       },
     ],
   },
