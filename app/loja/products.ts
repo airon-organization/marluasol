@@ -556,6 +556,72 @@ export const products: Product[] = [
       },
     ],
   },
+  {
+    slug: "colecao-marluasol",
+    name: "Coleção MarLuaSol",
+    family: "Fresca, terrosa e oriental",
+    tagline: "Um perfume para cada momento do dia",
+    introduction:
+      "Três perfumes inspirados em três forças da natureza: Mar, Lua e Sol. Cada fragrância representa uma atmosfera, um estado de presença e uma forma diferente de sentir a natureza na pele.",
+    composition:
+      "Mar: álcool de cereais e óleos essenciais de olíbano, lavanda, rosa, alecrim, capim-limão e bergamota. Lua: álcool de cereais e óleos essenciais de vetiver, cedro, petitgrain, lavanda e ylang-ylang. Sol: álcool de cereais e óleos essenciais de amêndoas amargas, canela, cravo, junípero e rosa.",
+    highlightsTitle: "Os três perfumes da coleção",
+    highlights: [
+      {
+        title: "Mar",
+        ingredients: "Família fresca",
+        description:
+          "Fresca, aromática e luminosa. Saída de bergamota, capim-limão e alecrim, coração de lavanda e rosa, fundo de olíbano.",
+      },
+      {
+        title: "Lua",
+        ingredients: "Família terrosa",
+        description:
+          "Terrosa, amadeirada e contemplativa. Saída de petitgrain e lavanda, coração de ylang-ylang, fundo de cedro e vetiver.",
+      },
+      {
+        title: "Sol",
+        ingredients: "Família oriental",
+        description:
+          "Quente, intensa e envolvente. Saída de junípero, coração de rosa e amêndoas amargas, fundo de canela e cravo.",
+      },
+    ],
+    mythologyTitle: "A natureza que inspira a coleção",
+    mythology: [
+      "A Coleção MarLuaSol reúne três perfumes naturais artesanais, produzidos em pequena escala e elaborados com ingredientes 100% naturais. Mar, Lua e Sol representam três movimentos da natureza e três formas de estar presente.",
+      "O Mar é movimento, frescor e fluidez. A Lua é silêncio, profundidade e introspecção. O Sol é calor, vitalidade e expansão.",
+      "Mar para esportes, atenção plena e meditação; Lua para uma noite tranquila e envolvente; Sol para brilhar e ser magnética. Perfumes criados a partir das plantas para trazer atenção e intenção a cada momento do dia.",
+    ],
+    volume: "3 frascos de 30 ml",
+    material: "Vidro",
+    packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 600,00",
+    price: "R$ 480,00",
+    listImage: "/products/store/collection/collection01.png",
+    listImageAlt: "Caixa da Coleção MarLuaSol com os perfumes Mar, Lua e Sol",
+    gallery: [
+      {
+        src: "/products/store/collection/collection01.png",
+        alt: "Coleção MarLuaSol - imagem 1",
+      },
+      {
+        src: "/products/store/collection/collection02.png",
+        alt: "Coleção MarLuaSol - imagem 2",
+      },
+      {
+        src: "/products/store/collection/collection03.jpg",
+        alt: "Coleção MarLuaSol - imagem 3",
+      },
+      {
+        src: "/products/store/collection/collection04.jpg",
+        alt: "Coleção MarLuaSol - imagem 4",
+      },
+      {
+        src: "/products/store/collection/collection05.jpg",
+        alt: "Coleção MarLuaSol - imagem 5",
+      },
+    ],
+  },
 ];
 
 export function getProduct(slug: string) {

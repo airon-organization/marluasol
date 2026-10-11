@@ -54,42 +54,46 @@ export default function LojaPage() {
 
               <Grid container spacing={{ xs: 3.5, md: 3 }} sx={{ mt: { xs: 1.5, sm: 2.25 } }}>
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <CollectionImage alt="Caixa da Coleção MarLuaSol com os perfumes Mar, Lua e Sol" image="/products/store/collection/collection01.png" />
-                  <Box sx={{ mt: 1.75 }}>
-                    <Typography component="h3" sx={collectionHeadingStyles}>
-                      Coleção MarLuaSol
-                    </Typography>
-                    <Stack spacing={0.25} sx={{ mt: 0.65 }}>
-                      <Typography sx={detailStyles}>Família olfativa fresca</Typography>
-                      <Typography sx={detailStyles}>Família olfativa terrosa</Typography>
-                      <Typography sx={detailStyles}>Família olfativa oriental</Typography>
-                    </Stack>
-                    <Stack spacing={0.25} sx={{ mt: 2 }}>
-                      <Typography sx={detailStyles}>3 frascos x 30 ml</Typography>
-                      <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
-                        <Typography sx={originalPriceStyles}>R$ 600,00</Typography>
-                        <Typography sx={priceConnectorStyles}>por</Typography>
-                        <Typography sx={promotionalPriceStyles}>R$ 480,00</Typography>
+                  <Link href="/loja/colecao-marluasol" style={collectionLinkStyles}>
+                    <CollectionImage alt="Caixa da Coleção MarLuaSol com os perfumes Mar, Lua e Sol" image="/products/store/collection/collection01.png" />
+                    <Box sx={{ mt: 1.75 }}>
+                      <Typography component="h3" sx={collectionHeadingStyles}>
+                        Coleção MarLuaSol
+                      </Typography>
+                      <Stack spacing={0.25} sx={{ mt: 0.65 }}>
+                        <Typography sx={detailStyles}>Família olfativa fresca</Typography>
+                        <Typography sx={detailStyles}>Família olfativa terrosa</Typography>
+                        <Typography sx={detailStyles}>Família olfativa oriental</Typography>
                       </Stack>
-                    </Stack>
-                  </Box>
+                      <Stack spacing={0.25} sx={{ mt: 2 }}>
+                        <Typography sx={detailStyles}>3 frascos x 30 ml</Typography>
+                        <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
+                          <Typography sx={originalPriceStyles}>R$ 600,00</Typography>
+                          <Typography sx={priceConnectorStyles}>por</Typography>
+                          <Typography sx={promotionalPriceStyles}>R$ 480,00</Typography>
+                        </Stack>
+                      </Stack>
+                    </Box>
+                  </Link>
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <CollectionImage alt="Frascos dos perfumes Mar, Lua e Sol sobre tecido acetinado" image="/products/store/collection/collection02.png" />
-                  <Box sx={{ mt: 1.75, maxWidth: 530 }}>
-                    <Typography component="h3" sx={{ ...collectionHeadingStyles, textTransform: "none" }}>
-                      Você não precisa escolher um só perfume!
-                    </Typography>
-                    <Typography sx={{ mt: 0.65, color: "text.primary", fontSize: { xs: "0.9rem", sm: "0.96rem" }, lineHeight: 1.55 }}>
-                      Esse kit contém os principais aromas para todos os momentos do seu dia:
-                    </Typography>
-                    <Stack spacing={0.2} sx={{ mt: 0.35 }}>
-                      <Typography sx={collectionCopyStyles}>Mar para esportes, atenção plena e meditação</Typography>
-                      <Typography sx={collectionCopyStyles}>Lua para uma noite tranquila e envolvente</Typography>
-                      <Typography sx={collectionCopyStyles}>Sol para brilhar e ser magnética</Typography>
-                    </Stack>
-                  </Box>
+                  <Link href="/loja/colecao-marluasol" style={collectionLinkStyles}>
+                    <CollectionImage alt="Frascos dos perfumes Mar, Lua e Sol sobre tecido acetinado" image="/products/store/collection/collection02.png" />
+                    <Box sx={{ mt: 1.75, maxWidth: 530 }}>
+                      <Typography component="h3" sx={{ ...collectionHeadingStyles, textTransform: "none" }}>
+                        Você não precisa escolher um só perfume!
+                      </Typography>
+                      <Typography sx={{ mt: 0.65, color: "text.primary", fontSize: { xs: "0.9rem", sm: "0.96rem" }, lineHeight: 1.55 }}>
+                        Esse kit contém os principais aromas para todos os momentos do seu dia:
+                      </Typography>
+                      <Stack spacing={0.2} sx={{ mt: 0.35 }}>
+                        <Typography sx={collectionCopyStyles}>Mar para esportes, atenção plena e meditação</Typography>
+                        <Typography sx={collectionCopyStyles}>Lua para uma noite tranquila e envolvente</Typography>
+                        <Typography sx={collectionCopyStyles}>Sol para brilhar e ser magnética</Typography>
+                      </Stack>
+                    </Box>
+                  </Link>
                 </Grid>
               </Grid>
             </Box>
@@ -171,6 +175,8 @@ function CollectionImage({ alt, image }: { alt: string; image: string }) {
     </Box>
   );
 }
+
+const collectionLinkStyles = { display: "block", color: "inherit", textDecoration: "none" } as const;
 
 const sectionTitleStyles = {
   color: "primary.dark",
