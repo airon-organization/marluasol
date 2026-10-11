@@ -4,7 +4,7 @@ import PageLoadingOverlay from "./components/page-loading-overlay";
 import ThemeRegistry from "./components/theme-registry";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://marluasol.com.br"),
+  metadataBase: new URL("https://www.marluasol.com.br"),
   title: {
     default: "MarLuaSol | Perfumaria Natural",
     template: "%s | MarLuaSol",
@@ -18,12 +18,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "MarLuaSol",
+    url: "https://www.marluasol.com.br/",
+    images: [{ url: "/logo.png", alt: "Logo MarLuaSol" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MarLuaSol | Perfumaria Natural",
     description:
       "Descubra seu perfil olfativo e conheça perfumes naturais artesanais feitos a partir das plantas.",
+    images: ["/logo.png"],
   },
 };
 
