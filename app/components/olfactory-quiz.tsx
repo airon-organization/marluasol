@@ -289,8 +289,9 @@ export default function OlfactoryQuiz() {
   const [intensity, setIntensity] = useState(2);
   const [currentStep, setCurrentStep] = useState(0);
   const [result, setResult] = useState<QuizResult | null>(null);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
-  const quizRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 
   const selectAnswer = (question: string, option: string) => {
@@ -355,14 +356,20 @@ export default function OlfactoryQuiz() {
     calculateResult();
   };
 
+  const openQuiz = () => {
+    setIsQuizOpen(true);
+    window.setTimeout(() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+  };
+
   const resetQuiz = () => {
     setAnswers({});
     setSelectedIngredients([]);
     setIntensity(2);
     setCurrentStep(0);
     setResult(null);
+    setIsQuizOpen(true);
     setShareMessage("");
-    window.setTimeout(() => quizRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+    window.setTimeout(() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
   };
 
   const primaryProfile = result ? profiles[result.primary] : null;
@@ -505,7 +512,6 @@ export default function OlfactoryQuiz() {
   return (
     <Box
       component="section"
-      ref={quizRef}
       sx={{
         overflow: "hidden",
         scrollMarginTop: 16,
@@ -544,20 +550,33 @@ export default function OlfactoryQuiz() {
             <Typography sx={{ mt: 1.5, maxWidth: 760, color: "rgba(255,255,255,0.78)", lineHeight: 1.65 }}>
               Suas preferências por aromas e sua conexão com arquétipos revelam muito sobre o seu momento atual. Descubra sua família olfativa, a deusa que se conecta com você e os perfumes naturais que podem acompanhar o seu propósito.
             </Typography>
-            <Box sx={{ mt: 3, maxWidth: 620 }}>
-              <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
+            {isQuizOpen ? (
+              <Box sx={{ mt: 3, maxWidth: 620 }}>
+                <Stack direction="row" sx={{ justifyContent: "space-between", mb: 0.75 }}>
                   <Typography sx={{ fontSize: "0.85rem" }}>Seu caminho olfativo</Typography>
                   <Typography sx={{ fontSize: "0.85rem", fontWeight: 800 }}>
-                  {result ? "Concluído" : `Pergunta ${currentStep + 1} de ${questionTitles.length}`}
-                </Typography>
-              </Stack>
-              <LinearProgress
-                aria-label={`${result ? questionTitles.length : currentStep + 1} de ${questionTitles.length} etapas`}
-                value={result ? 100 : ((currentStep + 1) / questionTitles.length) * 100}
-                variant="determinate"
-                sx={{ height: 7, borderRadius: 4, bgcolor: "rgba(255,255,255,0.18)", "& .MuiLinearProgress-bar": { bgcolor: "secondary.main" } }}
-              />
-            </Box>
+                    {result ? "Concluído" : `Pergunta ${currentStep + 1} de ${questionTitles.length}`}
+                  </Typography>
+                </Stack>
+                <LinearProgress
+                  aria-label={`${result ? questionTitles.length : currentStep + 1} de ${questionTitles.length} etapas`}
+                  value={result ? 100 : ((currentStep + 1) / questionTitles.length) * 100}
+                  variant="determinate"
+                  sx={{ height: 7, borderRadius: 4, bgcolor: "rgba(255,255,255,0.18)", "& .MuiLinearProgress-bar": { bgcolor: "secondary.main" } }}
+                />
+              </Box>
+            ) : (
+              <Button
+                aria-controls="olfactory-quiz-form"
+                aria-expanded={false}
+                onClick={openQuiz}
+                startIcon={<AutoAwesomeRoundedIcon />}
+                variant="contained"
+                sx={{ mt: 3, color: "primary.dark", bgcolor: "secondary.main", px: { xs: 3, sm: 4 }, py: 1.35, "&:hover": { bgcolor: "#efbd35" } }}
+              >
+                Começar o teste
+              </Button>
+            )}
           </Box>
 
           <Box
@@ -622,11 +641,14 @@ export default function OlfactoryQuiz() {
         </Box>
       </Box>
 
-      {!result && (
+      {isQuizOpen && !result && (
         <Box
           component="form"
+          id="olfactory-quiz-form"
           onSubmit={handleSubmit}
+          ref={formRef}
           sx={{
+            scrollMarginTop: 16,
             minHeight: { xs: 490, sm: 420 },
             px: { xs: 2, sm: 3.5, lg: 5 },
             py: { xs: 2.5, sm: 3.5 },
