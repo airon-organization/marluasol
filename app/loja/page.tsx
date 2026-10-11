@@ -4,7 +4,15 @@ import Link from "next/link";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import OlfactoryQuiz from "../components/olfactory-quiz";
-import { products } from "./products";
+import { products, type Product } from "./products";
+
+const productsInOrder = (slugs: string[]) => slugs
+  .map((slug) => products.find((product) => product.slug === slug))
+  .filter((product): product is Product => Boolean(product));
+
+const loveProducts = productsInOrder(["rosa-vermelha", "maca-e-figo", "maca-e-canela"]);
+const goddessProducts = productsInOrder(["pachamama", "lakshmi", "hecate"]);
+const everydayProducts = productsInOrder(["mar", "lua", "sol"]);
 
 export default function LojaPage() {
   return (
@@ -26,50 +34,17 @@ export default function LojaPage() {
                 Criações botânicas artesanais feitas a partir de plantas, em pequenos lotes.
               </Typography>
 
-              <Grid container spacing={{ xs: 3.5, sm: 2.25 }}>
-                {products.map((product) => (
-                  <Grid key={product.name} size={{ xs: 12, sm: 4 }} sx={{ display: "flex" }}>
-                    <Link
-                      href={`/loja/${product.slug}`}
-                      style={{ display: "flex", width: "100%", height: "100%", color: "inherit", textDecoration: "none" }}
-                    >
-                      <Box
-                        component="article"
-                        sx={{
-                          display: "flex",
-                          width: "100%",
-                          flexDirection: "column",
-                          "& img": { transition: "transform 350ms ease" },
-                          "a:hover & img": { transform: "scale(1.025)" },
-                          "a:focus-visible &": { outline: "2px solid", outlineColor: "primary.main", outlineOffset: 5 },
-                          "@media (prefers-reduced-motion: reduce)": { "& img": { transition: "none" } },
-                        }}
-                      >
-                        <Box sx={{ position: "relative", width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: 1, bgcolor: "#e8e4df" }}>
-                          <Image
-                            alt={product.listImageAlt}
-                            fill
-                            sizes="(max-width: 600px) 100vw, 33vw"
-                            src={product.listImage}
-                            style={{ objectFit: "cover" }}
-                          />
-                        </Box>
-                        <Box sx={{ display: "flex", flex: 1, flexDirection: "column", pt: 1.5 }}>
-                          <Typography component="h3" sx={productNameStyles}>{product.name}</Typography>
-                          <Typography sx={{ ...detailStyles, minHeight: "1.35em" }}>Família olfativa {product.family}</Typography>
-                          <Typography sx={detailStyles}>{product.volume}</Typography>
-                          <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", mt: 0.45, flexWrap: "wrap" }}>
-                            <Typography sx={originalPriceStyles}>{product.originalPrice}</Typography>
-                            <Typography sx={promotionalPriceStyles}>{product.price}</Typography>
-                          </Stack>
-                        </Box>
-                      </Box>
-                    </Link>
-                  </Grid>
-                ))}
-              </Grid>
+              <Box component="section" aria-labelledby="self-love-title">
+                <Typography component="h3" id="self-love-title" sx={sectionTitleStyles}>
+                  Aromas - Trago seu amor (próprio) em 7 dias
+                </Typography>
+                <Typography sx={{ mt: 1, color: "text.primary", fontSize: { xs: "0.9rem", sm: "1rem" } }}>
+                  Uma curadoria de criações botânicas para transformar o cuidado cotidiano em presença e autoestima.
+                </Typography>
+                <ProductGrid items={loveProducts} />
+              </Box>
             </Box>
-            <Box component="section" aria-labelledby="collection-title">
+            <Box component="section" aria-labelledby="collection-title" sx={{ mb: { xs: 7, sm: 9 } }}>
               <Typography component="h2" id="collection-title" sx={sectionTitleStyles}>
                 Coleção MarLuaSol
               </Typography>
@@ -93,6 +68,7 @@ export default function LojaPage() {
                       <Typography sx={detailStyles}>3 frascos x 30 ml</Typography>
                       <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", flexWrap: "wrap" }}>
                         <Typography sx={originalPriceStyles}>R$ 750,00</Typography>
+                        <Typography sx={priceConnectorStyles}>por</Typography>
                         <Typography sx={promotionalPriceStyles}>R$ 600,00</Typography>
                       </Stack>
                     </Stack>
@@ -118,11 +94,73 @@ export default function LojaPage() {
               </Grid>
             </Box>
 
+            <Box component="section" aria-labelledby="goddesses-title" sx={{ mb: { xs: 7, sm: 9 } }}>
+              <Typography component="h2" id="goddesses-title" sx={sectionTitleStyles}>
+                Aromas das deusas
+              </Typography>
+              <ProductGrid items={goddessProducts} />
+            </Box>
+
+            <Box component="section" aria-labelledby="everyday-title">
+              <Typography component="h2" id="everyday-title" sx={sectionTitleStyles}>
+                Aromas para todos os momentos
+              </Typography>
+              <ProductGrid items={everydayProducts} />
+            </Box>
+
           </Box>
         </Box>
       </Box>
       <Footer />
     </Box>
+  );
+}
+
+function ProductGrid({ items }: { items: Product[] }) {
+  return (
+    <Grid container spacing={{ xs: 3.5, sm: 2.25 }} sx={{ mt: { xs: 1.5, sm: 2.25 } }}>
+      {items.map((product) => (
+        <Grid key={product.name} size={{ xs: 12, sm: 4 }} sx={{ display: "flex" }}>
+          <Link
+            href={`/loja/${product.slug}`}
+            style={{ display: "flex", width: "100%", height: "100%", color: "inherit", textDecoration: "none" }}
+          >
+            <Box
+              component="article"
+              sx={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "column",
+                "& img": { transition: "transform 350ms ease" },
+                "a:hover & img": { transform: "scale(1.025)" },
+                "a:focus-visible &": { outline: "2px solid", outlineColor: "primary.main", outlineOffset: 5 },
+                "@media (prefers-reduced-motion: reduce)": { "& img": { transition: "none" } },
+              }}
+            >
+              <Box sx={{ position: "relative", width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: 1, bgcolor: "#e8e4df" }}>
+                <Image
+                  alt={product.listImageAlt}
+                  fill
+                  sizes="(max-width: 600px) 100vw, 33vw"
+                  src={product.listImage}
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", flex: 1, flexDirection: "column", pt: 1.5 }}>
+                <Typography component="h3" sx={productNameStyles}>{product.name}</Typography>
+                <Typography sx={{ ...detailStyles, minHeight: "1.35em" }}>Família olfativa {product.family}</Typography>
+                <Typography sx={detailStyles}>{product.volume}</Typography>
+                <Stack direction="row" spacing={1} sx={{ alignItems: "baseline", mt: 0.45, flexWrap: "wrap" }}>
+                  <Typography sx={originalPriceStyles}>{product.originalPrice}</Typography>
+                  <Typography sx={priceConnectorStyles}>por</Typography>
+                  <Typography sx={promotionalPriceStyles}>{product.price}</Typography>
+                </Stack>
+              </Box>
+            </Box>
+          </Link>
+        </Grid>
+      ))}
+    </Grid>
   );
 }
 
@@ -187,4 +225,11 @@ const promotionalPriceStyles = {
   fontSize: { xs: "1rem", sm: "0.92rem" },
   fontWeight: 900,
   lineHeight: 1.35,
+} as const;
+
+const priceConnectorStyles = {
+  color: "text.secondary",
+  fontSize: { xs: "0.78rem", sm: "0.74rem" },
+  lineHeight: 1.35,
+  textTransform: "uppercase",
 } as const;

@@ -242,7 +242,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <ProductDetail label="Volume" value={product.volume} />
                   {product.liquid && <ProductDetail label="Líquido" value={product.liquid} />}
                   <ProductDetail label="Frasco" value={product.material} />
-                  <ProductDetail label="Embalagem" value={product.packaging} />
+                  {product.packaging && <ProductDetail label="Embalagem" value={product.packaging} />}
                 </Stack>
                 <Box sx={{ mt: 3, p: 2, borderRadius: 1, bgcolor: "rgba(255,255,255,0.08)" }}>
                   <Typography sx={{ fontSize: "0.66rem", lineHeight: 1.65 }}>

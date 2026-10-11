@@ -18,7 +18,7 @@ export type Product = {
   volume: string;
   liquid?: string;
   material: string;
-  packaging: string;
+  packaging?: string;
   originalPrice: string;
   price: string;
   listImage: string;
@@ -67,8 +67,8 @@ export const products: Product[] = [
     liquid: "Avermelhado",
     material: "Vidro redondo, tampa prata com rosa",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 250,00",
-    price: "R$ 200,00",
+    originalPrice: "R$ 200,00",
+    price: "R$ 180,00",
     listImage: "/products/rosa_vermelha.png",
     listImageAlt: "Perfume Rosa Vermelha com rosa e elementos botânicos",
     gallery: [
@@ -130,8 +130,8 @@ export const products: Product[] = [
     liquid: "Transparente",
     material: "Vidro redondo ou quadrado, borrifador prata ou dourado",
     packaging: "Saco de linho bordado",
-    originalPrice: "R$ 300,00",
-    price: "R$ 250,00",
+    originalPrice: "R$ 250,00",
+    price: "R$ 225,00",
     listImage: "/products/lakshmi.png",
     listImageAlt: "Perfume Lakshmi entre plantas aromáticas",
     gallery: [
@@ -196,7 +196,7 @@ export const products: Product[] = [
     liquid: "Dourado claro",
     material: "Vidro em forma de maçã com tampa dourada",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 200,00",
+    originalPrice: "R$ 180,00",
     price: "R$ 150,00",
     listImage: "/products/maca_e_canela.png",
     listImageAlt: "Frasco do perfume Maçã e Canela",
@@ -216,6 +216,56 @@ export const products: Product[] = [
       {
         src: "/products/maca-e-canela/inspiracao-core.jpg",
         alt: "Coré colhendo flores, inspiração do perfume Maçã",
+      },
+    ],
+  },
+  {
+    slug: "maca-e-figo",
+    name: "Maçã e Figo",
+    family: "Frutado doce especiado",
+    tagline: "Transformação, amadurecimento e os ciclos entre luz e profundidade",
+    introduction:
+      "Inspirado em Perséfone, deusa que atravessa dois mundos, este perfume representa transformação, amadurecimento e os ciclos entre luz e profundidade. Enquanto Maçã trabalha o arquétipo da donzela, Maçã e Figo expressa seu amadurecimento e o arquétipo da mulher que ama e quer ser amada.",
+    composition:
+      "Macerado feito com álcool de cereais e maçãs, macerado botânico de figo, macerado de estoraque, óleos essenciais de canela, cravo, junípero e rosa damascena, e óleo essencial de baunilha de Madagascar.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Maçã e junípero",
+        description:
+          "Uma abertura frutada e fresca, em que a doçura da maçã encontra a nuance verde e silvestre do junípero.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Figo, rosa damascena, canela e cravo",
+        description:
+          "O figo traz uma doçura mais profunda e envolvente. A rosa damascena acrescenta delicadeza floral, enquanto a canela e o cravo aquecem o coração da fragrância.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Baunilha, estoraque e nuances especiadas",
+        description:
+          "A baunilha envolve a composição com suavidade, enquanto o estoraque acrescenta profundidade, calor e um caráter resinoso que permanece ao fundo.",
+      },
+    ],
+    mythologyTitle: "A transformação de Perséfone que inspira o perfume",
+    mythology: [
+      "Na mitologia grega, Perséfone é a deusa que transita entre dois mundos. Antes chamada Coré, ela representa inicialmente a juventude e o florescimento. Ao tornar-se rainha do mundo subterrâneo, passa a reunir em si a luminosidade da primavera e a profundidade do mundo das sombras.",
+      "Sua trajetória fala sobre ciclos, amadurecimento, mudança e a capacidade de atravessar diferentes fases da existência sem deixar de reconhecer quem somos. É essa Perséfone transformada que inspira o perfume Maçã e Figo.",
+      "A maçã preserva a luminosidade e a doçura de sua origem, enquanto o figo traz uma presença mais madura e densa. O resultado é um perfume frutado, doce, especiado e profundo, inspirado na mulher que aprende a habitar tanto a luz quanto a própria profundidade.",
+    ],
+    volume: "25 ml",
+    material: "Vidro",
+    packaging: "Saco de linho bordado com flores",
+    originalPrice: "R$ 200,00",
+    price: "R$ 150,00",
+    listImage: "/products/maca-e-figo/galeria-1.jpg",
+    listImageAlt: "Frasco do perfume natural Maçã e Figo",
+    gallery: [
+      {
+        src: "/products/maca-e-figo/galeria-1.jpg",
+        alt: "Frasco do perfume natural Maçã e Figo",
       },
     ],
   },
@@ -258,14 +308,67 @@ export const products: Product[] = [
     liquid: "Âmbar",
     material: "Vidro quadrado, tampa dourada",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 300,00",
-    price: "R$ 250,00",
+    originalPrice: "R$ 250,00",
+    price: "R$ 225,00",
     listImage: "/products/store/pachamama.png",
     listImageAlt: "Frasco do perfume natural Pachamama",
     gallery: [
       {
         src: "/products/store/pachamama.png",
         alt: "Frasco do perfume natural Pachamama entre elementos botânicos",
+      },
+    ],
+  },
+  {
+    slug: "hecate",
+    name: "Hécate",
+    family: "Oriental terrosa",
+    tagline: "Profundidade, presença e transformação",
+    introduction:
+      "Uma fragrância profunda, resinosa e envolvente, inspirada em Hécate e nos momentos de passagem, transformação e escolha.",
+    composition:
+      "Álcool de cereais, macerados botânicos de estoraque, rosa vermelha e vetiver, e óleos essenciais de rosa, gerânio, junípero e olíbano.",
+    highlightsTitle: "Composição aromática",
+    highlights: [
+      {
+        title: "Notas de saída",
+        ingredients: "Junípero",
+        description:
+          "Uma abertura fresca e aromática que cria contraste com a profundidade da composição.",
+      },
+      {
+        title: "Notas de coração",
+        ingredients: "Rosa, gerânio e rosa vermelha",
+        description:
+          "A rosa e o gerânio revelam um coração floral intenso, enquanto os macerados de rosa vermelha acrescentam novas nuances à fragrância.",
+      },
+      {
+        title: "Notas de fundo",
+        ingredients: "Estoraque, vetiver e olíbano",
+        description:
+          "O vetiver encontra o caráter quente e balsâmico do estoraque e a presença resinosa do olíbano, formando uma base terrosa e profunda.",
+      },
+    ],
+    mythologyTitle: "As encruzilhadas de Hécate",
+    mythology: [
+      "Na mitologia grega, Hécate é uma deusa relacionada às encruzilhadas, à noite e aos espaços de passagem.",
+      "A encruzilhada representa o momento em que diferentes caminhos se apresentam e é preciso escolher uma direção. Por isso, Hécate também está ligada aos ciclos de transformação, ao encerramento de etapas e ao início de novos caminhos.",
+      "Hécate reúne flores, raízes e resinas em uma composição profunda, na qual a delicadeza da rosa encontra a força terrosa do vetiver e o caráter misterioso e balsâmico do estoraque e do olíbano.",
+    ],
+    volume: "180 ml",
+    material: "Vidro em formato de caveira",
+    originalPrice: "R$ 450,00",
+    price: "R$ 360,00",
+    listImage: "/products/hecate/galeria-1.png",
+    listImageAlt: "Frasco em formato de caveira do perfume natural Hécate",
+    gallery: [
+      {
+        src: "/products/hecate/galeria-1.png",
+        alt: "Frasco em formato de caveira do perfume natural Hécate",
+      },
+      {
+        src: "/products/hecate/galeria-2.png",
+        alt: "Vista frontal do frasco do perfume natural Hécate",
       },
     ],
   },
@@ -307,8 +410,8 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 250,00",
-    price: "R$ 200,00",
+    originalPrice: "R$ 200,00",
+    price: "R$ 180,00",
     listImage: "/products/store/perfume_mar.png",
     listImageAlt: "Frasco do perfume natural Mar",
     gallery: [
@@ -355,8 +458,8 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 250,00",
-    price: "R$ 200,00",
+    originalPrice: "R$ 200,00",
+    price: "R$ 180,00",
     listImage: "/products/store/perfume_lua.png",
     listImageAlt: "Frasco do perfume natural Lua",
     gallery: [
@@ -402,8 +505,8 @@ export const products: Product[] = [
     volume: "30 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 250,00",
-    price: "R$ 200,00",
+    originalPrice: "R$ 200,00",
+    price: "R$ 180,00",
     listImage: "/products/store/perfume_sol.png",
     listImageAlt: "Frasco do perfume natural Sol",
     gallery: [
