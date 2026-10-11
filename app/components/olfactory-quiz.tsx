@@ -8,6 +8,7 @@ import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
 import ReplayRoundedIcon from "@mui/icons-material/ReplayRounded";
 import SelfImprovementRoundedIcon from "@mui/icons-material/SelfImprovementRounded";
+import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
 import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
 import SpaRoundedIcon from "@mui/icons-material/SpaRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -228,12 +229,67 @@ type QuizResult = {
   secondaryPercentage: number;
 };
 
+const loadCanvasImage = (source: string) => new Promise<HTMLImageElement>((resolve, reject) => {
+  const image = new window.Image();
+  image.onload = () => resolve(image);
+  image.onerror = () => reject(new Error(`Não foi possível carregar ${source}`));
+  image.src = source;
+});
+
+const drawCoverImage = (
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+) => {
+  const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
+  const renderedWidth = image.naturalWidth * scale;
+  const renderedHeight = image.naturalHeight * scale;
+  context.drawImage(
+    image,
+    x + (width - renderedWidth) / 2,
+    y + (height - renderedHeight) / 2,
+    renderedWidth,
+    renderedHeight,
+  );
+};
+
+const drawWrappedText = (
+  context: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+) => {
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let currentLine = "";
+
+  words.forEach((word) => {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (context.measureText(candidate).width <= maxWidth) {
+      currentLine = candidate;
+      return;
+    }
+    if (currentLine) lines.push(currentLine);
+    currentLine = word;
+  });
+  if (currentLine) lines.push(currentLine);
+
+  lines.forEach((line, index) => context.fillText(line, x, y + index * lineHeight));
+  return y + lines.length * lineHeight;
+};
+
 export default function OlfactoryQuiz() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [intensity, setIntensity] = useState(2);
   const [currentStep, setCurrentStep] = useState(0);
   const [result, setResult] = useState<QuizResult | null>(null);
+  const [shareMessage, setShareMessage] = useState("");
   const quizRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
 
@@ -305,6 +361,7 @@ export default function OlfactoryQuiz() {
     setIntensity(2);
     setCurrentStep(0);
     setResult(null);
+    setShareMessage("");
     window.setTimeout(() => quizRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
   };
 
@@ -316,6 +373,134 @@ export default function OlfactoryQuiz() {
   const whatsappMessage = resultName
     ? `Ola! Fiz o questionario olfativo e meu perfil e ${resultName}, com intensidade ${intensityLabels[intensity].toLowerCase()}. Gostaria de conhecer um perfume para mim.`
     : "";
+  const createInstagramStory = async () => {
+    if (!result || !primaryProfile || !secondaryProfile) {
+      throw new Error("Resultado indisponível");
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 1920;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Canvas indisponível");
+
+    const [profileImage, logoImage] = await Promise.all([
+      loadCanvasImage(primaryProfile.image),
+      loadCanvasImage("/marluasol-sem-borda.png"),
+    ]);
+
+    const background = context.createLinearGradient(0, 0, 1080, 1920);
+    background.addColorStop(0, "#64105f");
+    background.addColorStop(0.55, "#41063e");
+    background.addColorStop(1, "#26071f");
+    context.fillStyle = background;
+    context.fillRect(0, 0, 1080, 1920);
+
+    drawCoverImage(context, profileImage, 0, 0, 1080, 850);
+    const imageOverlay = context.createLinearGradient(0, 250, 0, 900);
+    imageOverlay.addColorStop(0, "rgba(38,7,31,0.08)");
+    imageOverlay.addColorStop(1, "#41063e");
+    context.fillStyle = imageOverlay;
+    context.fillRect(0, 0, 1080, 910);
+
+    context.drawImage(logoImage, 345, 70, 390, 214);
+
+    context.textAlign = "center";
+    context.fillStyle = "#e0aa18";
+    context.font = "700 28px Arial, sans-serif";
+    context.fillText("MEU PERFIL OLFATIVO", 540, 755);
+
+    context.fillStyle = "#fff8e9";
+    context.font = "700 72px Georgia, serif";
+    const resultTextBottom = drawWrappedText(context, resultName, 540, 850, 880, 86);
+
+    context.fillStyle = "#e0aa18";
+    context.font = "700 34px Arial, sans-serif";
+    context.fillText(`Família ${primaryProfile.name} · Deusa ${primaryProfile.goddess}`, 540, resultTextBottom + 20);
+
+    context.fillStyle = "rgba(255,248,233,0.14)";
+    context.beginPath();
+    context.roundRect(90, resultTextBottom + 85, 900, 315, 36);
+    context.fill();
+
+    context.textAlign = "left";
+    context.fillStyle = "#fff8e9";
+    context.font = "700 31px Arial, sans-serif";
+    context.fillText("SUA COMPOSIÇÃO IDEAL", 145, resultTextBottom + 155);
+    context.font = "400 31px Arial, sans-serif";
+    const compositionBottom = drawWrappedText(
+      context,
+      `Intensidade ${intensityLabels[intensity].toLowerCase()}, com ${primaryProfile.notes} e toques de ${secondaryProfile.notes}.`,
+      145,
+      resultTextBottom + 215,
+      790,
+      44,
+    );
+
+    context.fillStyle = "#e0aa18";
+    context.font = "700 28px Arial, sans-serif";
+    context.fillText("PERFUMES INDICADOS", 90, compositionBottom + 100);
+    context.fillStyle = "#fff8e9";
+    context.font = "700 42px Georgia, serif";
+    context.fillText(primaryProfile.perfumes.join("  ·  "), 90, compositionBottom + 158);
+
+    context.textAlign = "center";
+    context.fillStyle = "rgba(255,248,233,0.78)";
+    context.font = "400 29px Arial, sans-serif";
+    context.fillText("Descubra o seu perfil também", 540, 1770);
+    context.fillStyle = "#e0aa18";
+    context.font = "700 32px Arial, sans-serif";
+    context.fillText("marluasol.com.br", 540, 1820);
+
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((generatedBlob) => {
+        if (generatedBlob) resolve(generatedBlob);
+        else reject(new Error("Não foi possível gerar a imagem"));
+      }, "image/png");
+    });
+
+    return new File([blob], `perfil-olfativo-${result.primary}.png`, { type: "image/png" });
+  };
+
+  const downloadStory = (story: File) => {
+    const downloadUrl = URL.createObjectURL(story);
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = story.name;
+    link.click();
+    window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 0);
+  };
+
+  const shareOnInstagram = async () => {
+    setShareMessage("Preparando seu card...");
+
+    try {
+      const story = await createInstagramStory();
+      const shareData = { files: [story], title: "Meu perfil olfativo MarLuaSol" };
+
+      if (navigator.share && navigator.canShare?.({ files: [story] })) {
+        try {
+          await navigator.share(shareData);
+          setShareMessage("Card compartilhado com sucesso.");
+          return;
+        } catch (error: unknown) {
+          if (error instanceof DOMException && error.name === "AbortError") {
+            setShareMessage("");
+            return;
+          }
+
+          downloadStory(story);
+          setShareMessage("Não foi possível abrir o compartilhamento. O card foi baixado para você publicar.");
+          return;
+        }
+      }
+
+      downloadStory(story);
+      setShareMessage("Card baixado! Abra o Instagram e publique a imagem no seu story.");
+    } catch {
+      setShareMessage("Não foi possível gerar o card. Tente novamente.");
+    }
+  };
 
   return (
     <Box
@@ -608,13 +793,21 @@ export default function OlfactoryQuiz() {
               </Stack>
             </Box>
 
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={1.25} sx={{ mt: 3, alignItems: { xs: "stretch", sm: "center" }, flexWrap: "wrap" }}>
+            <Stack direction={{ xs: "column", sm: "row" }} sx={{ mt: 3, alignItems: { xs: "stretch", sm: "center" }, flexWrap: "wrap", gap: 1.25 }}>
               <Button href="#produtos" variant="contained" sx={{ py: 1.2 }}>Ver produtos para mim</Button>
               <Button href={buildWhatsAppLink(whatsappMessage)} rel="noopener noreferrer" startIcon={<WhatsAppIcon />} target="_blank" variant="outlined" sx={{ py: 1.1 }}>
                 Falar com a perfumista
               </Button>
+              <Button onClick={shareOnInstagram} startIcon={<ShareRoundedIcon />} variant="outlined" sx={{ py: 1.1 }}>
+                Compartilhar meu resultado
+              </Button>
               <Button onClick={resetQuiz} startIcon={<ReplayRoundedIcon />} sx={{ color: "primary.main" }}>Refazer</Button>
             </Stack>
+            {shareMessage && (
+              <Typography aria-live="polite" sx={{ mt: 1.25, color: "primary.main", fontSize: "0.82rem", fontWeight: 700 }}>
+                {shareMessage}
+              </Typography>
+            )}
           </Box>
         </Box>
       )}
