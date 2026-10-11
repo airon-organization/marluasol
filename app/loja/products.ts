@@ -204,8 +204,8 @@ export const products: Product[] = [
     liquid: "Dourado claro",
     material: "Vidro em forma de maçã com tampa dourada",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 180,00",
-    price: "R$ 150,00",
+    originalPrice: "R$ 150,00",
+    price: "R$ 120,00",
     listImage: "/products/maca-e-canela/imagem-1.png",
     listImageAlt: "Frasco do perfume Maçã e Canela",
     gallery: [
@@ -231,7 +231,8 @@ export const products: Product[] = [
     slug: "maca-e-figo",
     name: "Maçã e Figo",
     family: "Frutado doce especiado",
-    tagline: "Transformação, amadurecimento e os ciclos entre luz e profundidade",
+    tagline:
+      "Transformação, amadurecimento e os ciclos entre luz e profundidade",
     introduction:
       "Inspirado em Perséfone, deusa que atravessa dois mundos, este perfume representa transformação, amadurecimento e os ciclos entre luz e profundidade. Enquanto Maçã trabalha o arquétipo da donzela, Maçã e Figo expressa seu amadurecimento e o arquétipo da mulher que ama e quer ser amada.",
     composition:
@@ -266,8 +267,8 @@ export const products: Product[] = [
     volume: "25 ml",
     material: "Vidro",
     packaging: "Saco de linho bordado com flores",
-    originalPrice: "R$ 200,00",
-    price: "R$ 150,00",
+    originalPrice: "R$ 150,00",
+    price: "R$ 120,00",
     listImage: "/products/maca-e-figo/imagem-1.jpg",
     listImageAlt: "Frasco do perfume natural Maçã e Figo",
     gallery: [
@@ -414,7 +415,8 @@ export const products: Product[] = [
       {
         title: "Notas de fundo",
         ingredients: "Olíbano",
-        description: "Permanece ao fundo trazendo profundidade e sustentação à fragrância.",
+        description:
+          "Permanece ao fundo trazendo profundidade e sustentação à fragrância.",
       },
     ],
     mythologyTitle: "A força da natureza que inspira o perfume",
@@ -515,12 +517,14 @@ export const products: Product[] = [
       {
         title: "Notas de saída",
         ingredients: "Junípero",
-        description: "Uma abertura verde e luminosa que traz movimento à composição.",
+        description:
+          "Uma abertura verde e luminosa que traz movimento à composição.",
       },
       {
         title: "Notas de coração",
         ingredients: "Rosa e amêndoas amargas",
-        description: "Um coração floral e envolvente, com personalidade e intensidade.",
+        description:
+          "Um coração floral e envolvente, com personalidade e intensidade.",
       },
       {
         title: "Notas de fundo",
