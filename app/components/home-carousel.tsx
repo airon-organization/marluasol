@@ -5,7 +5,20 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import { FocusEvent, useEffect, useState } from "react";
+
+const carouselSerif = Cormorant_Garamond({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const carouselSans = Montserrat({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
 
 const slides = [
   {
@@ -82,7 +95,7 @@ export default function HomeCarousel() {
       onMouseLeave={() => setIsPaused(false)}
       sx={{
         position: "relative",
-        aspectRatio: { xs: "1 / 1", sm: "1440 / 563" },
+        aspectRatio: { xs: "16 / 9", sm: "1440 / 563" },
         overflow: "hidden",
         bgcolor: "#171107",
       }}
@@ -257,13 +270,13 @@ function slideContentStyles(tone: SlideTone) {
 
 function eyebrowStyles(tone: SlideTone) {
   return {
-    fontFamily: tone === "brand" ? "Georgia, 'Times New Roman', serif" : "Arial, Helvetica, sans-serif",
+    fontFamily: carouselSerif.style.fontFamily,
     fontSize: {
       xs: tone === "brand" ? "clamp(2.5rem, 11vw, 3.4rem)" : "clamp(1.1rem, 5vw, 1.4rem)",
       sm: tone === "brand" ? "clamp(3rem, 5.8vw, 5rem)" : "clamp(1.2rem, 2.25vw, 1.7rem)",
     },
-    fontWeight: tone === "brand" ? 400 : 500,
-    letterSpacing: tone === "brand" ? "0.035em" : "0.025em",
+    fontWeight: tone === "brand" ? 500 : 600,
+    letterSpacing: tone === "brand" ? "0.025em" : "0.045em",
     lineHeight: 1.08,
     textTransform: tone === "brand" ? "none" : "uppercase",
   } as const;
@@ -271,18 +284,19 @@ function eyebrowStyles(tone: SlideTone) {
 
 function titleStyles(tone: SlideTone) {
   return {
-    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontFamily: carouselSerif.style.fontFamily,
     fontSize: {
       xs: tone === "brand" ? "1.7rem" : "2rem",
       sm: tone === "brand" ? "clamp(1.8rem, 3vw, 2.45rem)" : "clamp(1.9rem, 3.15vw, 2.7rem)",
     },
-    fontWeight: 400,
+    fontWeight: 500,
     lineHeight: 1.12,
   } as const;
 }
 
 function descriptionStyles(tone: SlideTone) {
   return {
+    fontFamily: carouselSans.style.fontFamily,
     maxWidth: tone === "brand" ? 620 : 1000,
     mt: tone === "brand" ? 0.25 : 0.4,
     fontSize: {
@@ -302,6 +316,7 @@ const ctaStyles = {
   mt: { xs: 1.5, sm: 1.85 },
   pb: 0.3,
   borderBottom: "1px solid rgba(255, 248, 233, 0.72)",
+  fontFamily: carouselSans.style.fontFamily,
   fontSize: { xs: "1rem", sm: "clamp(1.05rem, 1.8vw, 1.4rem)" },
   fontWeight: 500,
   letterSpacing: "0.025em",
