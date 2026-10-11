@@ -4,13 +4,15 @@ import InnerPage from "../components/inner-page";
 import { articles } from "./articles-data";
 
 const articleCards: ArticleCardProps[] = [
-  ...Object.entries(articles).map(([slug, article]) => ({
-    title: article.title,
-    excerpt: article.excerpt,
-    href: `/articles/${slug}`,
-    image: article.image,
-    imageAlt: article.imageAlt,
-  })),
+  ...Object.entries(articles)
+    .sort(([, first], [, second]) => first.position - second.position)
+    .map(([slug, article]) => ({
+      title: article.title,
+      excerpt: article.excerpt,
+      href: `/articles/${slug}`,
+      image: article.image,
+      imageAlt: article.imageAlt,
+    })),
 ];
 
 export default function ArticlesPage() {

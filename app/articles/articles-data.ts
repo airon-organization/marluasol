@@ -9,6 +9,7 @@ export type ArticleSection = {
 };
 
 export type Article = {
+  position: number;
   eyebrow: string;
   title: string;
   description: string;
@@ -23,6 +24,7 @@ export type Article = {
 
 export const articles: Record<string, Article> = {
   mulheres_e_plantas: {
+    position: 2,
     eyebrow: "Botânica e ancestralidade",
     title: "Mulheres e plantas — amigas ancestrais",
     description: "A relação ancestral entre mulheres, plantas, olfato, memória e emoções.",
@@ -95,6 +97,7 @@ export const articles: Record<string, Article> = {
     ],
   },
   quem_sao_as_deusas: {
+    position: 3,
     eyebrow: "Aromas e mitologia feminina",
     title: "Quem são as deusas e o que elas têm a ver com os aromas das plantas?",
     description: "Como os perfumes, as plantas e as deusas se encontram em uma linguagem de memória, presença e simbolismo.",
@@ -164,6 +167,7 @@ export const articles: Record<string, Article> = {
     ],
   },
   perfumaria_ancestral: {
+    position: 4,
     eyebrow: "Perfumaria natural",
     title: "Perfumaria ancestral e o ritual dos aromas",
     description: "A história da relação ancestral entre aromas, rituais, sacerdotisas e plantas.",
@@ -228,6 +232,7 @@ export const articles: Record<string, Article> = {
     ],
   },
   beneficios_do_perfume_natural: {
+    position: 1,
     eyebrow: "Perfumaria natural",
     title: "Os benefícios do perfume natural",
     description: "Muito além de um cheiro agradável: uma experiência construída a partir das plantas.",

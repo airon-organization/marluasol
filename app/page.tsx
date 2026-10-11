@@ -3,31 +3,20 @@ import ArticleCard, { type ArticleCardProps } from "./components/article-card";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import HomeCarousel from "./components/home-carousel";
+import { articles } from "./articles/articles-data";
 
-const articles: ArticleCardProps[] = [
-  {
-    title: "MULHERES E PLANTAS - AMIGAS ANCESTRAIS",
-    excerpt: "Durante milhares de anos, antes da existência dos laboratórios modernos, as mulheres aprenderam a reconhecer o mundo através das plantas...",
-    href: "/articles/mulheres_e_plantas",
-    image: "/articles/mulheres_e_plantas/imagem-artigo-1.jpg",
-    imageAlt: "Mulher entre plantas, representando a conexão ancestral com a natureza",
-  },
-  {
-    title: "QUEM SÃO AS DEUSAS E O QUE ELAS TÊM A VER COM OS AROMAS DAS PLANTAS?",
-    excerpt: "Cleópatra compreendia o poder dos aromas e usava ao seu favor. Nos perfumes, as plantas tornam-se linguagem — e cada aroma desperta em nós uma força, uma memória, uma deusa.",
-    href: "/articles/quem_sao_as_deusas",
-    image: "/articles/quem_sao_as_deusas/imagem-artigo-2.jpg",
-    imageAlt: "Mulher caracterizada como uma deusa egípcia em meio à natureza",
-  },
-  {
-    title: "Perfumaria ancestral e o ritual dos aromas",
-    excerpt: "Por meio dos aromas nos conectamos com memórias, emoções e fragmentos da nossa própria realidade que se comunicam conosco por meio do simbolismo e dos aromas das nossas deusas guias: as plantas. Conheça nesse artigo a História da Perfumaria e o que significa.",
-    href: "/articles/perfumaria_ancestral",
-    image: "/articles/perfumaria_ancestral/imagem-artigo-3.png",
-    imageAlt: "Mulher segurando um frasco de perfume em uma composição inspirada no Egito Antigo",
-    orientation: "vertical",
-  },
-];
+const orderedArticles: ArticleCardProps[] = Object.entries(articles)
+  .sort(([, first], [, second]) => first.position - second.position)
+  .map(([slug, article]) => ({
+    title: article.title,
+    excerpt: article.excerpt,
+    href: `/articles/${slug}`,
+    image: article.image,
+    imageAlt: article.imageAlt,
+  }));
+
+const sideArticles = orderedArticles.slice(0, 2);
+const featuredArticle = orderedArticles[orderedArticles.length - 1];
 
 export default function Home() {
   return (
@@ -44,12 +33,12 @@ export default function Home() {
             <Grid container spacing={{ xs: 3.25, md: 4 }}>
               <Grid size={{ xs: 12, md: 5 }}>
                 <Stack spacing={3.5}>
-                  {articles.slice(0, 2).map((article) => <ArticleCard {...article} key={article.href} />)}
+                  {sideArticles.map((article) => <ArticleCard {...article} key={article.href} />)}
                 </Stack>
               </Grid>
-              {articles[articles.length - 1] && (
+              {featuredArticle && (
                 <Grid size={{ xs: 12, md: 7 }}>
-                  <ArticleCard {...articles[articles.length - 1]} />
+                  <ArticleCard {...featuredArticle} orientation="vertical" />
                 </Grid>
               )}
             </Grid>
