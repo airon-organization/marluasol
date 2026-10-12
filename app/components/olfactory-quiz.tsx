@@ -24,11 +24,13 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { FormEvent, ReactNode, useRef, useState } from "react";
 import { buildWhatsAppLink } from "../lib/contact";
 
 type OlfactoryFamily = "citrico" | "floral" | "amadeirado" | "oriental";
 type Scores = Partial<Record<OlfactoryFamily, number>>;
+type RecommendedPerfume = { name: string; slug: string };
 
 type ChoiceOption = {
   id: string;
@@ -156,12 +158,15 @@ const occasions: ChoiceOption[] = [
   },
 ];
 
-const profiles: Record<OlfactoryFamily, { name: string; adjective: string; goddess: string; perfumes: string[]; description: string; notes: string; image: string }> = {
+const profiles: Record<OlfactoryFamily, { name: string; adjective: string; goddess: string; perfumes: RecommendedPerfume[]; description: string; notes: string; image: string }> = {
   citrico: {
     name: "Fresca",
     adjective: "luminosas",
     goddess: "Lakshmi",
-    perfumes: ["Lakshmi", "Mar"],
+    perfumes: [
+      { name: "Lakshmi", slug: "lakshmi" },
+      { name: "Mar", slug: "mar" },
+    ],
     description: "Frescor, movimento e alegria conduzem a sua assinatura olfativa.",
     notes: "bergamota, capim-limão, limão-siciliano e petitgrain",
     image: "/quiz/citrico.png",
@@ -170,7 +175,10 @@ const profiles: Record<OlfactoryFamily, { name: string; adjective: string; godde
     name: "Floral doce",
     adjective: "delicadas",
     goddess: "Afrodite",
-    perfumes: ["Afrodite", "Maçã", "Rosa Vermelha"],
+    perfumes: [
+      { name: "Rosa Vermelha", slug: "rosa-vermelha" },
+      { name: "Maçã", slug: "maca-e-canela" },
+    ],
     description: "Sensibilidade, harmonia e acolhimento aparecem no centro das suas escolhas.",
     notes: "rosa, jasmim, lavanda, gerânio e flores brancas",
     image: "/quiz/floral.png",
@@ -179,7 +187,10 @@ const profiles: Record<OlfactoryFamily, { name: string; adjective: string; godde
     name: "Terrosa amadeirada",
     adjective: "profundas",
     goddess: "Pachamama",
-    perfumes: ["Pachamama", "Lua"],
+    perfumes: [
+      { name: "Pachamama", slug: "pachamama" },
+      { name: "Lua", slug: "lua" },
+    ],
     description: "Equilíbrio, confiança e conexão com a terra definem o seu caminho.",
     notes: "cedro, sândalo, vetiver, patchouli e raízes aromáticas",
     image: "/quiz/amadeirado.png",
@@ -188,7 +199,11 @@ const profiles: Record<OlfactoryFamily, { name: string; adjective: string; godde
     name: "Oriental",
     adjective: "envolventes",
     goddess: "Hécate",
-    perfumes: ["Hécate", "Sol", "Rosa Vermelha"],
+    perfumes: [
+      { name: "Hécate", slug: "hecate" },
+      { name: "Sol", slug: "sol" },
+      { name: "Maçã e Figo", slug: "maca-e-figo" },
+    ],
     description: "Calor, expressividade e mistério tornam a sua presença memorável.",
     notes: "âmbar, benjoim, baunilha, canela e resinas naturais",
     image: "/quiz/oriental.png",
@@ -449,7 +464,7 @@ export default function OlfactoryQuiz() {
     context.fillText("PERFUMES INDICADOS", 90, compositionBottom + 100);
     context.fillStyle = "#fff8e9";
     context.font = "700 42px Georgia, serif";
-    context.fillText(primaryProfile.perfumes.join("  ·  "), 90, compositionBottom + 158);
+    context.fillText(primaryProfile.perfumes.map((perfume) => perfume.name).join("  ·  "), 90, compositionBottom + 158);
 
     context.textAlign = "center";
     context.fillStyle = "rgba(255,248,233,0.78)";
@@ -797,18 +812,16 @@ export default function OlfactoryQuiz() {
               <Typography sx={{ fontSize: "0.9rem", fontWeight: 900 }}>Perfumes indicados para você</Typography>
               <Stack direction="row" spacing={1} sx={{ mt: 1.25, flexWrap: "wrap", gap: 1 }}>
                 {primaryProfile.perfumes.map((perfume) => {
-                  const productMessage = `Ola! Fiz o questionario olfativo, meu resultado foi familia ${primaryProfile.name} e gostaria de conhecer o perfume ${perfume}.`;
                   return (
                     <Button
-                      href={buildWhatsAppLink(productMessage)}
-                      key={perfume}
-                      rel="noopener noreferrer"
+                      component={Link}
+                      href={`/loja/${perfume.slug}`}
+                      key={perfume.slug}
                       startIcon={<ShoppingBagRoundedIcon />}
-                      target="_blank"
                       variant="outlined"
                       sx={{ bgcolor: "rgba(255,255,255,0.45)" }}
                     >
-                      {perfume}
+                      {perfume.name}
                     </Button>
                   );
                 })}
@@ -816,7 +829,6 @@ export default function OlfactoryQuiz() {
             </Box>
 
             <Stack direction={{ xs: "column", sm: "row" }} sx={{ mt: 3, alignItems: { xs: "stretch", sm: "center" }, flexWrap: "wrap", gap: 1.25 }}>
-              <Button href="#produtos" variant="contained" sx={{ py: 1.2 }}>Ver produtos para mim</Button>
               <Button href={buildWhatsAppLink(whatsappMessage)} rel="noopener noreferrer" startIcon={<WhatsAppIcon />} target="_blank" variant="outlined" sx={{ py: 1.1 }}>
                 Falar com a perfumista
               </Button>
