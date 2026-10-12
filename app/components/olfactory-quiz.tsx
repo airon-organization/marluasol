@@ -25,7 +25,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, ReactNode, useRef, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { buildWhatsAppLink } from "../lib/contact";
 
 type OlfactoryFamily = "citrico" | "floral" | "amadeirado" | "oriental";
@@ -244,6 +244,17 @@ type QuizResult = {
   secondaryPercentage: number;
 };
 
+type StoredQuizProgress = {
+  version: 1;
+  answers: Record<string, string>;
+  selectedIngredients: string[];
+  intensity: number;
+  currentStep: number;
+  result: QuizResult | null;
+};
+
+const QUIZ_STORAGE_KEY = "marluasol:olfactory-quiz:v1";
+
 const loadCanvasImage = (source: string) => new Promise<HTMLImageElement>((resolve, reject) => {
   const image = new window.Image();
   image.onload = () => resolve(image);
@@ -306,8 +317,60 @@ export default function OlfactoryQuiz() {
   const [result, setResult] = useState<QuizResult | null>(null);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
+  const [isProgressLoaded, setIsProgressLoaded] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
+  const skipNextProgressSave = useRef(false);
+
+  useEffect(() => {
+    const restoreFrame = window.requestAnimationFrame(() => {
+      try {
+        const savedProgress = window.localStorage.getItem(QUIZ_STORAGE_KEY);
+
+        if (savedProgress) {
+          const progress = parseStoredQuizProgress(savedProgress);
+
+          if (progress) {
+            setAnswers(progress.answers);
+            setSelectedIngredients(progress.selectedIngredients);
+            setIntensity(progress.intensity);
+            setCurrentStep(progress.currentStep);
+            setResult(progress.result);
+          }
+        }
+      } catch {
+        // Dados inválidos ou armazenamento bloqueado não impedem o uso do teste.
+      } finally {
+        setIsProgressLoaded(true);
+      }
+    });
+
+    return () => window.cancelAnimationFrame(restoreFrame);
+  }, []);
+
+  useEffect(() => {
+    if (!isProgressLoaded) return;
+
+    if (skipNextProgressSave.current) {
+      skipNextProgressSave.current = false;
+      return;
+    }
+
+    const progress: StoredQuizProgress = {
+      version: 1,
+      answers,
+      selectedIngredients,
+      intensity,
+      currentStep,
+      result,
+    };
+
+    try {
+      window.localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(progress));
+    } catch {
+      // O teste continua funcionando quando o armazenamento está indisponível.
+    }
+  }, [answers, currentStep, intensity, isProgressLoaded, result, selectedIngredients]);
 
   const selectAnswer = (question: string, option: string) => {
     setAnswers((current) => ({ ...current, [question]: option }));
@@ -377,6 +440,12 @@ export default function OlfactoryQuiz() {
   };
 
   const resetQuiz = () => {
+    skipNextProgressSave.current = true;
+    try {
+      window.localStorage.removeItem(QUIZ_STORAGE_KEY);
+    } catch {
+      // O estado visível ainda pode ser reiniciado sem acesso ao armazenamento.
+    }
     setAnswers({});
     setSelectedIngredients([]);
     setIntensity(2);
@@ -582,14 +651,14 @@ export default function OlfactoryQuiz() {
               </Box>
             ) : (
               <Button
-                aria-controls="olfactory-quiz-form"
+                aria-controls={result ? "olfactory-quiz-result" : "olfactory-quiz-form"}
                 aria-expanded={false}
                 onClick={openQuiz}
                 startIcon={<AutoAwesomeRoundedIcon />}
                 variant="contained"
                 sx={{ mt: 3, color: "primary.dark", bgcolor: "secondary.main", px: { xs: 3, sm: 4 }, py: 1.35, "&:hover": { bgcolor: "#efbd35" } }}
               >
-                Começar o teste
+                Ver o teste
               </Button>
             )}
           </Box>
@@ -780,8 +849,8 @@ export default function OlfactoryQuiz() {
         </Box>
       )}
 
-      {result && primaryProfile && secondaryProfile && (
-        <Box ref={resultRef} aria-live="polite" sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "minmax(320px, 0.8fr) 1.2fr" }, bgcolor: "#eee4ef" }}>
+      {isQuizOpen && result && primaryProfile && secondaryProfile && (
+        <Box id="olfactory-quiz-result" ref={resultRef} aria-live="polite" sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "minmax(320px, 0.8fr) 1.2fr" }, bgcolor: "#eee4ef" }}>
           <Box sx={{ position: "relative", minHeight: { xs: 280, md: 520 } }}>
             <Image alt={`Atmosfera olfativa do perfil ${primaryProfile.name}`} fill sizes="(max-width: 900px) 100vw, 40vw" src={primaryProfile.image} style={{ objectFit: "cover" }} />
             <Box sx={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 45%, rgba(31,4,31,0.72))" }} />
@@ -847,6 +916,67 @@ export default function OlfactoryQuiz() {
       )}
     </Box>
   );
+}
+
+function parseStoredQuizProgress(value: string): StoredQuizProgress | null {
+  try {
+    const progress = JSON.parse(value) as Partial<StoredQuizProgress>;
+    const validFamilies: OlfactoryFamily[] = ["citrico", "floral", "amadeirado", "oriental"];
+    const validAnswerIds: Record<string, string[]> = {
+      landscape: landscapes.map((option) => option.id),
+      feeling: feelings.map((option) => option.id),
+      occasion: occasions.map((option) => option.id),
+    };
+    const isValidFamily = (family: unknown): family is OlfactoryFamily =>
+      typeof family === "string" && validFamilies.includes(family as OlfactoryFamily);
+    const isValidPercentage = (percentage: unknown) =>
+      typeof percentage === "number" && Number.isFinite(percentage) && percentage >= 0 && percentage <= 100;
+    const isValidResult = (result: unknown): result is QuizResult => {
+      if (!result || typeof result !== "object") return false;
+      const candidate = result as Partial<QuizResult>;
+      return (
+        isValidFamily(candidate.primary) &&
+        isValidFamily(candidate.secondary) &&
+        candidate.primary !== candidate.secondary &&
+        isValidPercentage(candidate.primaryPercentage) &&
+        isValidPercentage(candidate.secondaryPercentage)
+      );
+    };
+    const hasValidAnswers =
+      progress.answers &&
+      typeof progress.answers === "object" &&
+      !Array.isArray(progress.answers) &&
+      Object.entries(progress.answers).every(
+        ([question, answer]) => typeof answer === "string" && validAnswerIds[question]?.includes(answer),
+      );
+    const hasValidIngredients =
+      Array.isArray(progress.selectedIngredients) &&
+      progress.selectedIngredients.length <= 3 &&
+      progress.selectedIngredients.every(
+        (ingredient) => typeof ingredient === "string" && ingredients.some((option) => option.id === ingredient),
+      );
+
+    if (
+      progress.version !== 1 ||
+      !hasValidAnswers ||
+      !hasValidIngredients ||
+      typeof progress.intensity !== "number" ||
+      !Number.isInteger(progress.intensity) ||
+      progress.intensity < 1 ||
+      progress.intensity > 4 ||
+      typeof progress.currentStep !== "number" ||
+      !Number.isInteger(progress.currentStep) ||
+      progress.currentStep < 0 ||
+      progress.currentStep >= questionTitles.length ||
+      (progress.result !== null && !isValidResult(progress.result))
+    ) {
+      return null;
+    }
+
+    return progress as StoredQuizProgress;
+  } catch {
+    return null;
+  }
 }
 
 function ChoiceGrid({ options, selected, onSelect, variant }: { options: ChoiceOption[]; selected?: string; onSelect: (id: string) => void; variant: "image" | "mood" | "icon" }) {
