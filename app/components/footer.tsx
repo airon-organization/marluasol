@@ -14,6 +14,7 @@ export default function Footer() {
         fill
         sizes="100vw"
         src="/home/cosmic-flight-brand-v2.webp"
+        loading="eager"
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Box aria-hidden="true" className="cosmic-flight__shooting-star" />
@@ -55,7 +56,7 @@ export default function Footer() {
           <Button
             aria-label="Instagram de MarLuaSol"
             endIcon={<InstagramIcon sx={{ fontSize: "1rem !important" }} />}
-            href="https://www.instagram.com/marianeluasol/"
+            href="https://www.instagram.com/marluasolnatural/"
             rel="noopener noreferrer"
             target="_blank"
             size="small"

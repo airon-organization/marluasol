@@ -21,6 +21,7 @@ export default function Header() {
         priority
         sizes="100vw"
         src="/home/cosmic-flight-brand-v2.webp"
+        loading="eager"
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Box aria-hidden="true" className="cosmic-flight__shooting-star" />
