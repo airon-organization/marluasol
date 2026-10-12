@@ -105,6 +105,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {product.tagline}
                 </Typography>
 
+                <Box
+                  sx={{
+                    mt: 2.5,
+                    p: 2,
+                    borderLeft: "3px solid",
+                    borderColor: "secondary.main",
+                    borderRadius: 1,
+                    bgcolor: "#f8f1f7",
+                  }}
+                >
+                  <Typography sx={{ color: "primary.main", fontSize: "0.64rem", fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    Como ele cheira
+                  </Typography>
+                  <Typography sx={{ mt: 0.75, color: "text.secondary", fontSize: "0.92rem", lineHeight: 1.65 }}>
+                    {product.scentDescription}
+                  </Typography>
+                </Box>
+
                 <Stack direction="row" sx={{ mt: 2.5, flexWrap: "wrap", gap: 1 }}>
                   <Chip label={product.family} size="small" sx={chipStyles} />
                   <Chip label={product.volume} size="small" sx={chipStyles} />
@@ -161,17 +179,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 >
                   Quero este perfume
                 </Button>
-                <Typography
+                <Box
                   sx={{
                     mt: 1.25,
-                    color: "text.secondary",
-                    fontSize: "0.85rem",
-                    lineHeight: 1.5,
+                    p: 1.75,
+                    border: "1px solid rgba(100,16,95,0.14)",
+                    borderRadius: 1.25,
+                    bgcolor: "#f8f1f7",
                     textAlign: "center",
                   }}
                 >
-                  Pedidos realizados pelo WhatsApp. Pagamento via Pix.
-                </Typography>
+                  <Typography sx={{ color: "primary.dark", fontSize: "0.88rem", fontWeight: 800, lineHeight: 1.5 }}>
+                    Frete grátis • Envio em até 7 dias úteis
+                  </Typography>
+                  <Typography sx={{ mt: 0.5, color: "text.secondary", fontSize: "0.8rem", lineHeight: 1.5 }}>
+                    Pedidos realizados pelo WhatsApp. Pagamento via Pix.
+                  </Typography>
+                  <Typography sx={{ mt: 0.5, color: "text.secondary", fontSize: "0.8rem", lineHeight: 1.5 }}>
+                    O pedido é confirmado pelo WhatsApp após a confirmação do pagamento.
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
           </Grid>

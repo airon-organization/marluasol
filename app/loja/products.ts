@@ -9,6 +9,7 @@ export type Product = {
   name: string;
   family: string;
   tagline: string;
+  scentDescription: string;
   introduction: string;
   composition: string;
   highlightsTitle: string;
@@ -32,6 +33,8 @@ export const products: Product[] = [
     name: "Rosa Vermelha",
     family: "Floral doce",
     tagline: "A essência da força feminina",
+    scentDescription:
+      "Cheira a rosas aveludadas e morango, com um toque quente de cravo, baunilha e madeiras.",
     introduction:
       "Inspirado na força ancestral feminina, nas encruzilhadas da vida e na capacidade de transformação, Rosa Vermelha celebra a liberdade, a sensualidade e o poder de ser quem se é.",
     composition:
@@ -103,6 +106,8 @@ export const products: Product[] = [
     name: "Lakshmi",
     family: "Fresca",
     tagline: "Leveza, coragem, foco e disposição para a ação",
+    scentDescription:
+      "Cheira fresco, cítrico e verde, com capim-limão vibrante e um toque quente de canela.",
     introduction:
       "Inspirado na deusa hindu da prosperidade e da abundância, Lakshmi reúne plantas que evocam clareza, energia e confiança para transformar intenção em movimento.",
     composition:
@@ -170,6 +175,8 @@ export const products: Product[] = [
     name: "Maçã",
     family: "Frutado doce especiado",
     tagline: "Um convite ao florescimento e à doçura da vida",
+    scentDescription:
+      "Cheira a maçã fresca e adocicada, com rosas suaves, especiarias quentes e baunilha.",
     introduction:
       "Inspirado em Coré, a jovem perfumista que colhia flores antes de se tornar a deusa da primavera, este perfume celebra o florescimento, a doçura da vida e a descoberta do próprio caminho.",
     composition:
@@ -233,6 +240,8 @@ export const products: Product[] = [
     family: "Frutado doce especiado",
     tagline:
       "Transformação, amadurecimento e os ciclos entre luz e profundidade",
+    scentDescription:
+      "Cheira a maçã e figo maduros, com rosas, especiarias, baunilha e um fundo resinoso.",
     introduction:
       "Inspirado em Perséfone, deusa que atravessa dois mundos, este perfume representa transformação, amadurecimento e os ciclos entre luz e profundidade. Enquanto Maçã trabalha o arquétipo da donzela, Maçã e Figo expressa seu amadurecimento e o arquétipo da mulher que ama e quer ser amada.",
     composition:
@@ -283,6 +292,8 @@ export const products: Product[] = [
     name: "Pachamama",
     family: "Terrosa fresca",
     tagline: "Um convite para retornar ao essencial",
+    scentDescription:
+      "Cheira a folhas verdes, lavanda, madeira e terra úmida, com frescor no início e profundidade no fundo.",
     introduction:
       "Pachamama é um perfume natural artesanal de perfil terroso, fresco e amadeirado. Sua composição começa verde e aromática e evolui para um fundo profundo e terroso, equilibrando frescor e enraizamento.",
     composition:
@@ -341,6 +352,8 @@ export const products: Product[] = [
     name: "Hécate",
     family: "Oriental terrosa",
     tagline: "Profundidade, presença e transformação",
+    scentDescription:
+      "Cheira a rosas escuras, raízes e resinas, com um início fresco e um fundo quente e terroso.",
     introduction:
       "Uma fragrância profunda, resinosa e envolvente, inspirada em Hécate e nos momentos de passagem, transformação e escolha.",
     composition:
@@ -394,6 +407,8 @@ export const products: Product[] = [
     name: "Mar",
     family: "Fresca",
     tagline: "Movimento, frescor e liberdade",
+    scentDescription:
+      "Cheira cítrico, fresco e herbal, com bergamota, capim-limão, alecrim e uma delicada nuance floral.",
     introduction:
       "Uma fragrância fresca, aromática e luminosa, inspirada no movimento das águas e na sensação de liberdade que nasce diante do mar.",
     composition:
@@ -452,6 +467,8 @@ export const products: Product[] = [
     name: "Lua",
     family: "Terrosa",
     tagline: "Silêncio, profundidade e introspecção",
+    scentDescription:
+      "Cheira a madeira e terra, suavizadas por lavanda, folhas verdes e um toque floral.",
     introduction:
       "Uma fragrância terrosa, amadeirada, profunda e contemplativa, inspirada no silêncio da noite e nos ciclos da Lua.",
     composition:
@@ -508,6 +525,8 @@ export const products: Product[] = [
     name: "Sol",
     family: "Oriental",
     tagline: "Calor, vitalidade e expansão",
+    scentDescription:
+      "Cheira quente e especiado, com rosa, amêndoas, canela e cravo sobre um começo verde.",
     introduction:
       "Uma fragrância quente, intensa e envolvente, inspirada na força e na luminosidade do Sol.",
     composition:
@@ -565,6 +584,8 @@ export const products: Product[] = [
     name: "Coleção MarLuaSol",
     family: "Fresca, terrosa e oriental",
     tagline: "Um perfume para cada momento do dia",
+    scentDescription:
+      "Três experiências: Mar é cítrico e herbal, Lua é terrosa e amadeirada, e Sol é quente e especiado.",
     introduction:
       "Três perfumes inspirados em três forças da natureza: Mar, Lua e Sol. Cada fragrância representa uma atmosfera, um estado de presença e uma forma diferente de sentir a natureza na pele.",
     composition:

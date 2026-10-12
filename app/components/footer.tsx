@@ -32,7 +32,13 @@ export default function Footer() {
           py: { xs: 1.5, md: 0 },
         }}
       >
-        <Stack aria-label="Navegação do rodapé" component="nav" direction="row" spacing={{ xs: 1.25, sm: 2.5 }}>
+        <Stack
+          aria-label="Navegação do rodapé"
+          component="nav"
+          direction="row"
+          spacing={{ xs: 1.25, sm: 2.5 }}
+          sx={{ flexWrap: "wrap", justifyContent: "center", rowGap: 1.25 }}
+        >
           <Button
             component={Link}
             href="/loja"
@@ -75,6 +81,26 @@ export default function Footer() {
             }}
           >
             Redes sociais
+          </Button>
+          <Button
+            component={Link}
+            href="/entrega-trocas-e-devolucoes"
+            size="small"
+            sx={{
+              minWidth: { xs: 132, sm: 176 },
+              bgcolor: "#E0AA18",
+              color: "primary.dark",
+              borderRadius: 1.25,
+              px: { xs: 1.5, sm: 2 },
+              py: 1,
+              fontSize: { xs: "0.72rem", sm: "0.8rem" },
+              fontWeight: 800,
+              letterSpacing: "0.03em",
+              boxShadow: "0 5px 16px rgba(0,0,0,0.22)",
+              "&:hover": { bgcolor: "secondary.light" },
+            }}
+          >
+            Entrega e trocas
           </Button>
         </Stack>
 
